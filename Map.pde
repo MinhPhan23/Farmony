@@ -7,7 +7,7 @@ public class Map {
  
     // Variables
     private PImage background;
-    private minWidth, minHeight; // dimensions of map
+    private float minWidth, minHeight; // dimensions of map
     private ArrayList<NPC> npcList= new ArrayList<NPC>();
     private ArrayList<Seed> seedList = new ArrayList<Seed>();
     private ArrayList<Portal> portalList = new ArrayList<Portal>();
@@ -33,18 +33,29 @@ public class Map {
 
     /**
      * Adds a new Seed object to the Map
+     * @param  seed  the specified Seed object to add to the Map
     **/
     public void add(Seed seed) {
-        if (!seedList.contains(seed)) {
+        if (seedList.indexOf(seed) < 0) { // seed is not already in map
             seedList.add(seed);
         }
     }
 
     /**
      * Removes a seed from seedList and returns it to the player
+     * @param  seed  the specified Seed object to remove from the Map
+     * @return  the specified Seed object, or null if the Seed does not exist on the Map
     **/
     public Seed remove(Seed seed) {
-        return seedList.remove(seed);
+        int seedInd = seedList.indexOf(seed);
+        Seed pickedUp = null;
+
+        if (seedInd > 0) { // the seed can be picked up by player
+            pickedUp = seedList.get(seedInd);
+            seedList.remove(seedInd);
+        }
+
+        return pickedUp;
     }
 
     public void update(NPC npc) {
