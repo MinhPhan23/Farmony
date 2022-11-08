@@ -7,19 +7,29 @@ public class Hitbox
         left = l;
         right = r;
         top = t;
-        bot = b;
+        bottom = b;
     }
 
-    public boolean collide(Hitbox other)
+    public boolean collideX(Hitbox other)
     {
         boolean result = false;
         if ((left < other.left && right >= other.left) || 
-        (right > other.right && left <= other.right) || 
-        (top > other.top && bottom <= other.top) ||
-        ())
-            {
-                collide = true;
-            }
+        (right > other.right && left <= other.right) )
+        {
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean collideY(Hitbox other)
+    {
+        boolean result = false;
+        if ((top < other.top && bottom >= other.top) ||
+        (bottom > other.bottom && top <= other.bottom))
+        {
+            result = true;
+        }
+        return result;
     }
 
     public void setHitbox(float l, float r, float t, float b)
@@ -27,6 +37,6 @@ public class Hitbox
         left = l;
         right = r;
         top = t;
-        bot = b;
+        bottom = b;
     }
 }
