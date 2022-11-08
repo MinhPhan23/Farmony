@@ -4,19 +4,19 @@ public class Seed extends Interactable
     private String name;
     private boolean picked;
     private int time;
-    private static PFont fontName = loadFont("Arial", 14);
-    private static PFont fontDialog = loadFont("Arial", 12);
+    private PFont fontName = createFont("Arial", 14);
+    private PFont fontDialog = createFont("Arial", 12);
 
     Seed(float l, float r, float t, float b, PImage img, String name, String script)
     {
-        super(l, r, t, p, img);
+        super(l, r, t, b, img);
         this.name = name;
-        dialog = script
+        dialog = script;
         picked = false;
         time = 0;
     }
 
-    Public spawnDialog()
+    public void spawnDialog()
     {
         time++;
         textFont(fontDialog);
@@ -24,7 +24,7 @@ public class Seed extends Interactable
         //translate(playerX-195, playerY+80, 0.9);
 
         beginShape(QUADS);
-        texture(choicebox); 
+        //texture(choicebox); 
         vertex(0,0,  0,0);
         vertex(390,0,  1,0);
         vertex(390,60,  1,1);
@@ -38,7 +38,7 @@ public class Seed extends Interactable
         text(name, 0, 0); 
         translate(-10,15);
         textFont(fontDialog);
-        text(message, 0, 0);
+        text(dialog, 0, 0);
         popMatrix();
     }
 

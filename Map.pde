@@ -7,7 +7,7 @@ public class Map {
  
     // Variables
     private PImage background;
-    private minWidth, minHeight; // dimensions of map
+    private int minWidth, minHeight; // dimensions of map
     private ArrayList<NPC> npcList= new ArrayList<NPC>();
     private ArrayList<Seed> seedList = new ArrayList<Seed>();
     private ArrayList<Portal> portalList = new ArrayList<Portal>();

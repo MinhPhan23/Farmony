@@ -7,13 +7,13 @@ public class Portal extends Interactable
 
     Portal(float l, float r, float t, float b, PImage img, String name, Map current, Map dest)
     {
-        super(l, r, t, p, img);
+        super(l, r, t, b, img);
         this.name = name;
         this.current = current;
         this.dest =dest;
     }
 
-    Public spawnDialog()
+    public void spawnDialog()
     {
         current.transition(dest);
     }
