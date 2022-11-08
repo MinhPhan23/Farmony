@@ -7,7 +7,7 @@ public class Hitbox
 
     /*
     Contructor, take in top left x coordinate, top right x coordinate, 
-    top y coordinate and bottom y coordinate of a triangle
+    top y coordinate and bottom y coordinate of a rectangle
     */
     Hitbox(float l, float r, float t, float b)
     {
