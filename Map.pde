@@ -14,14 +14,10 @@ public class Map {
     private ArrayList<Interactable> interactableList = new ArrayList<Interactable>(); 
 
     // Constructor
-    public Map (PImage background, float minWidth, float minHeight, 
-                ArrayList<Portal> portals, ArrayList<Seed> seeds, ArrayList<NPC> npcs) {
+    public Map (PImage background, float minWidth, float minHeight) {
         this.background = background;
         this.minWidth = minWidth;
         this.minHeight = minHeight;
-        portalList.addAll(portals);
-        seedList.addAll(seeds);
-        npcList.addAll(npcs);
     }
 
     // Methods
@@ -35,8 +31,31 @@ public class Map {
         endShape();
     }
 
-    public void update(Seed seed) {
-        
+    /**
+     * Adds a new Seed object to the Map
+     * @param  seed  the specified Seed object to add to the Map
+    **/
+    public void add(Seed seed) {
+        if (seedList.indexOf(seed) < 0) { // seed is not already in map
+            seedList.add(seed);
+        }
+    }
+
+    /**
+     * Removes a seed from seedList and returns it to the player
+     * @param  seed  the specified Seed object to remove from the Map
+     * @return  the specified Seed object, or null if the Seed does not exist on the Map
+    **/
+    public Seed remove(Seed seed) {
+        int seedInd = seedList.indexOf(seed);
+        Seed pickedUp = null;
+
+        if (seedInd > 0) { // the seed can be picked up by player
+            pickedUp = seedList.get(seedInd);
+            seedList.remove(seedInd);
+        }
+
+        return pickedUp;
     }
 
     public void update(NPC npc) {

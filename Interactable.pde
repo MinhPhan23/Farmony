@@ -1,10 +1,15 @@
+//A parent class contains all interactable objects
 public class Interactable
 {
-    private PImage texture;
-    private float left, right, top, bottom;
+    private PImage texture; //image of the object
+    private float left, right,top, bottom;
     private Hitbox hitbox;
     private final int TIMEOUT = 180;
 
+    /*
+    Contructor, take in top left x coordinate, top right x coordinate, 
+    top y coordinate and bottom y coordinate of a rectangle
+    */
     Interactable(float l, float r, float t, float b, PImage img)
     {
         texture = img;
@@ -15,6 +20,7 @@ public class Interactable
         hitbox = new Hitbox(l, r, t, b);
     }
 
+    //draw the object to canvas
     public void drawObj()
     {
         pushMatrix();
