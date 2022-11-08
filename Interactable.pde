@@ -4,6 +4,7 @@ public class Interactable
     private PImage texture; //image of the object
     private float left, right,top, bottom;
     private Hitbox hitbox;
+    private final int TIMEOUT = 180;
 
     /*
     Contructor, take in top left x coordinate, top right x coordinate, 
@@ -32,5 +33,5 @@ public class Interactable
         vertex(left, bottom,  0,1);
         endShape();
         popMatrix();
-    }
+    }    
 }

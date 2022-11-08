@@ -1,2 +1,6 @@
 #ignore Mac directory setup
 .DS_Store
+
+#ignore test files
+Music*
+*png
