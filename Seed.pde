@@ -1,6 +1,6 @@
 public class Seed extends Interactable
 {
-    private String dialogue;
+    private String dialog;
     private String name;
     private boolean picked;
 
@@ -8,7 +8,7 @@ public class Seed extends Interactable
     {
         super(l, r, t, p, img);
         this.name = name;
-        dialogue = script
+        dialog = script
         picked = false;
     }
 

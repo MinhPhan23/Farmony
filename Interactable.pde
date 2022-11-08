@@ -3,6 +3,7 @@ public class Interactable
     private PImage texture;
     private float left, right,top, bottom;
     private Hitbox hitbox;
+    private static int timeout = 180;
 
     Interactable(float l, float r, float t, float b, PImage img)
     {
