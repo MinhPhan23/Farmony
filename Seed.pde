@@ -16,6 +16,9 @@ public class Seed extends Interactable
         time = 0;
     }
 
+    /*
+    Print out textbox when player interact with
+    */
     public void spawnDialog()
     {
         time++;
@@ -42,6 +45,10 @@ public class Seed extends Interactable
         popMatrix();
     }
 
+    /*
+    Timer for the printed textbox
+    Return true if the text is printed in 180 frames, false otherwise
+    */
     public boolean timeout()
     {
         boolean result = false;

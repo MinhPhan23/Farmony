@@ -14,20 +14,23 @@ public class NPC extends Interactable
         time = 0;
     }
 
+    /*
+    Print out textbox when player interact with
+    */
     public void spawnDialog()
     {
-        time++;
+        time++; 
         textFont(fontDialog);
         pushMatrix();
         //translate(playerX-195, playerY+80, 0.9);
 
-        beginShape(QUADS);
+        /*beginShape(QUADS);
         //texture(choicebox); 
         vertex(0,0,  0,0);
         vertex(390,0,  1,0);
         vertex(390,60,  1,1);
         vertex(0,60,  0,1);
-        endShape();
+        endShape();*/
 
         textFont(fontName);
         textAlign(LEFT, LEFT);
@@ -40,6 +43,10 @@ public class NPC extends Interactable
         popMatrix();
     }
 
+    /*
+    Timer for the printed textbox
+    Return true if the text is printed in 180 frames, false otherwise
+    */
     public boolean timeout()
     {
         boolean result = false;
