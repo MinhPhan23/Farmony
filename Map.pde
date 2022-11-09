@@ -7,7 +7,7 @@ public class Map {
  
     // Variables
     private PImage background;
-    private float minWidth, minHeight; // dimensions of map
+    private float mapWidth, mapHeight; // dimensions of map
     private Hitbox left, right, top, bottom; // the borders of the map
 
     private ArrayList<NPC> npcList= new ArrayList<NPC>();
@@ -17,15 +17,15 @@ public class Map {
     // private Player player
 
     // Constructor
-    public Map (PImage background, float minWidth, float minHeight) {
+    public Map (PImage background, float mapWidth, float mapHeight) {
         this.background = background;
-        this.minWidth = minWidth;
-        this.minHeight = minHeight;
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
 
-        left = new Hitbox(-minWidth, -minWidth, -minHeight, minHeight);
-        right = new Hitbox(minWidth, minWidth, -minHeight, minHeight);
-        top = new Hitbox(-minWidth, minWidth, -minHeight, -minHeight);
-        top = new Hitbox(-minWidth, minWidth, minHeight, minHeight);
+        left = new Hitbox(-mapWidth, -mapWidth, -mapHeight, mapHeight);
+        right = new Hitbox(mapWidth, mapWidth, -mapHeight, mapHeight);
+        top = new Hitbox(-mapWidth, mapWidth, -mapHeight, -mapHeight);
+        top = new Hitbox(-mapWidth, mapWidth, mapHeight, mapHeight);
 
     }
 
@@ -33,10 +33,10 @@ public class Map {
     public void drawMap() {
         beginShape(QUADS);
         texture(background);
-        vertex(-minWidth, -minHeight, 0, 0);
-        vertex(minWidth, -minHeight, 1, 0);
-        vertex(minWidth, minHeight, 1, 1);
-        vertex(-minWidth, minHeight, 0, 1);
+        vertex(-mapWidth, -mapHeight, 0, 0);
+        vertex(mapWidth, -mapHeight, 1, 0);
+        vertex(mapWidth, mapHeight, 1, 1);
+        vertex(-mapWidth, mapHeight, 0, 1);
         endShape();
 
         renderObjects();
@@ -113,11 +113,11 @@ public class Map {
 
     public float getWidth()
     {
-      return minWidth;
+      return mapWidth;
     }
     
     public float getHeight()
     {
-      return minHeight;
+      return mapHeight;
     }
 }
