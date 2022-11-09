@@ -5,7 +5,7 @@ public class Interactable
     private float left, right,top, bottom;
     private Hitbox hitbox;
     private final int TIMEOUT = 180;
-
+    
     /*
     Contructor, take in top left x coordinate, top right x coordinate, 
     top y coordinate and bottom y coordinate of a rectangle
@@ -24,7 +24,12 @@ public class Interactable
     public void drawObj()
     {
         pushMatrix();
-        translate(0,0,0.05);
+        if(bottom > player.getPlayerY() + player.getPlayerHeight()){
+          translate(0,0,0.15); 
+        }
+        else{
+          translate(0,0,0.05);  
+        }
         beginShape(QUADS);
         texture(texture);
         vertex(left, top,  0,0);

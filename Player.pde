@@ -1,5 +1,7 @@
 //player
 class Player{
+  private final float HIT_BOX_OFFSET = 10;
+  
   //to store the player different images when walking
   private PImage[] playerSide = new PImage[7];
   private PImage[] playerUp = new PImage[7];
@@ -55,11 +57,6 @@ class Player{
   
   //draw the player frame by frame
   public void drawPlayer(){
-    frameCtr++;
-    if(frameCtr == 60){
-      frameCtr = 0;
-    }
-    
     //draw the player into the canvas
     pushMatrix();
     translate(playerX,playerY,0.1);//draw according to the current position
@@ -94,10 +91,14 @@ class Player{
     endShape();
     popMatrix();
     
+    if(frameCtr == 60){
+      frameCtr = 0;
+    }
   }
   
   //change the position of the playerX and playerY
   public void movePlayer(Map currMap){
+    frameCtr++;
     //the max function is used to detect if the player is out of the map or no
     lastX = playerX;
     lastY = playerY;
@@ -168,6 +169,13 @@ class Player{
     return playerY; 
   }
   
+  public float getPlayerWidth(){
+    return pWidth; 
+  }
+  
+  public float getPlayerHeight(){
+    return pHeight; 
+  }
   //set to last position
   public void setLastX()
   {
@@ -189,7 +197,7 @@ class Player{
   //update hitbox
   private void updateHitbox()
   {
-    pHitbox.setHitbox(playerX-pWidth, playerX+pWidth, playerY, playerY-pHeight);
+    pHitbox.setHitbox(playerX-pWidth, playerX+pWidth, playerY, playerY-pHeight+HIT_BOX_OFFSET);//this use a magic number to make the bottom hitbox bigger 
   }
   
   //get hitbox
