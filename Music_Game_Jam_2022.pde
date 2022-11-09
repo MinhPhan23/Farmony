@@ -1,6 +1,7 @@
 Map map1, map2, currmap;
 ArrayList<Portal> portalList;
 ArrayList<Interactable> objectList;
+ArrayList<Seed> seedList;
 Player player;
 Interactable npc;
 Portal boiler1, boiler2;
@@ -49,6 +50,14 @@ void draw()
     {
       currmap = portal.transition();
       player.setStart(currmap);
+    }
+  }
+
+  seedList = currmap.getSeed();
+  for (Seed seed : seedList) {
+    if (seed.getHitbox().collide(player)) {
+      currmap.remove(seed);
+      seed.spawnDialog();
     }
   }
 

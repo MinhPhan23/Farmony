@@ -43,8 +43,9 @@ public class Map {
    **/
   private void renderObjects() {
     for (Seed seed : seedList) { // Draw seeds
-      if (!seed.isPicked() && !
-      seed.drawObj();
+      if (seed.isUnlocked()) {
+        seed.drawObj();
+      }
     }
 
     for (NPC npc : npcList) { // Draw NPCs
@@ -137,7 +138,7 @@ public class Map {
     return mapHeight;
   }
   
-  // Setter for lists
+  // Getter for lists
   public ArrayList getPortal()
   {
     return portalList;
