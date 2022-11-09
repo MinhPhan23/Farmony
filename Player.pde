@@ -1,3 +1,4 @@
+//player
 class Player{
   //to store the player different images when walking
   private PImage[] playerSide = new PImage[7];
