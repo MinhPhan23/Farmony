@@ -32,11 +32,10 @@ void draw()
   camera(player.getPlayerX(), player.getPlayerY(), 2, player.getPlayerX(), player.getPlayerY(), 0, 0, 1, 0);
   player.movePlayer(map1);
   
-  player.drawPlayer();
   currmap.drawMap();
+  player.drawPlayer();
   
-  
-  hit = player.getHitbox().collide(npc.getHitbox());
+  hit = npc.getHitbox().collide(player);
   println(player.getPlayerX()-6.5," ", player.getPlayerX()+6.5," ", player.getPlayerY()-17, " ", player.getPlayerY());
   println(npc.left, " ", npc.right, " ", npc.top, " ", npc.bottom);
   println(hit);
