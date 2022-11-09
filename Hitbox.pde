@@ -16,16 +16,27 @@ public class Hitbox
         top = t;
         bottom = b;
     }
+    
+    public boolean collide(Hitbox other)
+    {
+      boolean result = false;
+      boolean hitX = collideX(other);
+      boolean hitY = collideY(other);
+      if (hitX && hitY)
+      {
+        result = true;
+      }
+      return result;
+    }
 
     /*
     Determine if player collide with left or right side of an object
     if collide, the player should not be able to move nearer the object
     */
-    public boolean collideX(Hitbox other)
+    private boolean collideX(Hitbox other)
     {
         boolean result = false;
-        if ((left < other.left && right >= other.left) || 
-        (right > other.right && left <= other.right) )
+        if (left < other.right && right > other.left)
         {
             result = true;
         }
@@ -36,11 +47,10 @@ public class Hitbox
     Determine if player collide with top or bottom side of an object
     if collide, the player should not be able to move nearer the object
     */
-    public boolean collideY(Hitbox other)
+    private boolean collideY(Hitbox other)
     {
         boolean result = false;
-        if ((top < other.top && bottom >= other.top) ||
-        (bottom > other.bottom && top <= other.bottom))
+        if (top < other.bottom && bottom > other.top)
         {
             result = true;
         }
