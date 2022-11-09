@@ -35,8 +35,8 @@ public class Map {
         texture(background);
         vertex(-minWidth, -minHeight, 0, 0);
         vertex(minWidth, -minHeight, 1, 0);
-        vertex(-minWidth, minHeight, 0, 1);
         vertex(minWidth, minHeight, 1, 1);
+        vertex(-minWidth, minHeight, 0, 1);
         endShape();
 
         renderObjects();
@@ -95,17 +95,20 @@ public class Map {
     }
 
     public void transition(Map nextMap) {
-        int tintVal = 0;
+        // int tintVal = 0;
 
-        while (tintVal < 1) { // fade out animation
-            tint(tintVal);
-            tintVal += 0.1;
-        }
+        // while (tintVal < 1) { // fade out animation
+        //     tint(tintVal);
+        //     tintVal += 0.1;
+        // }
 
         // move player to dest
+        println("moving to map");
+        nextMap.drawMap();
+        
 
-        tintVal = 0;
-        tint(tintVal);
+        // tintVal = 0;
+        // tint(tintVal);
     }
 
 
