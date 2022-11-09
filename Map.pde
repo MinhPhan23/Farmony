@@ -85,6 +85,36 @@ public class Map {
 
         return pickedUp;
     }
+    
+    /**
+     * Adds a new object to the Map
+     * @param  obj the specified Interactable object to add to the Map
+    **/
+    public void add(Interactable obj) {
+        if (objectList.indexOf(obj) < 0) { // obj is not already in map
+            objectList.add(obj);
+        }
+    }
+
+    /**
+     * Adds a new npc to the Map
+     * @param  npc the specified NPC object to add to the Map
+    **/
+    public void add(NPC npc) {
+        if (npcList.indexOf(npc) < 0) { // npc is not already in map
+            npcList.add(npc);
+        }
+    }
+
+    /**
+     * Adds a new portal to the Map
+     * @param  portal the specified Portal portal to add to the Map
+    **/
+    public void add(Portal portal) {
+        if (portalList.indexOf(portal) < 0) { // seed is not already in map
+            portalList.add(portal);
+        }
+    }
 
     public void update(NPC npc) {
         int index = npcList.indexOf(npc);
