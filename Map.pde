@@ -35,17 +35,16 @@ public class Map {
         vertex(-mapWidth, mapHeight, 0, 1);
         endShape();
 
-        renderObjects();
+        //renderObjects();
     }
 
     /**
      * Draws the interactable objects on the map by calling drawObj() on each interactable in the arraylists
     **/
-    private void renderObjects() {
+    public void renderObjects() {
         for (Seed seed : seedList) { // Draw seeds
             seed.drawObj();
         }
-
         for (NPC npc : npcList) { // Draw NPCs
             npc.drawObj();
         }
