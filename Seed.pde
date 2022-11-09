@@ -2,7 +2,8 @@ public class Seed extends Interactable
 {
     private String dialog;
     private String name;
-    private boolean picked;
+    private boolean picked; //remove the seed from the map if true (is picked by player)
+    private boolean unlocked;  //make the seed visible after go through the hints
     private int time;
     private PFont fontName = createFont("Arial", 14);
     private PFont fontDialog = createFont("Arial", 12);
@@ -13,6 +14,7 @@ public class Seed extends Interactable
         this.name = name;
         dialog = script;
         picked = false;
+        unlocked = false;
         time = 0;
     }
 
@@ -58,5 +60,25 @@ public class Seed extends Interactable
             result = true;
         }
         return result;
+    }
+    
+    public boolean isPicked()
+    {
+      return picked;
+    }
+    
+    public boolean isUnlocked()
+    {
+      return unlocked;
+    }
+    
+    public void pick()
+    {
+      picked = true;
+    }
+    
+    public void unlock()
+    {
+      unlock = true;
     }
 }
