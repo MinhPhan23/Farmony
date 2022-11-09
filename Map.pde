@@ -1,6 +1,7 @@
 
 /////////////////////////////////
 // Class Map
+//   - A region of the game with interactable objects
 /////////////////////////////////
 
 public class Map {
@@ -10,11 +11,9 @@ public class Map {
     private float mapWidth, mapHeight; // dimensions of map
     private Hitbox left, right, top, bottom; // the borders of the map
 
-    private ArrayList<NPC> npcList= new ArrayList<NPC>();
+    private ArrayList<NPC> npcList= new ArrayList<NPC>();           // array lists to hold the interactable objects on the map
     private ArrayList<Seed> seedList = new ArrayList<Seed>();
     private ArrayList<Portal> portalList = new ArrayList<Portal>();
-
-    // private Player player
 
     // Constructor
     public Map (PImage background, float mapWidth, float mapHeight) {
@@ -43,7 +42,7 @@ public class Map {
     }
 
     /**
-     * Draws the interactable objects on the map
+     * Draws the interactable objects on the map by calling drawObj() on each interactable in the arraylists
     **/
     private void renderObjects() {
         for (Seed seed : seedList) { // Draw seeds
@@ -94,6 +93,10 @@ public class Map {
         }
     }
 
+    /**
+     * Transition to a new map.
+     * @param  nextMap  the next Map to move the player to once the transition is complete
+    **/
     public void transition(Map nextMap) {
         // int tintVal = 0;
 
@@ -111,11 +114,13 @@ public class Map {
         // tint(tintVal);
     }
 
+    // Getter for the width of the map
     public float getWidth()
     {
       return mapWidth;
     }
     
+    // Getter for the height of the map
     public float getHeight()
     {
       return mapHeight;
