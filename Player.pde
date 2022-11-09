@@ -1,5 +1,7 @@
 //player
 class Player{
+  private final float HIT_BOX_OFFSET = 10;
+  
   //to store the player different images when walking
   private PImage[] playerSide = new PImage[7];
   private PImage[] playerUp = new PImage[7];
@@ -188,7 +190,7 @@ class Player{
   //update hitbox
   private void updateHitbox()
   {
-    pHitbox.setHitbox(playerX-pWidth, playerX+pWidth, playerY, playerY-pHeight);
+    pHitbox.setHitbox(playerX-pWidth, playerX+pWidth, playerY, playerY-pHeight+HIT_BOX_OFFSET);//this use a magic number to make the bottom hitbox bigger 
   }
   
   //get hitbox
