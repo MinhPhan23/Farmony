@@ -9,23 +9,20 @@ public class Map {
     // Variables
     private PImage background;
     private float mapWidth, mapHeight; // dimensions of map
-    private Hitbox left, right, top, bottom; // the borders of the map
+    private float startX, startY; // player starting position
 
     private ArrayList<NPC> npcList= new ArrayList<NPC>();           // array lists to hold the interactable objects on the map
     private ArrayList<Seed> seedList = new ArrayList<Seed>();
     private ArrayList<Portal> portalList = new ArrayList<Portal>();
+    private ArrayList<Interactable> objectList = new ArrayList<Interactable>(); //array lists hold normal objects
 
     // Constructor
-    public Map (PImage background, float mapWidth, float mapHeight) {
+    public Map (PImage background, float mapWidth, float mapHeight, float startX, float startY) {
         this.background = background;
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
-
-        left = new Hitbox(-mapWidth, -mapWidth, -mapHeight, mapHeight);
-        right = new Hitbox(mapWidth, mapWidth, -mapHeight, mapHeight);
-        top = new Hitbox(-mapWidth, mapWidth, -mapHeight, -mapHeight);
-        top = new Hitbox(-mapWidth, mapWidth, mapHeight, mapHeight);
-
+        this.startX = startX;
+        this.startY = startY;
     }
 
     // Methods
@@ -55,6 +52,10 @@ public class Map {
 
         for (Portal portal : portalList) { // Draw portal(s)
             portal.drawObj();
+        }
+        
+        for (Interactable object :objectList) { // Draw portal(s)
+            object.drawObj();
         }
     }
 
