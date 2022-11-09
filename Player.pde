@@ -40,6 +40,7 @@ class Player{
     playerX = X;
     playerY = Y;
     loadPlayer();
+    pHitbox = new Hitbox(playerX-pWidth, playerX+pWidth, playerY, playerY-pHeight);
   }
   
   //load player images from the side,up and down looks
@@ -112,6 +113,8 @@ class Player{
     if(keyRight){
       playerX = min(playerX+pSpeed, currMap.getWidth()-pWidth);
     }
+    
+    updateHitbox();
   }
   
   //detect the up,down,left,right
@@ -169,5 +172,11 @@ class Player{
   private void updateHitbox()
   {
     pHitbox.setHitbox(playerX-pWidth, playerX+pWidth, playerY, playerY-pHeight);
+  }
+  
+  //get hitbox
+  public Hitbox getHitbox()
+  {
+      return pHitbox;
   }
 }
