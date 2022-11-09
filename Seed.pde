@@ -2,7 +2,7 @@ public class Seed extends Interactable
 {
     private String dialog;
     private String name;
-    private boolean picked;
+    private boolean unlocked;  //make the seed visible after go through the hints
     private int time;
     private PFont fontName = createFont("Arial", 14);
     private PFont fontDialog = createFont("Arial", 12);
@@ -12,7 +12,7 @@ public class Seed extends Interactable
         super(l, r, t, b, img);
         this.name = name;
         dialog = script;
-        picked = false;
+        unlocked = false;
         time = 0;
     }
 
@@ -58,5 +58,15 @@ public class Seed extends Interactable
             result = true;
         }
         return result;
+    }
+    
+    public boolean isUnlocked()
+    {
+      return unlocked;
+    }
+    
+    public void unlock()
+    {
+      unlocked = true;
     }
 }

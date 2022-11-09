@@ -187,6 +187,13 @@ class Player{
     playerY = lastY;
   }
   
+  //set starting position on map
+  public void setStart(Map map)
+  {
+    playerX = map.getStartX();
+    playerY = map.getStartY();
+  }
+  
   //update hitbox
   private void updateHitbox()
   {
