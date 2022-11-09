@@ -8,20 +8,29 @@ public class Map {
     // Variables
     private PImage background;
     private float minWidth, minHeight; // dimensions of map
+    private Hitbox left, right, top, bottom; // the borders of the map
+
     private ArrayList<NPC> npcList= new ArrayList<NPC>();
     private ArrayList<Seed> seedList = new ArrayList<Seed>();
     private ArrayList<Portal> portalList = new ArrayList<Portal>();
-    private ArrayList<Interactable> interactableList = new ArrayList<Interactable>(); 
+
+    // private Player player
 
     // Constructor
     public Map (PImage background, float minWidth, float minHeight) {
         this.background = background;
         this.minWidth = minWidth;
         this.minHeight = minHeight;
+
+        left = new Hitbox(-minWidth, -minWidth, -minHeight, minHeight);
+        right = new Hitbox(minWidth, minWidth, -minHeight, minHeight);
+        top = new Hitbox(-minWidth, minWidth, -minHeight, -minHeight);
+        top = new Hitbox(-minWidth, minWidth, minHeight, minHeight);
+
     }
 
     // Methods
-    public void draw() {
+    public void drawMap() {
         beginShape(QUADS);
         texture(background);
         vertex(-minWidth, -minHeight, 0, 0);
@@ -29,6 +38,25 @@ public class Map {
         vertex(-minWidth, minHeight, 0, 1);
         vertex(minWidth, minHeight, 1, 1);
         endShape();
+
+        renderObjects();
+    }
+
+    /**
+     * Draws the interactable objects on the map
+    **/
+    private void renderObjects() {
+        for (Seed seed : seedList) { // Draw seeds
+            seed.drawObj();
+        }
+
+        for (NPC npc : npcList) { // Draw NPCs
+            npc.drawObj();
+        }
+
+        for (Portal portal : portalList) { // Draw portal(s)
+            portal.drawObj();
+        }
     }
 
     /**
@@ -59,11 +87,25 @@ public class Map {
     }
 
     public void update(NPC npc) {
-
+        int index = npcList.indexOf(npc);
+        if (index > 0) {
+            // update the dialog of the npc after the first interaction?
+            //npcList.get(index).dialog = ""
+        }
     }
 
     public void transition(Map nextMap) {
+        int tintVal = 0;
 
+        while (tintVal < 1) { // fade out animation
+            tint(tintVal);
+            tintVal += 0.1;
+        }
+
+        // move player to dest
+
+        tintVal = 0;
+        tint(tintVal);
     }
 
 
