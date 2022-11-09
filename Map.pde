@@ -108,5 +108,13 @@ public class Map {
         tint(tintVal);
     }
 
-
+    public float getWidth()
+    {
+      return minWidth;
+    }
+    
+    public float getHeight()
+    {
+      return minHeight;
+    }
 }
