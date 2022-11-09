@@ -111,7 +111,7 @@ public class Map {
      * @param  portal the specified Portal portal to add to the Map
     **/
     public void add(Portal portal) {
-        if (portalList.indexOf(portal) < 0) { // seed is not already in map
+        if (portalList.indexOf(portal) < 0) { // portal is not already in map
             portalList.add(portal);
         }
     }
@@ -122,27 +122,6 @@ public class Map {
             // update the dialog of the npc after the first interaction?
             //npcList.get(index).dialog = ""
         }
-    }
-
-    /**
-     * Transition to a new map.
-     * @param  nextMap  the next Map to move the player to once the transition is complete
-    **/
-    public void transition(Map nextMap) {
-        // int tintVal = 0;
-
-        // while (tintVal < 1) { // fade out animation
-        //     tint(tintVal);
-        //     tintVal += 0.1;
-        // }
-
-        // move player to dest
-        println("moving to map");
-        nextMap.drawMap();
-        
-
-        // tintVal = 0;
-        // tint(tintVal);
     }
 
     // Getter for the width of the map

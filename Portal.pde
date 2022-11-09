@@ -17,4 +17,18 @@ public class Portal extends Interactable
     {
         current.transition(dest);
     }
+
+    /**
+     * Transition to a new map.
+     * @param  nextMap  the next Map to move the player to once the transition is complete
+    **/
+    public void transition(Map nextMap) {
+
+        // move player to dest
+        println("moving to new map");
+
+        // fade out
+        nextMap.drawMap();
+        // fade in
+    }
 }
