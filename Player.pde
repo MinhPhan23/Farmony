@@ -14,6 +14,8 @@ class Player{
   //player position
   private float playerX;
   private float playerY;
+  private float lastX;
+  private float lastY;
   
   //the current image that's in use
   private PImage currImage;
@@ -91,19 +93,21 @@ class Player{
   }
   
   //change the position of the playerX and playerY
-  public void movePlayer(){
+  public void movePlayer(Map currMap){
     //the max function is used to detect if the player is out of the map or no
+    lastX = playerX;
+    lastY = playerY;
     if(keyUp){
-     playerY = max(playerY-pSpeed, -mHeight+pHeight);
+     playerY = max(playerY-pSpeed, -currMap.getHeight()+pHeight);
     }
     if(keyDown){
-      playerY = min(playerY+pSpeed, mHeight-pHeight);;
+      playerY = min(playerY+pSpeed, currMap.getHeight()-pHeight);;
     }
     if(keyLeft){
-      playerX = max(playerX-pSpeed, -mWidth+pWidth);
+      playerX = max(playerX-pSpeed, -currMap.getWidth()+pWidth);
     }
     if(keyRight){
-      playerX = min(playerX+pSpeed, mWidth-pWidth);
+      playerX = min(playerX+pSpeed, currMap.getWidth()-pWidth);
     }
   }
   
