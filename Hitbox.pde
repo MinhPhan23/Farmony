@@ -17,14 +17,23 @@ public class Hitbox
         bottom = b;
     }
     
-    public boolean collide(Hitbox other)
+    public boolean collide(Player player)
     {
+      Hitbox other = player.getHitbox();
       boolean result = false;
       boolean hitX = collideX(other);
       boolean hitY = collideY(other);
       if (hitX && hitY)
       {
         result = true;
+        if (hitX)
+        {
+          player.setLastX();
+        }
+        if (hitY)
+        {
+          player.setLastY();
+        }
       }
       return result;
     }
