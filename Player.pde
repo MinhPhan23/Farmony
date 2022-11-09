@@ -168,6 +168,17 @@ class Player{
     return playerY; 
   }
   
+  //set to last position
+  public void setLastX()
+  {
+    playerX = lastX;
+  }
+  
+  public void setLastY()
+  {
+    playerY = lastY;
+  }
+  
   //update hitbox
   private void updateHitbox()
   {
