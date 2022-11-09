@@ -32,6 +32,9 @@ class Player{
   //control the frame of each images
   private int frameCtr = 0;
   
+  //player Hitbox
+  private Hitbox pHitbox;
+  
   //if the player object is created, it will directly load the images
   public Player(float X, float Y){
     playerX = X;
@@ -160,5 +163,11 @@ class Player{
   //get the current Y posisition of the player
   public float getPlayerY(){
     return playerY; 
+  }
+  
+  //update hitbox
+  private void updateHitbox()
+  {
+    pHitbox.setHitbox(playerX-pWidth, playerX+pWidth, playerY, playerY-pHeight);
   }
 }
