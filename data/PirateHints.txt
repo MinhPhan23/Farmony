@@ -1,0 +1,12 @@
+$
+1-Where can I find hydrangeas?
+2-Where can I find bamboo?
+3-Where can I find hellebore?
+%
+1:
+S-[add clue]
+2:
+S-[add clue]
+3:
+S-[add clue]
+%%

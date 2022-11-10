@@ -12,8 +12,7 @@ L-Well, come on… There’s no need to be like that.
 L-You look lost, kid. Are you okay?
 L-What are you doing way out here?
 %
-P-To be honest, I’m lost. I’m supposed to be looking for some plants for my mom, but
-I don’t know where anything is.
+P-To be honest, I’m lost. I’m supposed to be looking for some plants for my mom, but I don’t know where anything is.
 %
 L-Your mom? Plants? Are you Mary’s kid?
 P-Yeah. Do you know her?
