@@ -24,13 +24,13 @@ public class NPC extends Interactable
         pushMatrix();
         //translate(playerX-195, playerY+80, 0.9);
 
-        /*beginShape(QUADS);
+        beginShape(QUADS);
         //texture(choicebox); 
         vertex(0,0,  0,0);
         vertex(390,0,  1,0);
         vertex(390,60,  1,1);
         vertex(0,60,  0,1);
-        endShape();*/
+        endShape();
 
         textFont(fontName);
         textAlign(LEFT, LEFT);

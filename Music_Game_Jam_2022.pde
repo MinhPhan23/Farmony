@@ -4,6 +4,7 @@ ArrayList<Interactable> objectList;
 ArrayList<Seed> seedList;
 Player player;
 Interactable npc;
+Seed seed1;
 Portal boiler1, boiler2;
 boolean hit;
 
@@ -29,9 +30,11 @@ void setup()
   npc = new Interactable(0, 12, 0, 34, loadImage("map/object/mom.png"));
   boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
+  seed1 = new Seed(20,50,20,50, loadImage("map/object/fragments1.png"),"seed1","test");
   map1.add(npc);
   map1.add(boiler1);
   map2.add(boiler2);
+  map1.add(seed1);
 }
 
 void draw()
@@ -46,8 +49,7 @@ void draw()
   currmap.drawMap();
  
   player.drawPlayer();
-
-
+  
   portalList = currmap.getPortal();
   for (Portal portal : portalList) { // Draw portal(s)
     if (portal.getHitbox().collide(player))
@@ -56,17 +58,23 @@ void draw()
       player.setStart(currmap);
     }
   }
-
+  
+  //seed1.spawnDialog();
   seedList = currmap.getSeed();
   for (Seed seed : seedList) {
     if (seed.getHitbox().collide(player)) {
       currmap.remove(seed);
-      seed.spawnDialog();
+      seed.setNarrate();
+      
     }
+    if(seed.getNarrate()){
+      seed.spawnDialog();  
+    }
+    
   }
-
+  
   objectList = currmap.getObject();
-  for (Interactable object : objectList) { // Draw portal(s)
+  for (Interactable object : objectList) { // Draw object(s)
     object.getHitbox().collide(player);
   }
 }
