@@ -6,10 +6,10 @@ void gameplay()
   } else
   {
     player.movePlayer(currmap);
-
+    player.drawPlayer();
     currmap.drawMap();
 
-    if (currmap.firstTime() && currmap.isComplete())
+    if (currmap.firstVisit() && currmap.isComplete())
     {
       letter.setReading();
       currmap.readLetter(false);
@@ -17,9 +17,7 @@ void gameplay()
 
     if (letter.isReading() && !seedMessage)
       letter.read(currmap.getLetterPart());
-
-    player.drawPlayer();
-
+      
     portalList = currmap.getPortal();
     for (Portal portal : portalList) { // Draw portal(s)
       if (portal.getHitbox().collide(player))
