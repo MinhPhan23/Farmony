@@ -1,3 +1,4 @@
+Menu homeScreen;
 Map map1, map2, currmap;
 ArrayList<Portal> portalList;
 ArrayList<Interactable> objectList;
@@ -6,6 +7,7 @@ Player player;
 Interactable npc;
 Portal boiler1, boiler2;
 boolean hit;
+boolean gameStart;
 
 import com.jogamp.opengl.GLProfile;
 {
@@ -19,6 +21,10 @@ void setup()
   textureMode(NORMAL);
   textureWrap(CLAMP);
   noStroke();
+
+  // Create menu screen
+  homeScreen = new Menu();
+  gameStart = false;
 
   //create map
   map1 = new Map(loadImage("map/homefloor.jpg"), 100, 250, 70, 70);
@@ -41,39 +47,53 @@ void draw()
   ortho(-200, 200, -150, 150);
   camera(player.getPlayerX(), player.getPlayerY(), 2, player.getPlayerX(), player.getPlayerY(), 0, 0, 1, 0);
   
-  player.movePlayer(currmap);
+  if (!gameStart)
+  {
+    homeScreen.drawMenu(250, 250);
+  }
+  else
+  {  
+    player.movePlayer(currmap);
+    
+    currmap.drawMap();
   
-  currmap.drawMap();
- 
-  player.drawPlayer();
+    player.drawPlayer();
 
 
-  portalList = currmap.getPortal();
-  for (Portal portal : portalList) { // Draw portal(s)
-    if (portal.getHitbox().collide(player))
-    {
-      currmap = portal.transition();
-      player.setStart(currmap);
+    portalList = currmap.getPortal();
+    for (Portal portal : portalList) { // Draw portal(s)
+      if (portal.getHitbox().collide(player))
+      {
+        currmap = portal.transition();
+        player.setStart(currmap);
+      }
     }
-  }
 
-  seedList = currmap.getSeed();
-  for (Seed seed : seedList) {
-    if (seed.getHitbox().collide(player)) {
-      currmap.remove(seed);
-      seed.spawnDialog();
+    seedList = currmap.getSeed();
+    for (Seed seed : seedList) {
+      if (seed.getHitbox().collide(player)) {
+        currmap.remove(seed);
+        seed.spawnDialog();
+      }
     }
-  }
 
-  objectList = currmap.getObject();
-  for (Interactable object : objectList) { // Draw portal(s)
-    object.getHitbox().collide(player);
+    objectList = currmap.getObject();
+    for (Interactable object : objectList) { // Draw portal(s)
+      object.getHitbox().collide(player);
+    }
   }
 }
 
 void keyPressed()
 {
-  player.detectMovement();
+  if (!gameStart) 
+  {
+    gameStart = true;
+  }
+  else 
+  {
+    player.detectMovement();
+  }
 }
 
 void keyReleased()
