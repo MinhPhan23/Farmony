@@ -17,14 +17,14 @@ L-But you need to go. Not in a bad way…
 L-Let me restart, eh?
 %
 L-Congratulations. Where are you off to now?
+$
+1-Home.
+2-I’m not quite sure yet. But I’ll figure it out.
 %
-If:
-P-Home.
+1:
 L-Maybe I’ll come by and see you sometime, eh, kid?
 L-See you around.
-%%
-Else:
-P-I’m not quite sure yet. But I’ll figure it out.
+2:
 L-You’re a lot like your mother, you know that?
 L-You’ve got this.
 %%

@@ -67,6 +67,7 @@ public class Convo
         } else
           option1.last.next = newNode;
         option1.last = newNode;
+        flow.last.optionNext[0] = option1.top;
       } else if (parse[1].charAt(0) == '2')
       {
         if (option2.top == null)
@@ -75,6 +76,7 @@ public class Convo
         } else
           option2.last.next = newNode;
         option2.last = newNode;
+        flow.last.optionNext[1] = option2.top;
       } else
       {
         if (option3.top == null)
@@ -83,6 +85,7 @@ public class Convo
         } else
           option3.last.next = newNode;
         option3.last = newNode;
+        flow.last.optionNext[2] = option3.top;
       }
     } else if (startOption)
     {
