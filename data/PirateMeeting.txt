@@ -1,0 +1,47 @@
+S-WHO DARES APPROACH THE GREAT PIRATE NO-BEARD?!
+S-STATE YOUR BUSINESS, LANDLUBBER, OR PREPARE TO TASTE MY FURY!
+S-THE FURY OF THE SEVEN SEAS!
+$
+1-You don’t scare me. If you’re such a great pirate, where’s your ship?
+2-I’m sorry, I-I don’t want to fight, I’m just looking for s-something…
+%
+1:
+S-YOU WOULD MOCK ME? THE MAN WHO HOLDS YOUR LIFE IN HIS VERY HANDS?
+P-That’s not an answer.
+S-YOU’RE BRAVER THAN I EXPECTED, STRANGER!
+S-I shall allow you to live. For now.
+P-How kind of you.
+2:
+S-VERY WELL, YOU MAY PASS, BUT YOU MUST ANSWER ONE QUESTION!
+P-Okay…
+S-Have you seen a ship around here anywhere?
+S-A real beauty. 100 feet long and half as high? A figurehead that might comfort a lonesome sailor after many a night at sea?
+P-You lost your ship?
+%
+S-I will admit, I’m landlubbing a fair bit myself nowadays. Soon, I shall return to a pirate’s business…
+S-STRIKING FEAR INTO THE HEARTS OF MONSTERS AND BEDDING MAIDENS UPON THE HIGH SEAS!
+S-JUST YOU WAIT AND SEA! (Do you get it? Sea like water and-
+P-I get it.
+S-Good. You’re a smart one, I can tell. Why are you here again?
+P-I’m looking for some plants for my mother’s garden. She’s gone now and she wanted me to finish it.
+S-Oh… I’m sorry… What was her name?
+P-Mary.
+S-Mary! That lass was your mother? You know, I can see it.
+P-You knew her?
+S-She was a fabulous lady. Everything I look for in a woman. Feminine, woman-shaped, you know what I’m talking about?
+P-Not really, no…
+S-But she was already sworn to your father. He must be quite the man to land her. I can picture him now.
+$
+1-Do you need a minute alone?
+2-Can we get back on topic, please?
+%
+1:
+S-Sorry? No, I’m just thinking. Very manly thoughts.
+P-Good to know…
+2:
+S-Of course, your plants. Back to business.
+P-Thank you.
+%
+S-I shall help you in your search, for your mother.
+S-But if you see my ship out there, you must let me know.
+%%
