@@ -1,4 +1,4 @@
-public static void parseScript(String[] script)
+    public static void parseScript(String[] script)
     {
         String[] parsedLine = new String[4];
         String path = "M";
@@ -30,7 +30,8 @@ public static void parseScript(String[] script)
         }
     }
 
-    private static String[] parseLine(int line, String curPath, String[] script) {
+    private static String[] parseLine(int line, String curPath, String[] script)
+    {
         String[] toReturn = new String[4];
         if (script[line].charAt(0) == '$')
         {
