@@ -2,8 +2,9 @@ Map map1, map2, currmap;
 ArrayList<Portal> portalList;
 ArrayList<Interactable> objectList;
 ArrayList<Seed> seedList;
+ArrayList<NPC> npcList;
 Player player;
-Interactable npc;
+NPC npc;
 Seed seed1;
 Portal boiler1, boiler2;
 boolean hit;
@@ -27,7 +28,7 @@ void setup()
   currmap = map1;
 
   player = new Player(0, 0);
-  npc = new Interactable(0, 12, 0, 34, loadImage("map/object/mom.png"));
+  npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "Mom", "Hey there my child.");
   boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
   seed1 = new Seed(20,50,20,50, loadImage("map/object/fragments1.png"),"seed1","test");
@@ -72,6 +73,18 @@ void draw()
     }
     
   }
+
+  npcList = currmap.getNPC();
+  for (NPC npc : npcList) {
+    if (npc.getHitbox().collide(player)) {
+      npc.setNarrate();
+      
+    }
+    if(npc.getNarrate()){
+      npc.spawnDialog();  
+    }
+  }
+  
   
   objectList = currmap.getObject();
   for (Interactable object : objectList) { // Draw object(s)
