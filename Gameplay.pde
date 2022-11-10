@@ -1,3 +1,13 @@
+ArrayList<Portal> portalList;
+ArrayList<Interactable> objectList;
+ArrayList<Seed> seedList;
+ArrayList<NPC> npcList;
+
+Menu homeScreen;
+boolean gameStart;
+
+Player player;
+
 void gameplay()
 {
   if (!gameStart)

@@ -1,16 +1,8 @@
-Menu homeScreen; //<>//
 Map map1, map2, currmap;
-ArrayList<Portal> portalList;
-ArrayList<Interactable> objectList;
-ArrayList<Seed> seedList;
-ArrayList<NPC> npcList;
-Player player;
 NPC npc;
 Seed seed1;
 Letter letter;
 Portal boiler1, boiler2;
-boolean hit;
-boolean gameStart;
 
 import com.jogamp.opengl.GLProfile;
 {
