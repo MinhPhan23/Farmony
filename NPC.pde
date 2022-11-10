@@ -12,6 +12,12 @@ public class NPC extends Interactable
   private String dialog;
   private String currDialog= "";
   private int dialogInd = 0;
+  
+  //conversation script of NPC
+  Convo meeting;
+  Convo goodbye;
+  Convo Generic;
+  
   NPC(float l, float r, float t, float b, PImage img, String name, String script)
   {
     super(l, r, t, b, img);
