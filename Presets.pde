@@ -14,7 +14,10 @@ float npcHeight;
 
 //load Garden assets
 Map garden;
-
+void loadGarden()
+{
+  garden.completeMap();
+}
 
 //load Desert Assets
 Map desert;
@@ -43,7 +46,7 @@ float pirateY;
 NPC pirate;
 void loadSea()
 {
-  NPC pirate = new NPC(pirateX, pirateX + npcWidth, pirateY, pirateY + npcHeight, loadImage(""), "data/PirateMeeting.txt", "data/PirateGoodbye.txt", "data/PirateGeneric.txt" );
+  pirate = new NPC(pirateX, pirateX + npcWidth, pirateY, pirateY + npcHeight, loadImage(""), "data/PirateMeeting.txt", "data/PirateGoodbye.txt", "data/PirateGeneric.txt" );
 }
 
 //load menuscreen

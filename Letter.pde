@@ -46,7 +46,7 @@ public class Letter {
     
     
     if(countNextLine > maxLetters){
-      currLetter += "\n";
+      currLetter += "-\n";
       countNextLine = 0;
       countNextLine++;
     }
@@ -61,7 +61,7 @@ public class Letter {
     }*/
     translate(-10, 15);
     text(currLetter, 0, 0);
- //<>//
+ //<>// //<>//
     /*if (letterNum < letters.length - 1)
     {
       translate(0, 15);
@@ -80,7 +80,6 @@ public class Letter {
     if (letterInd < letters[letterNum].length()) {
       currLetter += letters[letterNum].charAt(letterInd);
       letterInd++;
-      println(letterInd);
     } 
     else {
       time++;
