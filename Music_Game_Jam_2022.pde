@@ -36,10 +36,10 @@ void setup()
   currmap = map1;
 
   player = new Player(0, 0);
-  npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "Mom", "Hey there my child.");
+  npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "Mom", "\"The journey of a thousand miles begins with a single step.\" I always liked that phrase. You've taken the first one, my darling, and I know how that is often the hardest. There's no one else I'd rather your father have there for him.");
   boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
-  seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Mom, this is a very beautiful seed");
+  seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Do you remember when I brought you out with me, all those years ago? One of the few times I managed to drag you from your father's study and his songs? You made a whistle out of a blade of grass and played that instead. You're so like him, and I love you for it. I'm glad you're changing now, stepping out of your comfort zone. But don't change too much. Keep doing what makes you who you are.");
   map1.add(npc);
   map1.add(boiler1);
   map2.add(boiler2);
@@ -78,6 +78,9 @@ void draw()
     player.drawPlayer();
 
     portalList = currmap.getPortal();
+    
+    Map prev = null;
+    
     for (Portal portal : portalList) { // Draw portal(s)
       if (portal.getHitbox().collide(player))
       {
@@ -86,7 +89,18 @@ void draw()
         player.setStart(currmap);
       }
     }
-
+    // Print the letter upon first completion of map (exluding home map)
+    
+    //currLetter.read(lettersRead);
+    if(prev != null){
+      if (currmap == map1 && prev.firstCompletion()){
+        println("reading letters");
+        
+        //prev.readLetter();
+      } 
+    }
+    
+    
     seedList = currmap.getSeed();
     for (Seed seed : seedList) {
       if (!seed.isPicked() && seed.getHitbox().collide(player)) { // pick up seed
