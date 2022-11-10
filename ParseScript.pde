@@ -40,7 +40,7 @@ private String[] parseLine(int line, String curPath, String[] script)
       toReturn[i] = script[line + i].substring(2);
       i++;
     }
-    if (toReturn[3] == null);
+    if (toReturn[3] == null)
     toReturn[3] = "";
   } else
   {
