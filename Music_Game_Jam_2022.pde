@@ -31,7 +31,7 @@ void setup()
   npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "Mom", "Hey there my child.");
   boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
-  seed1 = new Seed(20,50,20,50, loadImage("map/object/fragments1.png"),"seed1","test");
+  seed1 = new Seed(20,50,20,50, loadImage("map/object/fragments1.png"),"seed1","Mom, this is a very beautiful seed");
   map1.add(npc);
   map1.add(boiler1);
   map2.add(boiler2);
@@ -60,7 +60,6 @@ void draw()
     }
   }
   
-  //seed1.spawnDialog();
   seedList = currmap.getSeed();
   for (Seed seed : seedList) {
     if (seed.getHitbox().collide(player)) {
