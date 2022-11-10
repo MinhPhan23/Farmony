@@ -28,7 +28,7 @@ public class NPC extends Interactable
   {
     super(l, r, t, b, img);
     parseScript(pathMeeting, meeting);
-    parseScript(pathGoodbye, goodbye); //<>//
+    parseScript(pathGoodbye, goodbye);
     parseScript(pathGeneric, generic);
     time = 0;
     narrate = false;
@@ -49,14 +49,14 @@ public class NPC extends Interactable
   {
     msgIterate();
     pushMatrix();
-    translate(player.getPlayerX()-195, player.getPlayerY()+50, 0.9);
+    translate(player.getPlayerX()-195, player.getPlayerY()+60, 0.9);
     textFont(fontDialog);
     beginShape(QUADS);
     texture(loadImage("map/choicebox.png"));
     vertex(0, 0, 0, 0);
     vertex(390, 0, 1, 0);
-    vertex(390, 100, 1, 1);
-    vertex(0, 100, 0, 1);
+    vertex(390, 80, 1, 1);
+    vertex(0, 80, 0, 1);
     endShape();
 
     textFont(fontName);
@@ -110,7 +110,7 @@ public class NPC extends Interactable
 
   public void talking()
   {
-    if (meetingState) //<>//
+    if (meetingState)
     {
       if (meeting.isOption()) {
         String[] option = meeting.getOption();
@@ -122,7 +122,7 @@ public class NPC extends Interactable
         dialog = meeting.getCurrDialog(0);
       name = meeting.getCurrName();
 
-      if (meeting.isOption() && choice == 0) //<>//
+      if (meeting.isOption() && choice == 0) 
       {
         narrate = true;
       } else if (meeting.isOption())
