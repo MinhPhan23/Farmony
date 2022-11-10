@@ -35,7 +35,9 @@ void gameplay()
     for (Portal portal : portalList) { // Draw portal(s)
       if (portal.getHitbox().collide(player))
       {
-        currmap.readLetter(true);
+        if (currmap.firstVisit()) {
+          currmap.readLetter(true);
+        }
         currmap = portal.transition();
         player.setStart(currmap);
       }
