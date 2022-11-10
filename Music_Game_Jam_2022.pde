@@ -62,22 +62,20 @@ void draw()
   
   seedList = currmap.getSeed();
   for (Seed seed : seedList) {
-    if (seed.getHitbox().collide(player)) {
-      currmap.remove(seed);
+    if (!seed.isPicked() && seed.getHitbox().collide(player)) { // pick up seed
+      seed.pick();
       seed.setNarrate();
-      
     }
+
     if(seed.getNarrate()){
       seed.spawnDialog();  
     }
-    
   }
 
   npcList = currmap.getNPC();
   for (NPC npc : npcList) {
-    if (npc.getHitbox().collide(player)) {
+    if (npc.getHitbox().collide(player)) { // talk to npc
       npc.setNarrate();
-      
     }
     if(npc.getNarrate()){
       npc.spawnDialog();  
