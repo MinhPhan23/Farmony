@@ -46,7 +46,7 @@ public static void parseScript(String[] script)
         }
         else
         {
-            toReturn[0] = "";
+            toReturn[0] = " ";
             toReturn[1] = curPath;
             toReturn[2] = "No-Beard";
             if (script[line].charAt(0) == 'P')
