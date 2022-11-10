@@ -6,19 +6,40 @@ public class NPC extends Interactable
   private PFont fontDialog = createFont("Arial", 12);
   private PImage choicebox = loadImage("map/choicebox.png");
   private int time;
+  private int choice = 0;
 
   boolean narrate;
+  boolean meetingState;
+  boolean goodbyeState;
+  boolean genericState;
+  boolean waiting;
+  boolean talking;
 
   private String dialog;
   private String currDialog= "";
   private int dialogInd = 0;
-  NPC(float l, float r, float t, float b, PImage img, String name, String script)
+
+  //conversation script of NPC
+  Convo meeting = new Convo();
+  Convo goodbye = new Convo();
+  Convo generic = new Convo();
+
+  NPC(float l, float r, float t, float b, PImage img, String pathMeeting, String pathGoodbye, String pathGeneric)
   {
     super(l, r, t, b, img);
-    this.name = name;
-    dialog = script;
+    parseScript(pathMeeting, meeting);
+    parseScript(pathGoodbye, goodbye);
+    parseScript(pathGeneric, generic);
     time = 0;
     narrate = false;
+    waiting = false;
+    talking = false;
+    meetingState = true;
+    goodbyeState = true;
+    genericState = true;
+    meeting.setCurr();
+    goodbye.setCurr();
+    generic.setCurr();
   }
 
   /*
@@ -55,10 +76,10 @@ public class NPC extends Interactable
       dialogInd++;
     } else {
       time++;
-      if (timeout()) {
-        narrate = false;
+      if (!waiting && timeout()) {
         currDialog = "";
         dialogInd = 0;
+        narrate = false;
       }
     }
   }
@@ -67,6 +88,7 @@ public class NPC extends Interactable
     Timer for the printed textbox
    Return true if the text is printed in 180 frames, false otherwise
    */
+
   public boolean timeout()
   {
     boolean result = false;
@@ -84,5 +106,127 @@ public class NPC extends Interactable
 
   public void setNarrate() {
     narrate = !narrate;
+  }
+
+  public void talking()
+  {
+    if (meetingState)
+    {
+      if (meeting.isOption()) {
+        String[] option = meeting.getOption();
+        dialog = "1 "+option[0]+"\n"+ "2 "+ option[1]+"\n"+option[2];
+        waiting = true;
+      } else
+        dialog = meeting.getCurrDialog(0);
+      name = meeting.getCurrName();
+
+      if (meeting.isOption() && choice == 0) //<>//
+      {
+        narrate = true;
+      } else if (meeting.isOption())
+      {
+        narrate = true;
+        meeting.next(choice);
+        waiting = false;
+      }
+
+      if (narrate)
+      {
+        spawnDialog();
+      } else
+      {
+        if (meeting.hasNext())
+        {
+          setNarrate();
+          meeting.next(0);
+        } else
+        {
+          talking = false;
+          meetingState = false;
+        }
+      }
+      choice = 0;
+    } else if (goodbyeState)
+    {
+      if (goodbye.isOption()) {
+        String[] option = goodbye.getOption();
+        dialog = "1 "+option[0]+"\n"+ "2 "+ option[1]+"\n"+option[2];
+        waiting = true;
+      } else
+        dialog = goodbye.getCurrDialog(0);
+      name = goodbye.getCurrName();
+
+      if (goodbye.isOption() && choice == 0)
+      {
+        narrate = true;
+      } else if (goodbye.isOption())
+      {
+        narrate = true;
+        goodbye.next(choice);
+        waiting = false;
+      }
+
+      if (narrate)
+      {
+        spawnDialog();
+      } else
+      {
+        if (goodbye.hasNext())
+        {
+          setNarrate();
+          goodbye.next(0);
+        } else
+        {
+          talking = false;
+          goodbyeState = false;
+        }
+      }
+      choice = 0;
+    } else
+    {
+      dialog = generic.getCurrDialog(0);
+      name = generic.getCurrName();
+
+      if (narrate)
+      {
+        spawnDialog();
+      } else
+      {
+        if (generic.hasNext())
+        {
+          setNarrate();
+          generic.next(0);
+        } else
+        {
+          generic.setCurr();
+          talking = false;
+        }
+      }
+    }
+  }
+
+  public boolean isWaiting()
+  {
+    return waiting;
+  }
+
+  public void setWaiting()
+  {
+    waiting = !waiting;
+  }
+
+  public boolean isTalking()
+  {
+    return talking;
+  }
+
+  public void setTalking()
+  {
+    talking = !talking;
+  }
+
+  public void setInput(int n)
+  {
+    choice = n;
   }
 }

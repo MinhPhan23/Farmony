@@ -1,5 +1,6 @@
-public static void parseScript(String[] script)
+public void parseScript(String scriptPath, Convo convo)
 {
+  String[] script = loadStrings(scriptPath);
   String[] parsedLine = new String[4];
   String path = "M";
   for (int i = 0; i < script.length; i++)
@@ -19,6 +20,7 @@ public static void parseScript(String[] script)
       // \/ if you want to print the output to look at it
       // System.out.println(parsedLine[0] + " - " + parsedLine[1] + " - " + parsedLine[2] + " - " + parsedLine[3]);
       // parse convo here
+      convo.parse(parsedLine);
     } else
     {
       path = "M";
@@ -26,7 +28,7 @@ public static void parseScript(String[] script)
   }
 }
 
-private static String[] parseLine(int line, String curPath, String[] script)
+private String[] parseLine(int line, String curPath, String[] script)
 {
   String[] toReturn = new String[4];
   if (script[line].charAt(0) == '$')
