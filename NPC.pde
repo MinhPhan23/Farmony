@@ -12,6 +12,12 @@ public class NPC extends Interactable
   private String dialog;
   private String currDialog;
   private int dialogInd;
+  
+  private int countNextLine = 0;//count the curr letter in the line
+  private int countCurrLetters = 0; //count the length of the curr read letter
+  private int maxLetters = 62; //max letter in each line
+  private int boxFullCount = 0;//counter to detect if the text box is full
+  
   NPC(float l, float r, float t, float b, PImage img, String name, String script)
   {
     super(l, r, t, b, img);
@@ -39,7 +45,17 @@ public class NPC extends Interactable
     vertex(390, 60, 1, 1);
     vertex(0, 60, 0, 1);
     endShape();
-
+    
+    if(countNextLine > maxLetters){
+      currDialog += "\n";
+      countNextLine = 0;
+      boxFullCount++;
+      if(boxFullCount >= 2 && countCurrLetters < dialog.length()){
+        boxFullCount = 0;
+        currDialog = " "; 
+      }
+    }
+    
     textFont(fontName);
     textAlign(LEFT, LEFT);
     fill(0.2, 0.2, 0.15);
@@ -48,17 +64,23 @@ public class NPC extends Interactable
     translate(-10, 15);
     textFont(fontDialog);
     text(currDialog, 0, 0);
+    
+    countNextLine++;
+    countCurrLetters++;
+    
     popMatrix();
   }
 
   private void msgIterate() {
-    if (currDialog.length() < dialog.length()) {
+    if (countCurrLetters < dialog.length()) {
       currDialog += dialog.charAt(dialogInd);
       dialogInd++;
     } 
     else {
       time++;
       if (timeout()) {
+        countNextLine = 0;
+        countCurrLetters = 0;
         narrate = false;
         currDialog = "";
         dialogInd = 0;

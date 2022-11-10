@@ -3,20 +3,26 @@ public class Letter {
   // Instance variables
   private String[] letters = new String[] {
     "If you're reading this, the worst has come to pass. We all knew this was the most likely outcome, but I know you were still hoping enough for the both of us. I've always loved that about you. I only have one request for you after I'm gone. Please finish my work on the garden. I know you've never been out much, and I always brought the world here to you, but now you need to do the same for your father. He's not able to do it on his own. Do it for me, but also, do it for him. I believe in you.",
-    "\"The journey of a thousand miles begins with a single step.\"\n I always liked that phrase. You've taken the first one, my darling, and I know how that is often the hardest. There's no one else I'd rather your father have there for him.",
-    "Do you remember when I brought you out with me, all those years ago? One of the few times I managed to drag you from your father's study and his songs? You made a whistle out of a blade of grass and played that instead. You're so like him, and I love you for it.\n I'm glad you're changing now, stepping out of your comfort zone. But don't change too much. Keep doing what makes you who you are.",
-    "I always knew you could do it.\n I love you."
+    "\"The journey of a thousand miles begins with a single step.\" I always liked that phrase. You've taken the first one, my darling, and I know how that is often the hardest. There's no one else I'd rather your father have there for him.",
+    "Do you remember when I brought you out with me, all those years ago? One of the few times I managed to drag you from your father's study and his songs? You made a whistle out of a blade of grass and played that instead. You're so like him, and I love you for it. I'm glad you're changing now, stepping out of your comfort zone. But don't change too much. Keep doing what makes you who you are.",
+    "I always knew you could do it. I love you."
   };
 
   private String currLetter;
   private int letterInd;
+  
+  private int countNextLine = 0;//count the curr letter in the line
+  private int countCurrLetters = 0; //count the length of the curr read letter
+  private int maxLetters = 62; //max letter in each line
+  private int boxFullCount = 0;//counter to detect if the text box is full
+  
   private int time;
   private boolean reading;
 
   // Static variables
   private PFont body = createFont("Georgia", 12);
   private PFont name = createFont("Georgia", 14);
-
+  
   // Constructor
   public Letter () {
     currLetter = "";
@@ -37,7 +43,18 @@ public class Letter {
     vertex(390, 60, 1, 1);
     vertex(0, 60, 0, 1);
     endShape();
-
+    
+    
+    if(countNextLine > maxLetters){
+      currLetter += "\n";
+      countNextLine = 0;
+      boxFullCount++;
+      if(boxFullCount >= 2 && countCurrLetters < letters[letterNum].length()){
+        boxFullCount = 0;
+        currLetter = " "; 
+      }
+    }
+    
     textFont(body);
     textAlign(LEFT, LEFT);
     fill(0.2, 0.2, 0.15);
@@ -55,23 +72,29 @@ public class Letter {
     //  textFont(name);
     //  text("Mother", 0, 0);
     //}
-
+    
     text("mother", 0, 0);
     translate(-10, 15);
-    text("testing testing", 0, 0);
-
+    text(currLetter, 0, 0);
+    
+    countNextLine++;
+    countCurrLetters++;
+    
     popMatrix();
+    
   }
 
   // Add animated text effect
   private void msgIterate(int letterNum) {
-    if (currLetter.length() < letters[0].length()) {
+    if (countCurrLetters < letters[letterNum].length()) {
       currLetter += letters[letterNum].charAt(letterInd);
       letterInd++;
-      print(letters[letterNum].charAt(letterInd));
-    } else {
+    } 
+    else {
       time++;
       if (timeout()) {
+        countNextLine = 0;
+        countCurrLetters = 0;
         reading = false;
         currLetter= "";
         letterInd = 0;
