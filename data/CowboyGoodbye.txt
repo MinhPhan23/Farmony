@@ -1,0 +1,35 @@
+C-Howdy, pardner! Ya’ve been here too long, you’re starting to look like a real cowpoke.
+$
+1-Starting to feel like it too, pardner.
+2-Finally figured the place out, just before I have to go.
+3-Too long… Well, I can get out of your hair.
+%
+1:
+C-I can tell, ya’ve got a drawl to rival the best!
+P-That’s you, right, pardner?
+C-You know it, pardner!
+2:
+C-Aw, that’s a right shame, friend. Finally found everything?
+P-That I did. I hope it makes my mom proud.
+C-Your ma..?
+3:
+C-Hold it there a sec, pardner. I didn’t mean anything by that.
+C-Ya’ve been a right pleasure to have around.
+P-Oh! Well, I have to go anyway. I found all the plants I was looking for.
+%
+C-Wait a second… I finally membered who ya remind me of!
+C-Are ya Mary’s kid?
+P-I am! Did you know her?
+C-A long time ago. How’s she doin?
+P-She passed away…
+C-Oh… I’m sorry, kid.
+C-I’m sure she’s mig- I’m sure she’s very proud of you.
+%
+If:
+P-Come by and visit sometime, pardner.
+C-Looking forward to it, pardner.
+%%
+Else:
+P-Thank you. Stay safe, pardner.
+C-Safe travels, friend.
+%%

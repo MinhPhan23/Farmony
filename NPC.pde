@@ -5,6 +5,7 @@ public class NPC extends Interactable
     private PFont fontName = createFont("Arial", 14);
     private PFont fontDialog = createFont("Arial", 12);
     private int time;
+    private boolean met;
 
     NPC(float l, float r, float t, float b, PImage img, String name, String script)
     {
@@ -12,6 +13,7 @@ public class NPC extends Interactable
         this.name = name;
         dialog = script;
         time = 0;
+        met = false;
     }
 
     /*
@@ -25,7 +27,7 @@ public class NPC extends Interactable
         //translate(playerX-195, playerY+80, 0.9);
 
         /*beginShape(QUADS);
-        //texture(choicebox); 
+        texture(choicebox); 
         vertex(0,0,  0,0);
         vertex(390,0,  1,0);
         vertex(390,60,  1,1);
