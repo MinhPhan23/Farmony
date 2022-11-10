@@ -43,7 +43,7 @@ void setup()
   map1.add(npc);
   map1.add(boiler1);
   map2.add(boiler2);
-  map2.add(new Seed(02,50,20,50, loadImage("map/object/fragments1.png"), "seed2", "a seed in the forest, how fortuitous!"));
+  map2.add(new Seed(02, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed2", "a seed in the forest, how fortuitous!"));
   map1.add(seed1);
 
   // Set the first letter
@@ -65,18 +65,18 @@ void draw()
     player.movePlayer(currmap);
 
     currmap.drawMap();
-    
+
     if (currmap.firstTime() && currmap.isComplete())
     {
       letter.setReading();
       currmap.readLetter(false);
     }
-    
-    if(letter.isReading() && !seedMessage)
+
+    if (letter.isReading() && !seedMessage)
       letter.read(currmap.getLetterPart());
 
     player.drawPlayer();
-    
+
     portalList = currmap.getPortal();
     for (Portal portal : portalList) { // Draw portal(s)
       if (portal.getHitbox().collide(player))
@@ -96,14 +96,15 @@ void draw()
       }
 
       if (seed.getNarrate()) {
-        seed.spawnDialog();
+        seed.spawnDialog(); //<>//
       } else
         seedMessage = false;
+    }
 
-      objectList = currmap.getObject();
-      for (Interactable object : objectList) { // Draw portal(s)
-        object.getHitbox().collide(player);
-      }
+    objectList = currmap.getObject();
+    for (Interactable object : objectList) { // Draw portal(s)
+      object.getHitbox().collide(player);
+    }
 
       npcList = currmap.getNPC();
       for (NPC npc : npcList) {
@@ -123,12 +124,17 @@ void draw()
           }
         } else
           player.setStop(false);
-      } //<>//
+      }
 
       objectList = currmap.getObject();
       for (Interactable object : objectList) { // Draw object(s)
         object.getHitbox().collide(player);
       }
+    }
+
+    objectList = currmap.getObject();
+    for (Interactable object : objectList) { // Draw object(s)
+      object.getHitbox().collide(player);
     }
   }
 }
