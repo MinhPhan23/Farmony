@@ -17,10 +17,8 @@ public class NPC extends Interactable
 
   private String dialog;
   
-  private int countNextLine = 0;//count the curr letter in the line
   private int countCurrLetters = 0; //count the length of the curr read letter
   private int maxLetters = 62; //max letter in each line
-  private int boxFullCount = 0;//counter to detect if the text box is full
   
   private String currDialog= "";
   private int dialogInd = 0;
@@ -65,14 +63,9 @@ public class NPC extends Interactable
     vertex(0, 80, 0, 1);
     endShape();
     
-    if(countNextLine > maxLetters){
-      currDialog += "\n";
-      countNextLine = 0;
-      boxFullCount++;
-      if(boxFullCount >= 2 && countCurrLetters < dialog.length()){
-        boxFullCount = 0;
-        currDialog = " "; 
-      }
+    if(countCurrLetters > maxLetters){
+      currDialog += "-\n";
+      countCurrLetters = 0;
     }
     
     textFont(fontName);
@@ -84,26 +77,27 @@ public class NPC extends Interactable
     textFont(fontDialog);
     text(currDialog, 0, 0);
     
-    countNextLine++;
     countCurrLetters++;
     
     popMatrix();
   }
 
   private void msgIterate() {
-    if (countCurrLetters < dialog.length()) {
+    if (dialogInd < dialog.length()) {
       currDialog += dialog.charAt(dialogInd);
+      if(dialog.charAt(dialogInd)=='\n')
+      {
+        countCurrLetters = 0;
+      }
       dialogInd++;
     } 
     else {
       time++;
       if (!waiting && timeout()) {
-        countNextLine = 0;
         countCurrLetters = 0;
         narrate = false;
         currDialog = "";
         dialogInd = 0;
-        narrate = false;
       }
     }
   }

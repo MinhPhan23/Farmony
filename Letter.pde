@@ -35,52 +35,52 @@ public class Letter {
   public void read(int letterNum) {
     msgIterate(letterNum);
     pushMatrix();
-    translate(player.getPlayerX()-195, player.getPlayerY()+80, 0.9);
+    translate(player.getPlayerX()-195, player.getPlayerY()-100, 0.9);
     beginShape(QUADS);
     texture(loadImage("map/choicebox.png"));
     vertex(0, 0, 0, 0);
     vertex(390, 0, 1, 0);
-    vertex(390, 60, 1, 1);
-    vertex(0, 60, 0, 1);
+    vertex(390, 300, 1, 1);
+    vertex(0, 300, 0, 1);
     endShape();
     
     
     if(countNextLine > maxLetters){
       currLetter += "\n";
       countNextLine = 0;
-      boxFullCount++;
-      if(boxFullCount >= 2 && countCurrLetters < letters[letterNum].length()){
-        boxFullCount = 0;
-        currLetter = " "; 
-      }
+      countNextLine++;
     }
     
     textFont(body);
     textAlign(LEFT, LEFT);
     fill(0.2, 0.2, 0.15);
     translate(25, 15);
-    if (letterNum < letters.length-1)
+    /*if (letterNum < letters.length-1)
     {
       text("Dearest,", 0, 0);
-    }
+    }*/
     translate(-10, 15);
     text(currLetter, 0, 0);
-
-    if (letterNum < letters.length - 1)
+ //<>//
+    /*if (letterNum < letters.length - 1)
     {
       translate(0, 15);
       textFont(name);
       text("Mother", 0, 0);
-    }
+    }*/
 
     popMatrix();
+    
+    countNextLine++;
+    countCurrLetters++;
   }
 
   // Add animated text effect
   private void msgIterate(int letterNum) {
-    if (currLetter.length() < letters[letterNum].length()-1) {
+    if (letterInd < letters[letterNum].length()) {
       currLetter += letters[letterNum].charAt(letterInd);
       letterInd++;
+      println(letterInd);
     } 
     else {
       time++;

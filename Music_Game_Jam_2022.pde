@@ -1,4 +1,4 @@
-Menu homeScreen; //<>//
+Menu homeScreen; //<>// //<>//
 Map map1, map2, currmap;
 ArrayList<Portal> portalList;
 ArrayList<Interactable> objectList;
@@ -38,7 +38,7 @@ void setup()
   npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "data/LumberMeeting.txt", "data/LumberGoodbye.txt", "data/LumberGeneric.txt");
   boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
-  seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Do you remember when I brought you out with me, all those years ago? One of the few times I managed to drag you from your father's study and his songs? You made a whistle out of a blade of grass and played that instead. You're so like him, and I love you for it. I'm glad you're changing now, stepping out of your comfort zone. But don't change too much. Keep doing what makes you who you are.");
+  seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
   map1.add(npc);
   map1.add(boiler1);
   map2.add(boiler2);
@@ -78,8 +78,6 @@ void draw()
 
     portalList = currmap.getPortal();
     
-    Map prev = null;
-    
     for (Portal portal : portalList) { // Draw portal(s)
       if (portal.getHitbox().collide(player))
       {
@@ -88,17 +86,6 @@ void draw()
         player.setStart(currmap);
       }
     }
-    // Print the letter upon first completion of map (exluding home map)
-    
-    //currLetter.read(lettersRead);
-    if(prev != null){
-      if (currmap == map1 && prev.firstCompletion()){
-        println("reading letters");
-        
-        //prev.readLetter();
-      } 
-    }
-    
     
     seedList = currmap.getSeed();
     for (Seed seed : seedList) {
@@ -109,8 +96,8 @@ void draw()
       }
 
       if (seed.getNarrate()) {
-        seed.spawnDialog();
-      } else //<>//
+        seed.spawnDialog(); //<>//
+      } else 
         seedMessage = false;
     }
 
