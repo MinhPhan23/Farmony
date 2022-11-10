@@ -59,7 +59,7 @@
     }
 
     // this will choose a random option from a generic script passed to it, which can than be passed to parseScript
-    public static String[] chooseGeneric(String[] script)
+    /*public static String[] chooseGeneric(String[] script)
     {
         String[] chosen = new String[2];
         int choice = int(random(0, 3));
@@ -77,4 +77,4 @@
             chosen[1] = "%%";
 
         return chosen;
-    }
+    }*/
