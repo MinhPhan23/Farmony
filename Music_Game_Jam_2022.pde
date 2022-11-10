@@ -7,6 +7,8 @@ ArrayList<NPC> npcList;
 Player player;
 NPC npc;
 Seed seed1;
+Letter currLetter;
+int lettersRead = 1;
 Portal boiler1, boiler2;
 boolean hit;
 boolean gameStart;
@@ -41,7 +43,11 @@ void setup()
   map1.add(npc);
   map1.add(boiler1);
   map2.add(boiler2);
+  map2.add(new Seed(02,50,20,50, loadImage("map/object/fragments1.png"), "seed2", "a seed in the forest, how fortuitous!"));
   map1.add(seed1);
+
+  // Set the first letter
+  currLetter = new Letter();
 }
 
 void draw()
@@ -61,13 +67,31 @@ void draw()
     currmap.drawMap();
 
     player.drawPlayer();
-
+    
     portalList = currmap.getPortal();
     for (Portal portal : portalList) { // Draw portal(s)
       if (portal.getHitbox().collide(player))
       {
+
+        // Save the previous map and get new map
+        Map prev = currmap;
         currmap = portal.transition();
         player.setStart(currmap);
+        
+        // Print the letter upon first completion of map (exluding home map)
+        if (currmap == map1 && prev.firstCompletion())
+        {
+          println("reading letters");
+          currLetter.read(lettersRead);
+          prev.readLetter();
+        }
+
+        //if (currLetter.isReading())
+        //{
+        //  currLetter.read(lettersRead);
+        //  lettersRead++;
+        //  prev.complete();
+        //}
       }
     }
 

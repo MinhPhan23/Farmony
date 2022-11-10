@@ -14,7 +14,8 @@ public class Portal extends Interactable
    * Transition to a new map.
    * @param  nextMap  the next Map to move the player to once the transition is complete
    **/
-  public Map transition() {
+  public Map transition() 
+  {
     return dest;
   }
 }

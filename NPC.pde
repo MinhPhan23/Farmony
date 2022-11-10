@@ -10,8 +10,8 @@ public class NPC extends Interactable
   boolean narrate;
 
   private String dialog;
-  private String currDialog= "";
-  private int dialogInd = 0;
+  private String currDialog;
+  private int dialogInd;
   NPC(float l, float r, float t, float b, PImage img, String name, String script)
   {
     super(l, r, t, b, img);
@@ -19,6 +19,8 @@ public class NPC extends Interactable
     dialog = script;
     time = 0;
     narrate = false;
+    currDialog = "";
+    dialogInd = 0;
   }
 
   /*
@@ -53,7 +55,8 @@ public class NPC extends Interactable
     if (currDialog.length() < dialog.length()) {
       currDialog += dialog.charAt(dialogInd);
       dialogInd++;
-    } else {
+    } 
+    else {
       time++;
       if (timeout()) {
         narrate = false;
