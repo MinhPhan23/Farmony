@@ -16,7 +16,10 @@ public class Map {
   private ArrayList<Portal> portalList = new ArrayList<Portal>();
   private ArrayList<Interactable> objectList = new ArrayList<Interactable>(); //array lists hold normal objects
 
+  //if player complete the map objective
   private boolean complete;
+
+  //elements of letter connected with the map
   private boolean letterRead;
   private int letterPart; 
 
@@ -31,7 +34,7 @@ public class Map {
     letterRead = true;
   }
 
-  // Methods
+  // draw the map background and all objects
   public void drawMap() {
     beginShape(QUADS);
     texture(background);
@@ -59,8 +62,7 @@ public class Map {
     }
 
     if (count == seedList.size()) {
-        complete = true;
-        letterPart = completeMap++;
+      completeMap();
     }
 
     for (NPC npc : npcList) { // Draw NPCs
@@ -156,13 +158,15 @@ public class Map {
   public void completeMap()
   {
     complete=true;
+    letterPart = completeMap++;
   }
 
+  //Getter and setter for letter appearance completeion
   public void readLetter(boolean status) {
     letterRead = status;
   }
-  
-  public boolean firstTime()
+  //true when player just visit the map, false after print out the letter
+  public boolean firstVisit()
   {
     return letterRead;
   }
@@ -172,12 +176,12 @@ public class Map {
   {
     return startX;
   }
-
   public float getStartY()
   {
     return startY;
   }
   
+  //number of the letter that is assigned to the map
   public int getLetterPart()
   {
     return letterPart;
