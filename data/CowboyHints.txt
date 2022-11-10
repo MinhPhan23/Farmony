@@ -1,0 +1,12 @@
+$
+1-Where can I find mandrakes?
+2-Where can I find grapes?
+3-Where can I find cacti?
+%
+1:
+C-[add clue]
+2:
+C-[add clue]
+3:
+C-[add clue]
+%%

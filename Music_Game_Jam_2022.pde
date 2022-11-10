@@ -8,7 +8,6 @@ Player player;
 NPC npc;
 Seed seed1;
 Letter letter;
-int lettersRead = 1;
 Portal boiler1, boiler2;
 boolean hit;
 boolean gameStart;
@@ -35,8 +34,8 @@ void setup()
   map2 = new Map(loadImage("map/townfloor.jpg"), 100, 250, 70, 70);
   currmap = map1;
 
-  player = new Player(0, 0);
-  npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "Mom", "\"The journey of a thousand miles begins with a single step.\" I always liked that phrase. You've taken the first one, my darling, and I know how that is often the hardest. There's no one else I'd rather your father have there for him.");
+  player = new Player(-50, -50);
+  npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "data/LumberMeeting.txt", "data/LumberGoodbye.txt", "data/LumberGeneric.txt");
   boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
   seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Do you remember when I brought you out with me, all those years ago? One of the few times I managed to drag you from your father's study and his songs? You made a whistle out of a blade of grass and played that instead. You're so like him, and I love you for it. I'm glad you're changing now, stepping out of your comfort zone. But don't change too much. Keep doing what makes you who you are.");
@@ -66,7 +65,7 @@ void draw()
 
     currmap.drawMap();
 
-    if (currmap.firstTime() && currmap.isComplete())
+    if (currmap.firstVisit() && currmap.isComplete())
     {
       letter.setReading();
       currmap.readLetter(false);
@@ -110,8 +109,8 @@ void draw()
       }
 
       if (seed.getNarrate()) {
-        seed.spawnDialog(); //<>//
-      } else
+        seed.spawnDialog();
+      } else //<>//
         seedMessage = false;
     }
 
@@ -123,17 +122,32 @@ void draw()
     npcList = currmap.getNPC();
     for (NPC npc : npcList) {
       if (npc.getHitbox().collide(player)) { // talk to npc
+        npc.setTalking();
         npc.setNarrate();
+        player.setStop(true);
       }
-      if (npc.getNarrate()) {
-        npc.spawnDialog();
-      }
+      if (npc.isTalking())
+      {
+        npc.talking();
+        if (keyPressed)
+        {
+          if (key == '1') npc.setInput(1);
+          if (key == '2') npc.setInput(2);
+          if (key == '3') npc.setInput(3);
+        }
+      } else
+        player.setStop(false);
     }
 
     objectList = currmap.getObject();
     for (Interactable object : objectList) { // Draw object(s)
       object.getHitbox().collide(player);
     }
+  }
+
+  objectList = currmap.getObject();
+  for (Interactable object : objectList) { // Draw object(s)
+    object.getHitbox().collide(player);
   }
 }
 
@@ -144,7 +158,8 @@ void keyPressed()
     gameStart = true;
   } else
   {
-    player.detectMovement();
+    if (!player.getStop())
+      player.detectMovement();
   }
 }
 

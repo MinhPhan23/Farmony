@@ -1,0 +1,12 @@
+$
+1-Where can I find Siberian bugloss?
+2-Where can I find poinsettias?
+3-Where can I find a maple?
+%
+1:
+L-[add clue]
+2:
+L-[add clue]
+3:
+L-[add clue]
+%%

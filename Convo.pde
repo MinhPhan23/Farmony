@@ -48,7 +48,7 @@ public class Convo
   Flow option3 = new Flow();
   boolean startOption = false;
 
-  public void parse(String[] parse)
+  private void parse(String[] parse)
   {
     if (parse[0].charAt(0) == 'O')
     {
@@ -67,6 +67,7 @@ public class Convo
         } else
           option1.last.next = newNode;
         option1.last = newNode;
+        flow.last.optionNext[0] = option1.top;
       } else if (parse[1].charAt(0) == '2')
       {
         if (option2.top == null)
@@ -75,6 +76,7 @@ public class Convo
         } else
           option2.last.next = newNode;
         option2.last = newNode;
+        flow.last.optionNext[1] = option2.top;
       } else
       {
         if (option3.top == null)
@@ -83,6 +85,7 @@ public class Convo
         } else
           option3.last.next = newNode;
         option3.last = newNode;
+        flow.last.optionNext[2] = option3.top;
       }
     } else if (startOption)
     {
@@ -101,7 +104,6 @@ public class Convo
       option3 = new Flow();
       startOption = false;
 
-      flow.last.next = newNode;
       flow.last = newNode;
     } else
     {
@@ -114,16 +116,55 @@ public class Convo
       flow.last = newNode;
     }
   }
-
-  public void loadMeeting()
+  
+  Node curr;
+  
+  public String getCurrDialog(int option)
   {
+    String result;
+    if (option == 0)
+    {
+      result = curr.dialog;
+    } 
+    else
+      result = curr.option[option];
+    return result;
   }
-
-  public void loadGoodbye()
+  
+  public String getCurrName()
   {
+    return curr.name;
   }
-
-  public void loadGeneric()
+  
+  public boolean hasNext()
   {
+    return curr.next != null;
+  }
+  
+  public void next(int option)
+  {
+    if (option == 0)
+    {
+      curr = curr.next;
+    }
+    else
+    {
+      curr = curr.optionNext[option-1];
+    }
+  }
+  
+  public void setCurr()
+  {
+    curr = flow.top;
+  }
+  
+  public boolean isOption()
+  {
+    return curr.chooseFlag;
+  }
+  
+  public String[] getOption()
+  {
+    return curr.option;
   }
 }
