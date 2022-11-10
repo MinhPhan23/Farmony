@@ -105,18 +105,18 @@ void draw()
   }
 }
 
-    void keyPressed()
-    {
-      if (!gameStart)
-      {
-        gameStart = true;
-      } else
-      {
-        player.detectMovement();
-      }
-    }
+void keyPressed()
+{
+  if (!gameStart)
+  {
+    gameStart = true;
+  } else
+  {
+    player.detectMovement();
+  }
+}
 
-    void keyReleased()
-    {
-      player.movementReleased();
-    }
+void keyReleased()
+{
+  player.movementReleased();
+}

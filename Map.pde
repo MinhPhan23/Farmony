@@ -120,7 +120,7 @@ public class Map {
   {
     return mapHeight;
   }
-  
+
   // Getter for lists
   public ArrayList getPortal()
   {
@@ -138,14 +138,14 @@ public class Map {
   {
     return objectList;
   }
-  
-  
+
+
   // Get player starting position
   public float getStartX()
   {
     return startX;
   }
-  
+
   public float getStartY()
   {
     return startY;
