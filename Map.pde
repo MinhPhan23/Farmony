@@ -18,6 +18,7 @@ public class Map {
 
   private boolean complete;
   private boolean letterRead;
+  private int letterPart; 
 
   // Constructor
   public Map (PImage background, float mapWidth, float mapHeight, float startX, float startY) {
@@ -27,7 +28,7 @@ public class Map {
     this.startX = startX;
     this.startY = startY;
     complete = false;
-    letterRead = false;
+    letterRead = true;
   }
 
   // Methods
@@ -59,6 +60,7 @@ public class Map {
 
     if (count == seedList.size()) {
         complete = true;
+        letterPart = completeMap++;
     }
 
     for (NPC npc : npcList) { // Draw NPCs
@@ -146,13 +148,23 @@ public class Map {
 
 
   //Getter and setter for map completeion
-  public boolean firstCompletion() 
+  public boolean isComplete() 
   {
-    return complete && !letterRead;
+    return complete;
+  }
+  
+  public void completeMap()
+  {
+    complete=true;
   }
 
-  public void readLetter() {
-    letterRead = true;
+  public void readLetter(boolean status) {
+    letterRead = status;
+  }
+  
+  public boolean firstTime()
+  {
+    return letterRead;
   }
 
   // Get player starting position
@@ -164,5 +176,10 @@ public class Map {
   public float getStartY()
   {
     return startY;
+  }
+  
+  public int getLetterPart()
+  {
+    return letterPart;
   }
 }
