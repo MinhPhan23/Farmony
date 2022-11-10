@@ -16,6 +16,10 @@ public class Map {
   private ArrayList<Portal> portalList = new ArrayList<Portal>();
   private ArrayList<Interactable> objectList = new ArrayList<Interactable>(); //array lists hold normal objects
 
+  private boolean complete;
+  private boolean letterRead;
+  private int letterPart; 
+
   // Constructor
   public Map (PImage background, float mapWidth, float mapHeight, float startX, float startY) {
     this.background = background;
@@ -23,6 +27,8 @@ public class Map {
     this.mapHeight = mapHeight;
     this.startX = startX;
     this.startY = startY;
+    complete = false;
+    letterRead = true;
   }
 
   // Methods
@@ -42,10 +48,19 @@ public class Map {
    * Draws the interactable objects on the map by calling drawObj() on each interactable in the arraylists
    **/
   private void renderObjects() {
+    int count = 0;
     for (Seed seed : seedList) { // Draw seeds
       if (seed.isUnlocked() && !seed.isPicked()) { // seed is able to be picked up
         seed.drawObj();
       }
+      else if (seed.isPicked() && !complete) {
+        count++;
+      }
+    }
+
+    if (count == seedList.size()) {
+        complete = true;
+        letterPart = completeMap++;
     }
 
     for (NPC npc : npcList) { // Draw NPCs
@@ -101,14 +116,6 @@ public class Map {
     }
   }
 
-  public void update(NPC npc) {
-    int index = npcList.indexOf(npc);
-    if (index > 0) {
-      // update the dialog of the npc after the first interaction?
-      //npcList.get(index).dialog = ""
-    }
-  }
-
   // Getter for the width of the map
   public float getWidth()
   {
@@ -140,6 +147,26 @@ public class Map {
   }
 
 
+  //Getter and setter for map completeion
+  public boolean isComplete() 
+  {
+    return complete;
+  }
+  
+  public void completeMap()
+  {
+    complete=true;
+  }
+
+  public void readLetter(boolean status) {
+    letterRead = status;
+  }
+  
+  public boolean firstTime()
+  {
+    return letterRead;
+  }
+
   // Get player starting position
   public float getStartX()
   {
@@ -149,5 +176,10 @@ public class Map {
   public float getStartY()
   {
     return startY;
+  }
+  
+  public int getLetterPart()
+  {
+    return letterPart;
   }
 }

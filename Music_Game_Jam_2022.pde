@@ -1,4 +1,4 @@
-Menu homeScreen;
+Menu homeScreen; //<>//
 Map map1, map2, currmap;
 ArrayList<Portal> portalList;
 ArrayList<Interactable> objectList;
@@ -7,6 +7,8 @@ ArrayList<NPC> npcList;
 Player player;
 NPC npc;
 Seed seed1;
+Letter letter;
+int lettersRead = 1;
 Portal boiler1, boiler2;
 boolean hit;
 boolean gameStart;
@@ -41,7 +43,11 @@ void setup()
   map1.add(npc);
   map1.add(boiler1);
   map2.add(boiler2);
+  map2.add(new Seed(02,50,20,50, loadImage("map/object/fragments1.png"), "seed2", "a seed in the forest, how fortuitous!"));
   map1.add(seed1);
+
+  // Set the first letter
+  letter = new Letter();
 }
 
 void draw()
@@ -59,13 +65,23 @@ void draw()
     player.movePlayer(currmap);
 
     currmap.drawMap();
+    
+    if (currmap.firstTime() && currmap.isComplete())
+    {
+      letter.setReading();
+      currmap.readLetter(false);
+    }
+    
+    if(letter.isReading() && !seedMessage)
+      letter.read(currmap.getLetterPart());
 
     player.drawPlayer();
-
+    
     portalList = currmap.getPortal();
     for (Portal portal : portalList) { // Draw portal(s)
       if (portal.getHitbox().collide(player))
       {
+        currmap.readLetter(true);
         currmap = portal.transition();
         player.setStart(currmap);
       }
@@ -76,11 +92,13 @@ void draw()
       if (!seed.isPicked() && seed.getHitbox().collide(player)) { // pick up seed
         seed.pick();
         seed.setNarrate();
+        seedMessage = true;
       }
 
       if (seed.getNarrate()) {
         seed.spawnDialog();
-      }
+      } else
+        seedMessage = false;
 
       objectList = currmap.getObject();
       for (Interactable object : objectList) { // Draw portal(s)

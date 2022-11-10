@@ -74,7 +74,8 @@ public class NPC extends Interactable
     if (currDialog.length() < dialog.length()) {
       currDialog += dialog.charAt(dialogInd);
       dialogInd++;
-    } else {
+    } 
+    else {
       time++;
       if (!waiting && timeout()) {
         currDialog = "";
