@@ -40,8 +40,15 @@ public class Convo
         }
     }
 
+    // choices takes the current line (% before choice) and the script we are using, and returns the choices as one string to print out
     private String choices(int line, String[] script)
     {
-        
+        String toReturn = "";
+        line++;
+        while (script[line] != '%')
+        {
+            toReturn += script[line] + "\n"
+        }
+        return toReturn;
     }
 }
