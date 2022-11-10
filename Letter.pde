@@ -10,13 +10,19 @@ public class Letter {
 
   private String currLetter;
   private int letterInd;
+  
+  private int countNextLine = 0;//count the curr letter in the line
+  private int countCurrLetters = 0; //count the length of the curr read letter
+  private int maxLetters = 62; //max letter in each line
+  private int boxFullCount = 0;//counter to detect if the text box is full
+  
   private int time;
   private boolean reading;
 
   // Static variables
   private PFont body = createFont("Georgia", 12);
   private PFont name = createFont("Georgia", 14);
-
+  
   // Constructor
   public Letter () {
     currLetter = "";
@@ -37,7 +43,18 @@ public class Letter {
     vertex(390, 60, 1, 1);
     vertex(0, 60, 0, 1);
     endShape();
-
+    
+    
+    if(countNextLine > maxLetters){
+      currLetter += "\n";
+      countNextLine = 0;
+      boxFullCount++;
+      if(boxFullCount >= 2 && countCurrLetters < letters[letterNum].length()){
+        boxFullCount = 0;
+        currLetter = " "; 
+      }
+    }
+    
     textFont(body);
     textAlign(LEFT, LEFT);
     fill(0.2, 0.2, 0.15);
@@ -61,13 +78,15 @@ public class Letter {
 
   // Add animated text effect
   private void msgIterate(int letterNum) {
-    if (currLetter.length() < letters[letterNum].length()-1) { //<>//
+    if (currLetter.length() < letters[letterNum].length()-1) {
       currLetter += letters[letterNum].charAt(letterInd);
       letterInd++;
-      print(letters[letterNum].charAt(letterInd));
-    } else {
+    } 
+    else {
       time++;
       if (timeout()) {
+        countNextLine = 0;
+        countCurrLetters = 0;
         reading = false;
         currLetter= "";
         letterInd = 0;
