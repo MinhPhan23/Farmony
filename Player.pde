@@ -27,6 +27,7 @@ class Player {
   private boolean keyDown = false;
   private boolean keyLeft = false;
   private boolean keyRight  = false;
+  private boolean stop = false;
 
   //to change the player angle or the way where the player looks
   private float playerAngle = 0;
@@ -199,5 +200,15 @@ class Player {
   public Hitbox getHitbox()
   {
     return pHitbox;
+  }
+  
+  public void setStop(boolean state)
+  {
+    stop = state;
+  }
+  
+  public boolean getStop()
+  {
+    return stop;
   }
 }

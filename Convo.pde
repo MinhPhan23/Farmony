@@ -48,7 +48,7 @@ public class Convo
   Flow option3 = new Flow();
   boolean startOption = false;
 
-  public void parse(String[] parse)
+  private void parse(String[] parse)
   {
     if (parse[0].charAt(0) == 'O')
     {
@@ -101,7 +101,6 @@ public class Convo
       option3 = new Flow();
       startOption = false;
 
-      flow.last.next = newNode;
       flow.last = newNode;
     } else
     {
@@ -113,5 +112,56 @@ public class Convo
         flow.last.next = newNode;
       flow.last = newNode;
     }
+  }
+  
+  Node curr;
+  
+  public String getCurrDialog(int option)
+  {
+    String result;
+    if (option == 0)
+    {
+      result = curr.dialog;
+    } 
+    else
+      result = curr.option[option];
+    return result;
+  }
+  
+  public String getCurrName()
+  {
+    return curr.name;
+  }
+  
+  public boolean hasNext()
+  {
+    return curr.next != null;
+  }
+  
+  public void next(int option)
+  {
+    if (option == 0)
+    {
+      curr = curr.next;
+    }
+    else
+    {
+      curr = curr.optionNext[option-1];
+    }
+  }
+  
+  public void setCurr()
+  {
+    curr = flow.top;
+  }
+  
+  public boolean isOption()
+  {
+    return curr.chooseFlag;
+  }
+  
+  public String[] getOption()
+  {
+    return curr.option;
   }
 }
