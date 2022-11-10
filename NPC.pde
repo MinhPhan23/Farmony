@@ -6,6 +6,7 @@ public class NPC extends Interactable
     private PFont fontDialog = createFont("Arial", 12);
     private PImage choicebox = loadImage("map/choicebox.png");
     private int time;
+    
     boolean narrate;
 
     private String dialog;
@@ -45,8 +46,7 @@ public class NPC extends Interactable
       translate(-10,15);
       textFont(fontDialog);
       text(currDialog, 0, 0);
-      popMatrix();  
-        
+      popMatrix();
     }
     
     private void msgIterate(){
