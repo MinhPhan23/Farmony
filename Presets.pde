@@ -157,22 +157,24 @@ float woodStartY = -19;
 PImage woodImg;
 
 Seed bugloss;
-float buglossX;
-float buglossY;
-float buglossHeight;
-float buglossWidth;
+float buglossX = -100;
+float buglossY = -175;
+float buglossWidth = 75/4;
+float buglossHeight = 75/4;
 PImage buglossImg;
+
 Seed poinsettias;
-float poinsettiasX;
-float poinsettiasY;
-float poinsettiasHeight;
-float poinsettiasWidth;
+float poinsettiasX = -208;
+float poinsettiasY = 160;
+float poinsettiasWidth = 75/4;
+float poinsettiasHeight = 75/4;
 PImage poinsettiasImg;
+
 Seed maple;
-float mapleX;
-float mapleY;
-float mapleHeight;
-float mapleWidth;
+float mapleX = 200;
+float mapleY = -105;
+float mapleWidth = 75/4;
+float mapleHeight = 75/4;
 PImage mapleImg;
 
 NPC lumber;
@@ -189,15 +191,29 @@ PImage woodGardenImg;
 void loadWood()
 {
   woodImg = loadImage("map/forest.png");
-  lumberImg = loadImage("res/characters/lumberjackdown.png");
   woodGardenImg = loadImage("map/object/boiler.png");
   wood = new Map(woodImg, woodX, woodY, woodStartX, woodStartY);
   
+  // Lumberjack NPC
+  lumberImg = loadImage("res/characters/lumberjackdown.png");
   lumber = new NPC(lumberX, lumberX + npcWidth, lumberY, lumberY + npcHeight, lumberImg, lumberMeeting, lumberGoodbye, lumberGeneric);
   parseScript(lumberHint, lumber.hint);
   lumber.initConvo();
+
+  // Seeds
+  mapleImg = loadImage("res/seeds/mapleSeed.png");
+  maple = new Seed(mapleX, mapleY, mapleWidth, mapleHeight, mapleImg, "Maple", "This will grow into a tall and strong tree.");
   
+  poinsettiasImg = loadImage("res/seeds/poinsettiaSeed.png");
+  poinsettias = new Seed(poinsettiasX, poinsettiasY, poinsettiasWidth, poinsettiasHeight, poinsettiasImg, "Pointsettia", "A vibrant shade of crimson in a forest of green.");
+
+  buglossImg = loadImage("res/seeds/buglossSeed.png");
+  bugloss = new Seed(buglossX, buglossY, buglossWidth, buglossHeight, buglossImg, "Bugloss", "What a lovely flower.");
+
   wood.add(lumber);
+  wood.add(maple);
+  wood.add(poinsettias);
+  wood.add(bugloss);
 }
 
 //load Sea Assets
