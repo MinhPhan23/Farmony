@@ -32,7 +32,7 @@ public class Seed extends Interactable
    */
   public void spawnDialog()
   {
-    msgIterate(); //<>//
+    msgIterate();
     pushMatrix();
     translate(player.getPlayerX()-195, player.getPlayerY()+80, 0.9);
     textFont(fontDialog);
