@@ -1,4 +1,4 @@
-public class Letter {
+public class Letter { //<>// //<>//
 
   // Instance variables
   private String[] letters = new String[] {
@@ -10,19 +10,19 @@ public class Letter {
 
   private String currLetter;
   private int letterInd;
-  
+
   private int countNextLine = 0;//count the curr letter in the line
   private int countCurrLetters = 0; //count the length of the curr read letter
   private int maxLetters = 62; //max letter in each line
   private int boxFullCount = 0;//counter to detect if the text box is full
-  
+
   private int time;
   private boolean reading;
 
   // Static variables
   private PFont body = createFont("Georgia", 12);
   private PFont name = createFont("Georgia", 14);
-  
+
   // Constructor
   public Letter () {
     currLetter = "";
@@ -43,34 +43,34 @@ public class Letter {
     vertex(390, 300, 1, 1);
     vertex(0, 300, 0, 1);
     endShape();
-    
-    
-    if(countNextLine > maxLetters){
-      currLetter += "-\n";
-      countNextLine = 0;
-      countNextLine++;
-    }
-    
+
+
+    // if (countNextLine > maxLetters) {
+    //   currLetter += "-\n";
+    //   countNextLine = 0;
+    //   countNextLine++;
+    // }
+
     textFont(body);
     textAlign(LEFT, LEFT);
     fill(0.2, 0.2, 0.15);
     translate(25, 15);
     /*if (letterNum < letters.length-1)
-    {
-      text("Dearest,", 0, 0);
-    }*/
+     {
+     text("Dearest,", 0, 0);
+     }*/
     translate(-10, 15);
     text(currLetter, 0, 0);
- //<>// //<>//
+    //<>// //<>//
     /*if (letterNum < letters.length - 1)
-    {
-      translate(0, 15);
-      textFont(name);
-      text("Mother", 0, 0);
-    }*/
+     {
+     translate(0, 15);
+     textFont(name);
+     text("Mother", 0, 0);
+     }*/
 
     popMatrix();
-    
+
     countNextLine++;
     countCurrLetters++;
   }
@@ -78,6 +78,23 @@ public class Letter {
   // Add animated text effect
   private void msgIterate(int letterNum) {
     if (letterInd < letters[letterNum].length()) {
+
+      String word = "";
+      int wordInd = letterInd;
+      char nextLetter = letters[letterNum].charAt(letterInd);
+      while (wordInd < letters[letterNum].length()-1 && nextLetter != ' ')
+      {
+        word += nextLetter;
+        wordInd++;
+        nextLetter = letters[letterNum].charAt(wordInd);
+      }
+
+      if (countNextLine + word.length() > maxLetters)
+      {
+        currLetter += "\n";
+        countNextLine = 0;
+      }
+
       currLetter += letters[letterNum].charAt(letterInd);
       letterInd++;
     } 

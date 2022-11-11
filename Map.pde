@@ -165,6 +165,7 @@ public class Map {
   public void readLetter(boolean status) {
     letterRead = status;
   }
+  
   //true when player just visit the map, false after print out the letter
   public boolean firstVisit()
   {
