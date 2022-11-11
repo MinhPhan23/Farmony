@@ -4,9 +4,10 @@ $
 3-Where can I find hellebore?
 %
 1:
-S-[add clue]
+S-I remember seeing a beautiful shade of blue that merge with the ocean near that house.
 2:
-S-[add clue]
+S-There's only one source of fresh water around here, and you really ask me that question?
 3:
-S-[add clue]
+S-What even is hellebore? Red as HELL? Why asking pirate about flower? 
+S-Huh! Check the fountain it is colorful there.
 %%
