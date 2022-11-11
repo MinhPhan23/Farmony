@@ -1,0 +1,12 @@
+$
+1-Where can I find mandrakes?
+2-Where can I find grapes?
+3-Where can I find cacti?
+%
+1:
+C-Those? My horse loves to munch 'em. Don't much care for the taste myself.
+2:
+C-Plants like those need water to live, and there ain't much of it out here.
+3:
+C-Cacti tend to stick together. Ya could check the groups, pardner.
+%%

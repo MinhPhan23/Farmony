@@ -1,0 +1,12 @@
+$
+1-Which way to the sea?
+2-Which way to the desert?
+3-Which way to the wood?
+%
+1:
+D-Follow the stream to the open sea.
+2:
+D-Follow the land to where no plant can grow.
+3:
+D-Follow the green field and open your eyes.
+%%
