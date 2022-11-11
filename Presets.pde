@@ -64,6 +64,16 @@ float gardenWoodTop = 160;
 float gardenWoodBot = 180;
 PImage gardenWoodImg;
 
+Interactable bambooTree;
+Interactable buglossTree;
+Interactable cactusTree;
+Interactable grapeTree;
+Interactable helleboreTree;
+Interactable hydrangeaTree;
+Interactable mandrakeTree;
+Interactable mapleTree;
+Interactable poinsettiaTree;
+
 void loadGarden()
 {
   gardenImg = loadImage("map/garden.png");
@@ -72,6 +82,16 @@ void loadGarden()
   gardenSeaImg = loadImage("map/object/boiler.png");
   gardenWoodImg = loadImage("map/object/boiler.png");
   gardenDesertImg = loadImage("map/object/boiler.png");
+
+  bambooTree = new Interactable(-75, -50, -150, -110, loadImage("res/plants/bamboo.png"));
+  buglossTree = new Interactable(-40, -10, -200, -170, loadImage("res/plants/bugloss.png"));
+  cactusTree = new Interactable(-55, -35, -180, -140, loadImage("res/plants/cactus.png"));
+  grapeTree = new Interactable(0, 30, -205, -175, loadImage("res/plants/grape.png"));
+  helleboreTree = new Interactable(40, 70, -205, -175, loadImage("res/plants/hellebore.png"));
+  hydrangeaTree = new Interactable(80, 110, -205, -175, loadImage("res/plants/hydrangea.png"));
+  mandrakeTree = new Interactable(120, 150, -205, -175, loadImage("res/plants/mandrake.png"));
+  mapleTree = new Interactable(150, 180, -180, -140, loadImage("res/plants/maple.png"));
+  poinsettiaTree = new Interactable(150, 180, -130, -100, loadImage("res/plants/poinsettia.png"));
   
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
