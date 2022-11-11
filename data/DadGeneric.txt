@@ -1,0 +1,12 @@
+$
+1-How to go to the sea
+2-How to go to the desert
+3-How to go to the wood
+%
+1:
+D-[Direction]
+2:
+D-[Direction]
+3:
+D-[Direction]
+%%

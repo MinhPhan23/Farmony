@@ -1,0 +1,14 @@
+D-My wish is to see the world one last time!
+D-Our garden was built on a magical land, use the portals to travel the world
+$
+1-How to go to the sea
+2-How to go to the desert
+3-How to go to the wood
+%
+1:
+D-[Direction]
+2:
+D-[Direction]
+3:
+D-[Direction]
+%%
