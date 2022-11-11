@@ -4,10 +4,10 @@ $
 3-Where can I find hellebore?
 %
 1:
-S-I remember seeing a beautiful shade of blue that merge with the ocean near that house.
+S-They can be hard to see with all the blue around here, but I think if you look close to the coast...
 2:
-S-There's only one source of fresh water around here, and you really ask me that question?
+S-Just like me, it loves the sea! Well, freshwater, but that doesn't have the same ring to it.
 3:
-S-What even is hellebore? Red as HELL? Why asking pirate about flower? 
-S-Huh! Check the fountain it is colorful there.
+S-HELLEBORE! RED AS THE LIFEBLOOD SURGING THROUGH OUR VEINS, OR THE SUNRISE 'FORE A STORMY SEA!
+S-Huh? Oh, yeah, okay. Maybe check the fountain, it's quite pretty there.
 %%

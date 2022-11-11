@@ -4,9 +4,9 @@ $
 3-Where can I find a maple?
 %
 1:
-L-Those guys sometimes grow a on the side of the road, may be you will be lucky there
+L-I often see them by the road on my walk out here. You musta been distracted, eh?
 2:
-L-High up on the trees in this wood
+L-Those little buggers like heights, ya might find 'em up in the hills.
 3:
-L-There are a maple tree mixed with others when you pass the stream
+L-Ya know, they like fresh water to make that sweet, sweet syrup. Maybe the stream?
 %%
