@@ -189,8 +189,6 @@ void loadSea()
   parseScript(pirateHint, pirate.hint);
   pirate.initConvo();
   
-  seaGarden = new Portal(300,320,-150,-130,seaPortalImg,garden);
-  sea.add(seaGarden);
   sea.add(pirate);
 }
 
@@ -210,4 +208,17 @@ void loadAsset()
   makeNPCList();
   homeScreen = new Menu();
   gameStart = false;
+}
+
+void loadPortals()
+{
+  gardenSea = new Portal(gardenSeaLeft, gardenSeaRight, gardenSeaTop, gardenSeaBot, gardenSeaImg, sea);
+  gardenWood = new Portal(gardenWoodLeft, gardenWoodRight, gardenWoodTop, gardenWoodBot, gardenWoodImg, wood);
+  gardenDesert = new Portal(gardenDesertLeft, gardenDesertRight, gardenDesertTop, gardenDesertBot, gardenDesertImg, wood);
+  garden.add(gardenSea);
+  garden.add(gardenWood);
+  garden.add(gardenDesert);
+  
+  seaGarden = new Portal(300, 320, -150, -130, seaPortalImg, garden);
+  sea.add(seaGarden);
 }
