@@ -12,7 +12,7 @@ void gameplay()
 {
   if (!gameStart)
   {
-    homeScreen.drawMenu(250, 250);
+    homeScreen.drawMenu(width, height);
   } else
   {
     player.movePlayer(currmap);
