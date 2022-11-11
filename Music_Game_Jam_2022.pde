@@ -19,7 +19,7 @@ void setup()
   
   loadAsset();
 
-  currmap = sea;
+  currmap = garden;
 
   player = new Player(currmap.startX, currmap.startY);
 
