@@ -20,7 +20,7 @@ public void parseScript(String scriptPath, Convo convo)
       // \/ if you want to print the output to look at it
       // System.out.println(parsedLine[0] + " - " + parsedLine[1] + " - " + parsedLine[2] + " - " + parsedLine[3]);
       // parse convo here
-      convo.parse(parsedLine); //<>//
+      convo.parse(parsedLine);
     } else
     {
       path = "M";

@@ -16,9 +16,10 @@ public class NPC extends Interactable
   boolean talking;
 
   private String dialog;
+  private String[] words;
   
   private int countCurrLetters = 0; //count the length of the curr read letter
-  private int maxLetters = 62; //max letter in each line
+  private int maxLetters = 12; //max letter in each line
   
   private String currDialog= "";
   private int dialogInd = 0;
@@ -64,7 +65,7 @@ public class NPC extends Interactable
     endShape();
     
     if(countCurrLetters > maxLetters){
-      currDialog += "-\n";
+      currDialog += "\n";
       countCurrLetters = 0;
     }
     
@@ -83,9 +84,9 @@ public class NPC extends Interactable
   }
 
   private void msgIterate() {
-    if (dialogInd < dialog.length()) {
-      currDialog += dialog.charAt(dialogInd);
-      if(dialog.charAt(dialogInd)=='\n')
+    if (dialogInd < words.length) {
+      currDialog +=" "+words[dialogInd]; //<>//
+      if(currDialog.charAt(currDialog.length()-1)=='\n')
       {
         countCurrLetters = 0;
       }
@@ -139,6 +140,7 @@ public class NPC extends Interactable
       } else
         dialog = meeting.getCurrDialog(0);
       name = meeting.getCurrName();
+      words = split(dialog," ");
 
       if (meeting.isOption() && choice == 0) 
       {
@@ -170,13 +172,14 @@ public class NPC extends Interactable
     {
       if (goodbye.isOption()) {
         String[] option = goodbye.getOption();
-        dialog = "1 "+option[0]+"\n"+ "2 "+ option[1]+"\n";
+        dialog = "1 "+option[0]+"\n"+ " 2 "+ option[1]+"\n";
         if (option[2].length() > 0) 
-          dialog+="3 "+option[2];
+          dialog+=" 3 "+option[2];
         waiting = true;
       } else
         dialog = goodbye.getCurrDialog(0);
       name = goodbye.getCurrName();
+      words = split(dialog," ");
 
       if (goodbye.isOption() && choice == 0)
       {
@@ -208,6 +211,7 @@ public class NPC extends Interactable
     {
       dialog = generic.getCurrDialog(0);
       name = generic.getCurrName();
+      words = split(dialog," ");
 
       if (narrate)
       {
