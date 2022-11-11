@@ -157,7 +157,7 @@ public class Map {
   
   public void completeMap()
   {
-    complete=true;
+    complete = true;
     letterPart = completeMap++;
     for (NPC npc : npcList) { // Draw NPCs
       npc.setHint();

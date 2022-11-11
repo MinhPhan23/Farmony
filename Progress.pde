@@ -1,5 +1,6 @@
 int completeMap = 0;
 boolean seedMessage = false;
+boolean finished = false;
 
 //finish game
 ArrayList<NPC> NPCList;
@@ -15,7 +16,7 @@ void makeNPCList()
 boolean checkFinish()
 {
   boolean result = true;
-  for (NPC npc : npcList) { // Draw NPCs
+  for (NPC npc : NPCList) { // Draw NPCs
       if (npc.goodbyeState) {
         return false;
       }

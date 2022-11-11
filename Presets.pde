@@ -1,3 +1,9 @@
+//current map of the game
+Map currmap;
+
+//load letter
+Letter letter;
+
 //load dimension
 float left = -200;
 float right = 200;
@@ -16,13 +22,13 @@ float npcHeight=35;
 Map garden;
 float gardenX = 750/4;
 float gardenY = 825/4;
-float gardenStartX = 50;
-float gardenStartY = 50;
+float gardenStartX = 55;
+float gardenStartY = -50;
 PImage gardenImg;
 
 NPC mom;
-float momX;
-float momY;
+float momX = 95;
+float momY = -175;
 String momMeeting = "";
 String momGoodbye = "";
 String momGeneric = "data/MomGeneric.txt";
@@ -87,7 +93,6 @@ float desertStartX = 177;
 float desertStartY = 153;
 PImage desertImg;
 
-
 Seed mandrakes;
 Seed grapes;
 Seed cacti;
@@ -108,11 +113,13 @@ float horseY = -50;
 PImage horseImg;
 
 Portal desertGarden;
+PImage desertGardenImg;
 void loadDesert()
 {
   desertImg = loadImage("map/desert.png");
   cowboyImg = loadImage("res/characters/cowboydown.png");
   horseImg = loadImage("res/characters/horse-w114xh75.png");
+  desertGardenImg = loadImage("map/object/boiler.png");
   
   desert = new Map(desertImg, desertX, desertY, desertStartX, desertStartY);
   
@@ -147,10 +154,12 @@ String lumberGeneric = "data/LumberGeneric.txt";
 String lumberHint = "LumberHint.txt";
 
 Portal woodGarden;
+PImage woodGardenImg;
 void loadWood()
 {
   woodImg = loadImage("map/forest.png");
   lumberImg = loadImage("res/characters/lumberjackdown.png");
+  woodGardenImg = loadImage("map/object/boiler.png");
   wood = new Map(woodImg, woodX, woodY, woodStartX, woodStartY);
   
   lumber = new NPC(lumberX, lumberX + npcWidth, lumberY, lumberY + npcHeight, lumberImg, lumberMeeting, lumberGoodbye, lumberGeneric);
@@ -214,23 +223,27 @@ void loadAsset()
   loadPortals();
   makeNPCList();
   
-  woodGarden = new Portal(190, 220, 130, 160, loadImage("map/object/boiler.png"), garden);
-  desertGarden = new Portal(195, 215, -197, -177, loadImage("map/object/boiler.png"), garden);
-  wood.add(woodGarden);
-  desert.add(desertGarden);
   homeScreen = new Menu();
   gameStart = false;
+  currmap = garden;
+  player = new Player(currmap.startX, currmap.startY);
+  letter = new Letter();
 }
 
 void loadPortals()
 {
   gardenSea = new Portal(gardenSeaLeft, gardenSeaRight, gardenSeaTop, gardenSeaBot, gardenSeaImg, sea);
   gardenWood = new Portal(gardenWoodLeft, gardenWoodRight, gardenWoodTop, gardenWoodBot, gardenWoodImg, wood);
-  gardenDesert = new Portal(gardenDesertLeft, gardenDesertRight, gardenDesertTop, gardenDesertBot, gardenDesertImg, wood);
+  gardenDesert = new Portal(gardenDesertLeft, gardenDesertRight, gardenDesertTop, gardenDesertBot, gardenDesertImg, desert);
   garden.add(gardenSea);
   garden.add(gardenWood);
   garden.add(gardenDesert);
   
   seaGarden = new Portal(300, 320, -150, -130, seaPortalImg, garden);
   sea.add(seaGarden);
+  
+  woodGarden = new Portal(190, 220, 130, 160, woodGardenImg, garden);
+  desertGarden = new Portal(195, 215, -197, -177, desertGardenImg, garden);
+  wood.add(woodGarden);
+  desert.add(desertGarden);
 }

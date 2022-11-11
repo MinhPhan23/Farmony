@@ -1,9 +1,3 @@
-Map map1, map2, currmap;
-NPC npc;
-Seed seed1;
-Letter letter;
-Portal boiler1, boiler2;
-
 import com.jogamp.opengl.GLProfile;
 {
   GLProfile.initSingleton();
@@ -16,15 +10,7 @@ void setup()
   textureMode(NORMAL);
   textureWrap(CLAMP);
   noStroke();
-  
   loadAsset();
-
-  currmap = garden;
-
-  player = new Player(currmap.startX, currmap.startY);
-
-  // Set the first letter
-  letter = new Letter();
 }
 
 void draw()
