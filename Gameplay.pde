@@ -70,13 +70,13 @@ void gameplay()
       }
       if (npc.isTalking())
       {
-        npc.talking();
         if (keyPressed)
         {
           if (key == '1') npc.setInput(1);
           if (key == '2') npc.setInput(2);
           if (key == '3') npc.setInput(3);
         }
+        npc.talking();
       }
     }
 

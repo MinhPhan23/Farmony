@@ -24,12 +24,12 @@ C-A long time ago. How’s she doin?
 P-She passed away…
 C-Oh… I’m sorry, kid.
 C-I’m sure she’s mig- I’m sure she’s very proud of you.
+$
+1-Come by and visit sometime, pardner.
+2-Thank you. Stay safe, pardner.
 %
-If:
-P-Come by and visit sometime, pardner.
+1:
 C-Looking forward to it, pardner.
-%%
-Else:
-P-Thank you. Stay safe, pardner.
+2:
 C-Safe travels, friend.
 %%

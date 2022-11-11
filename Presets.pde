@@ -31,8 +31,8 @@ void loadDesert()
 
 //load Wood Assets
 Map wood;
-float lumberX=-50;
-float lumberY=-50;
+float lumberX=-75;
+float lumberY=-75;
 NPC lumber;
 void loadWood()
 {

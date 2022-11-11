@@ -16,6 +16,11 @@ void setup()
   textureMode(NORMAL);
   textureWrap(CLAMP);
   noStroke();
+  
+  //loadMap
+  loadWood();
+  loadSea();
+  loadDesert();
 
   // Create menu screen
   homeScreen = new Menu();
@@ -32,6 +37,9 @@ void setup()
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
   seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
   map1.add(npc);
+  map1.add(pirate);
+  map1.add(lumber);
+  map1.add(cowboy);
   map1.add(boiler1);
   map2.add(boiler2);
   map2.add(new Seed(02, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed2", "a seed in the forest, how fortuitous!"));

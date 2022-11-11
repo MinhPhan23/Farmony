@@ -19,7 +19,7 @@ public class NPC extends Interactable
   private String[] words;
   
   private int countCurrLetters = 0; //count the length of the curr read letter
-  private int maxLetters = 12; //max letter in each line
+  private int maxLetters = 10; //max words in each line
   
   private String currDialog= "";
   private int dialogInd = 0;
@@ -54,14 +54,14 @@ public class NPC extends Interactable
   {
     msgIterate();
     pushMatrix();
-    translate(player.getPlayerX()-195, player.getPlayerY()+60, 0.9);
+    translate(player.getPlayerX()-200, player.getPlayerY()+20, 0.9);
     textFont(fontDialog);
     beginShape(QUADS);
     texture(loadImage("map/choicebox.png"));
     vertex(0, 0, 0, 0);
-    vertex(390, 0, 1, 0);
-    vertex(390, 80, 1, 1);
-    vertex(0, 80, 0, 1);
+    vertex(400, 0, 1, 0);
+    vertex(400, 130, 1, 1);
+    vertex(0, 130, 0, 1);
     endShape();
     
     if(countCurrLetters > maxLetters){
@@ -72,33 +72,35 @@ public class NPC extends Interactable
     textFont(fontName);
     textAlign(LEFT, LEFT);
     fill(0.2, 0.2, 0.15);
-    translate(25, 15);
+    translate(25, 20);
     text(name, 0, 0);
-    translate(-10, 15);
+    translate(-20, 15);
     textFont(fontDialog);
-    text(currDialog, 0, 0);
-    
-    countCurrLetters++;
+    text(currDialog, 0, 0); //<>//
     
     popMatrix();
   }
 
   private void msgIterate() {
     if (dialogInd < words.length) {
-      currDialog +=" "+words[dialogInd]; //<>//
+      currDialog +=" "+words[dialogInd];
       if(currDialog.charAt(currDialog.length()-1)=='\n')
       {
         countCurrLetters = 0;
       }
-      dialogInd++;
+      dialogInd++; //<>//
+      countCurrLetters++;
     } 
     else {
       time++;
-      if (!waiting && timeout()) {
+      if (timeout()) {
+        if (!waiting)
+        {
+          narrate = false;
+          currDialog = "";
+          dialogInd = 0;
+        }
         countCurrLetters = 0;
-        narrate = false;
-        currDialog = "";
-        dialogInd = 0;
       }
     }
   }
@@ -133,14 +135,15 @@ public class NPC extends Interactable
     {
       if (meeting.isOption()) {
         String[] option = meeting.getOption();
-        dialog = "1 "+option[0]+"\n"+ "2 "+ option[1]+"\n";
+        dialog = "1 "+option[0]+"\n"+ " 2 "+ option[1]+"\n";
         if (option[2].length() > 0) 
-          dialog+="3 "+option[2];
+          dialog+=" 3 "+option[2];
         waiting = true;
       } else
+      {
         dialog = meeting.getCurrDialog(0);
-      name = meeting.getCurrName();
-      words = split(dialog," ");
+        name = meeting.getCurrName();
+      }
 
       if (meeting.isOption() && choice == 0) 
       {
@@ -149,8 +152,15 @@ public class NPC extends Interactable
       {
         narrate = true;
         meeting.next(choice);
+        dialog = meeting.getCurrDialog(0);
+        name = meeting.getCurrName();
+        currDialog = "";
+        dialogInd = 0;
+        time = 0;
         waiting = false;
       }
+      
+      words = split(dialog," ");
 
       if (narrate)
       {
@@ -177,9 +187,10 @@ public class NPC extends Interactable
           dialog+=" 3 "+option[2];
         waiting = true;
       } else
+      {
         dialog = goodbye.getCurrDialog(0);
-      name = goodbye.getCurrName();
-      words = split(dialog," ");
+        name = goodbye.getCurrName();
+      }
 
       if (goodbye.isOption() && choice == 0)
       {
@@ -188,8 +199,15 @@ public class NPC extends Interactable
       {
         narrate = true;
         goodbye.next(choice);
+        dialog = goodbye.getCurrDialog(0);
+        name = goodbye.getCurrName();
+        currDialog = "";
+        dialogInd = 0;
+        time = 0;
         waiting = false;
       }
+      
+      words = split(dialog," ");
 
       if (narrate)
       {
