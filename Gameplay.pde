@@ -44,7 +44,7 @@ void gameplay()
 
     seedList = currmap.getSeed();
     for (Seed seed : seedList) {
-      if (!seed.isPicked() && seed.getHitbox().collide(player)) { // pick up seed
+      if (!seed.isPicked() && seed.isUnlocked() && seed.getHitbox().collide(player)) { // pick up seed
         seed.pick();
         seed.setNarrate();
         seedMessage = true;
@@ -66,6 +66,10 @@ void gameplay()
       if (npc.getHitbox().collide(player)) { // talk to npc
         npc.setTalking();
         npc.setNarrate();
+        for (Seed seed : seedList) {
+          if (!seed.isUnlocked())
+            seed.unlock();
+        }
       }
       if (npc.isTalking())
       {
