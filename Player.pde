@@ -49,9 +49,9 @@ class Player {
   //load player images from the side,up and down looks
   private void loadPlayer() {
     for (int i = 0; i < 7; i++) {
-      playerSide[i] = loadImage("res/playersprite/playerside" + (i+1) + ".png");
-      playerUp[i] = loadImage("res/playersprite/playerup" + (i+1) + ".png");
-      playerDown[i] = loadImage("res/playersprite/playerdown" + (i+1) + ".png");
+      playerSide[i] = loadImage("res/characters/player/playerside" + (i+1) + ".png");
+      playerUp[i] = loadImage("res/characters/player/playerup" + (i+1) + ".png");
+      playerDown[i] = loadImage("res/characters/player/playerdown" + (i+1) + ".png");
     }
     currImage = playerDown[0];
   }
@@ -129,10 +129,10 @@ class Player {
         keyDown = true;
       } else if (keyCode == LEFT) {
         keyLeft = true;
-        playerAngle = PI;
+        playerAngle = 0;
       } else if (keyCode == RIGHT) {
         keyRight = true;
-        playerAngle = 0;
+        playerAngle = PI;
       }
     }
   }
