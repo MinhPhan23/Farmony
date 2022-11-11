@@ -35,7 +35,6 @@ void gameplay()
 
     if (letter.isReading() && !seedMessage)
     {
-      println(completeMap);
       letter.read(completeMap);
     }
 
