@@ -53,7 +53,7 @@ public class Map {
   private void renderObjects() {
     int count = 0;
     for (Seed seed : seedList) { // Draw seeds
-      if (seed.isUnlocked() && !seed.isPicked()) { // seed is able to be picked up
+      if (seed.isUnlocked() && !seed.isPicked()) { // seed is able to be picked up //<>//
         seed.drawObj();
       }
       else if (seed.isPicked() && !complete) {

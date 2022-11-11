@@ -40,7 +40,7 @@ void gameplay()
 
     portalList = currmap.getPortal();
 
-    for (Portal portal : portalList) { // Draw portal(s)
+    for (Portal portal : portalList) { 
       if (portal.getHitbox().collide(player))
       {
         if (currmap.firstVisit()) {
@@ -53,7 +53,7 @@ void gameplay()
 
     seedList = currmap.getSeed();
     for (Seed seed : seedList) {
-      if (!seed.isPicked() && seed.isUnlocked() && seed.getHitbox().collide(player)) { // pick up seed
+      if (!seed.isPicked() && seed.isUnlocked() && seed.getHitbox().collide(player)) { 
         seed.pick();
         seed.setNarrate();
         seedMessage = true;
@@ -66,7 +66,7 @@ void gameplay()
     }
 
     objectList = currmap.getObject();
-    for (Interactable object : objectList) { // Draw portal(s)
+    for (Interactable object : objectList) { 
       object.getHitbox().collide(player);
     }
 
@@ -93,7 +93,7 @@ void gameplay()
     }
 
     objectList = currmap.getObject();
-    for (Interactable object : objectList) { // Draw object(s)
+    for (Interactable object : objectList) { 
       object.getHitbox().collide(player);
     }
 
