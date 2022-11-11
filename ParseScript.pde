@@ -57,24 +57,3 @@ private String[] parseLine(int line, String curPath, String[] script)
   }
   return toReturn;
 }
-
-// this will choose a random option from a generic script passed to it, which can than be passed to parseScript
-/*public static String[] chooseGeneric(String[] script)
- {
- String[] chosen = new String[2];
- int choice = int(random(0, 3));
- int option = 0;
- int line = 0;
- while (option < choice)
- {
- if (script[line++].charAt(0) == '%')
- option++;
- }
- chosen[0] = script[line++];
- if (script[line].charAt(0) != '%')
- chosen[1] = script[line];
- else
- chosen[1] = "%%";
- 
- return chosen;
- }*/
