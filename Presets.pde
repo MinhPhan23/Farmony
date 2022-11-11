@@ -27,6 +27,8 @@ NPC cowboy;
 void loadDesert()
 {
   cowboy = new NPC(cowboyX, cowboyX + npcWidth, cowboyY, cowboyY + npcHeight, loadImage("res/characters/cowboydown.png"), "data/CowboyMeeting.txt", "data/CowboyGoodbye.txt", "data/CowboyGeneric.txt" );
+  parseScript("data/CowboyHint.txt", cowboy.hint);
+  cowboy.initConvo();
 }
 
 //load Wood Assets
@@ -37,6 +39,8 @@ NPC lumber;
 void loadWood()
 {
   lumber = new NPC(lumberX, lumberX + npcWidth, lumberY, lumberY + npcHeight, loadImage("res/characters/lumberjackdown.png"), "data/LumberMeeting.txt", "data/LumberGoodbye.txt", "data/LumberGeneric.txt" );
+  parseScript("data/LumberHint.txt", lumber.hint);
+  lumber.initConvo();
 }
 
 //load Sea Assets
@@ -47,6 +51,15 @@ NPC pirate;
 void loadSea()
 {
   pirate = new NPC(pirateX, pirateX + npcWidth, pirateY, pirateY + npcHeight, loadImage("res/characters/piratedown.png"), "data/PirateMeeting.txt", "data/PirateGoodbye.txt", "data/PirateGeneric.txt" );
+  parseScript("data/PirateHint.txt", pirate.hint);
+  pirate.initConvo();
+}
+
+//load Cave Assets
+Map cave;
+void loadCave()
+{
+  
 }
 
 //load menuscreen
