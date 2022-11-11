@@ -34,6 +34,5 @@ void draw()
 {
   clear();
   ortho(-200, 200, -150, 150);
-  camera(player.getPlayerX(), player.getPlayerY(), 2, player.getPlayerX(), player.getPlayerY(), 0, 0, 1, 0);
   gameplay();
 }
