@@ -14,6 +14,7 @@ void gameplay()
     loadMenu();
   } else
   {
+    camera(player.getPlayerX(), player.getPlayerY(), 2, player.getPlayerX(), player.getPlayerY(), 0, 0, 1, 0);
     player.movePlayer(currmap);
 
     currmap.drawMap();

@@ -26,7 +26,7 @@ public class Menu {
     textFont(title);
     textAlign(CENTER, CENTER);
     fill(255, 255, 255);
-    translate(-screenWidth/16, -screenHeight/8);
+    translate((screenWidth/2), (screenHeight/2)-15);
     text("Plant game", 0, 0);
 
     textFont(body);
