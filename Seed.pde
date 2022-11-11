@@ -32,12 +32,13 @@ public class Seed extends Interactable
    */
   public void spawnDialog()
   {
+    setChoiceBox();
     msgIterate();
     pushMatrix();
     translate(player.getPlayerX()-195, player.getPlayerY()+80, 0.9);
     textFont(fontDialog);
     beginShape(QUADS);
-    texture(loadImage("map/choicebox.png"));
+    texture(choiceBoxImg);
     vertex(0, 0, 0, 0);
     vertex(390, 0, 1, 0);
     vertex(390, 60, 1, 1);

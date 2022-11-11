@@ -303,7 +303,7 @@ void loadAsset()
   
   homeScreen = new Menu();
   gameStart = false;
-  currmap = wood;
+  currmap = garden;
   player = new Player(currmap.startX, currmap.startY);
   letter = new Letter();
 }
@@ -324,4 +324,22 @@ void loadPortals()
   desertGarden = new Portal(195, 215, -197, -177, desertGardenImg, garden);
   wood.add(woodGarden);
   desert.add(desertGarden);
+}
+
+
+PImage choiceBoxImg;
+void setChoiceBox(){
+  if(currmap == garden){
+    choiceBoxImg = loadImage("map/choiceboxpaper.png");
+  }
+  else if (currmap == sea){
+    choiceBoxImg = loadImage("map/choiceboxorange.png");  
+  }
+  else if (currmap == desert){
+    choiceBoxImg = loadImage("map/choiceboxyellow.png");  
+  }
+  else if (currmap == wood){
+    choiceBoxImg = loadImage("map/choiceboxgreen.png");    
+  }
+  
 }

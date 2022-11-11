@@ -80,11 +80,12 @@ public class NPC extends Interactable
   public void spawnDialog()
   {
     msgIterate();
+    setChoiceBox();
     pushMatrix();
     translate(player.getPlayerX()-200, player.getPlayerY()+20, 0.9);
     textFont(fontDialog);
     beginShape(QUADS);
-    texture(loadImage("map/choicebox.png"));
+    texture(choiceBoxImg);
     vertex(0, 0, 0, 0);
     vertex(400, 0, 1, 0);
     vertex(400, 130, 1, 1);
