@@ -7,8 +7,8 @@ float mapX;
 float mapY;
 
 //load NPC size
-float npcWidth=12;
-float npcHeight=34;
+float npcWidth=13;
+float npcHeight=35;
 
 //load Player
 
@@ -23,8 +23,8 @@ PImage gardenImg;
 NPC mom;
 float momX;
 float momY;
-String momMeeting;
-String momGoodbye;
+String momMeeting = "";
+String momGoodbye = "";
 String momGeneric = "data/MomGeneric.txt";
 PImage momImg;
 
@@ -32,7 +32,7 @@ NPC dad;
 float dadX;
 float dadY;
 String dadMeeting = "data/DadMeeting.txt";
-String dadGoodbye;
+String dadGoodbye = "";
 String dadGeneric = "data/DadGenric.txt";
 PImage dadImg;
 
@@ -57,7 +57,7 @@ float gardenWoodBot;
 void loadGarden()
 {
   gardenImg = loadImage("");
-  momImg = loadImage("res/characters/momdown2.png");
+  momImg = loadImage("res/characters/mom/momdown2.png");
   dadImg = loadImage("res/characters/daddown.png");
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
@@ -156,18 +156,19 @@ void loadWood()
 
 //load Sea Assets
 Map sea;
-float seaWidth;
-float seaHeight;
-float seaStartX;
-float seaStartY;
+float seaWidth = 337.5;
+float seaHeight = 206.25;
+float seaStartX = 205;
+float seaStartY = -100;
+PImage seaImg;
 
 Seed hydrangeas;
 Seed bamboo;
 Seed hellebore;
 
 NPC pirate;
-float pirateX=75;
-float pirateY=75;
+float pirateX=-250;
+float pirateY=20;
 PImage pirateImg;
 String pirateMeeting = "data/PirateMeeting.txt";
 String pirateGoodbye = "data/PirateGoodbye.txt";
@@ -177,8 +178,9 @@ String pirateHint = "data/PirateHint.txt";
 Portal seaGarden;
 void loadSea()
 {
+  seaImg = loadImage("map/sea.png");
   pirateImg = loadImage("res/characters/piratedown.png");
-  sea = new Map(loadImage(""), seaWidth, seaHeight, seaStartX, seaStartY);
+  sea = new Map(seaImg, seaWidth, seaHeight, seaStartX, seaStartY);
   
   pirate = new NPC(pirateX, pirateX + npcWidth, pirateY, pirateY + npcHeight, pirateImg, pirateMeeting, pirateGoodbye, pirateGeneric);
   parseScript(pirateHint, pirate.hint);
@@ -196,9 +198,11 @@ void loadMenu()
 
 void loadAsset()
 {
-  loadGarden();
+  //loadGarden();
   loadDesert();
   loadSea();
   loadWood();
   makeNPCList();
+  homeScreen = new Menu();
+  gameStart = false;
 }
