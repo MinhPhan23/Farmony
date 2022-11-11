@@ -19,6 +19,16 @@ public class Interactable
     bottom = b;
     hitbox = new Hitbox(l, r, t, b);
   }
+  
+  //normal object that can be used to cover;
+  Interactable(float l, float r, float t, float b, PImage img, boolean creteHitbox)
+  {
+    texture = img;
+    left = l;
+    right = r;
+    top = t;
+    bottom = b;
+  }
 
   //draw the object to canvas
   public void drawObj()
