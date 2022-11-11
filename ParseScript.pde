@@ -53,6 +53,10 @@ private String[] parseLine(int line, String curPath, String[] script)
       toReturn[2] = "The Gunslinger";
     else if (script[line].charAt(0) == 'L')
       toReturn[2] = "The Woodsman";
+    else if (script[line].charAt(0) == 'D')
+      toReturn[2] = "Dad";
+    else if (script[line].charAt(0) == 'M')
+      toReturn[2] = "Mary";
     toReturn[3] = script[line].substring(2);
   }
   return toReturn;
