@@ -27,5 +27,16 @@ boolean checkFinish()
 void ending()
 {
   if (checkFinish())
+  {
     garden.add(mom);
+    garden.add(bambooTree);
+    garden.add(buglossTree);
+    garden.add(cactusTree);
+    garden.add(grapeTree);
+    garden.add(helleboreTree);
+    garden.add(hydrangeaTree);
+    garden.add(mandrakeTree);
+    garden.add(mapleTree);
+    garden.add(poinsettiaTree);
+  }
 }
