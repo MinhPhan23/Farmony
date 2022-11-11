@@ -110,7 +110,6 @@ float cactiX = -220;
 float cactiY = 150;
 float cactiHeight = 15;
 float cactiWidth = 15;
-
 PImage cactiImg;
 
 NPC cowboy;
@@ -150,11 +149,11 @@ void loadDesert()
   grapes =  new Seed(grapesX, grapesY, grapesWidth, grapesHeight, grapesImg, "Me", "Grapes Seed Found!!");
   horse = new Interactable(horseX, horseX + 57, horseY, horseY + 35, horseImg);
 
+  desert.add(cowboy);
+  desert.add(horse);
   desert.add(grapes);
   desert.add(mandrakes);
   desert.add(cacti);
-  desert.add(cowboy);
-  desert.add(horse);
 }
 
 //load Wood Assets
@@ -166,14 +165,14 @@ float woodStartY = -19;
 PImage woodImg;
 
 Seed bugloss;
-float buglossX = -100;
-float buglossY = -175;
+float buglossX = -124;
+float buglossY = -210;
 float buglossWidth = 75/4;
 float buglossHeight = 75/4;
 PImage buglossImg;
 
 Seed poinsettias;
-float poinsettiasX = -208;
+float poinsettiasX = -206;
 float poinsettiasY = 160;
 float poinsettiasWidth = 75/4;
 float poinsettiasHeight = 75/4;
