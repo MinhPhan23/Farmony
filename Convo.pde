@@ -53,7 +53,11 @@ public class Convo
     if (parse[0].charAt(0) == 'O')
     {
       Node newNode = new Node(parse);
-      flow.last.next = newNode;
+      if (flow.top == null)
+      {
+        flow.top = newNode;
+      } else
+        flow.last.next = newNode;
       flow.last = newNode;
       startOption = true;
     } else if (parse[1].charAt(0) != 'M')
