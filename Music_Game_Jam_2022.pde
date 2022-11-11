@@ -17,17 +17,12 @@ void setup()
   textureWrap(CLAMP);
   noStroke();
   
-  //loadMap
   loadAsset();
 
-  // Create menu screen
-  homeScreen = new Menu();
-  gameStart = false;
+  currmap = sea;
 
-  //create map
-  currmap = desert;
+  player = new Player(currmap.startX, currmap.startY);
 
-  player = new Player(-50, -50);
   seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
   currmap.add(seed1);
 

@@ -35,7 +35,7 @@ public class NPC extends Interactable
 
   NPC(float l, float r, float t, float b, PImage img, String pathMeeting, String pathGoodbye, String pathGeneric)
   {
-    super(l, r, t, b, img);
+    super(l, r, t, b, img); //<>//
 
     parseScript(pathMeeting, meeting);
     parseScript(pathGoodbye, goodbye);
@@ -94,7 +94,7 @@ public class NPC extends Interactable
         currDialog+="\n";
       }
       //count as new line when there is a linebreak in the string
-      if (currDialog.charAt(currDialog.length()-1)=='\n')
+      if (words[dialogInd].charAt(words[dialogInd].length()-1)=='\n')
       {
         dialWidth = 0;
       }
