@@ -27,14 +27,17 @@ void gameplay()
 
     currmap.drawMap();
 
-    if (currmap.firstVisit() && currmap.isComplete())
+    if (prevmap.firstVisit() && prevmap.isComplete())
     {
       letter.setReading();
-      currmap.readLetter(false);
+      prevmap.setfirstVisit(false);
     }
 
     if (letter.isReading() && !seedMessage)
-      letter.read(currmap.getLetterPart());
+    {
+      println(completeMap);
+      letter.read(completeMap);
+    }
 
     player.drawPlayer();
 
@@ -43,11 +46,13 @@ void gameplay()
     for (Portal portal : portalList) { 
       if (portal.getHitbox().collide(player))
       {
-        if (currmap.firstVisit()) {
-          currmap.readLetter(true);
-        }
+        prevmap = currmap;
         currmap = portal.transition();
         player.setStart(currmap);
+
+        if (currmap.firstVisit()) {
+          currmap.setfirstVisit(true);
+        }
       }
     }
 

@@ -20,8 +20,7 @@ public class Map {
   private boolean complete;
 
   //elements of letter connected with the map
-  private boolean letterRead;
-  private int letterPart; 
+  private boolean firstVisit;
 
   // Constructor
   public Map (PImage background, float mapWidth, float mapHeight, float startX, float startY) {
@@ -31,7 +30,7 @@ public class Map {
     this.startX = startX;
     this.startY = startY;
     complete = false;
-    letterRead = true;
+    firstVisit = true;
   }
 
   // draw the map background and all objects
@@ -158,21 +157,21 @@ public class Map {
   public void completeMap()
   {
     complete = true;
-    letterPart = completeMap++;
+    completeMap++;
     for (NPC npc : npcList) { // Draw NPCs
       npc.setHint();
     }
   }
 
   //Getter and setter for letter appearance completeion
-  public void readLetter(boolean status) {
-    letterRead = status;
+  public void setfirstVisit(boolean status) {
+    firstVisit = status;
   }
   
   //true when player just visit the map, false after print out the letter
   public boolean firstVisit()
   {
-    return letterRead;
+    return firstVisit;
   }
 
   // Get player starting position
@@ -183,11 +182,5 @@ public class Map {
   public float getStartY()
   {
     return startY;
-  }
-  
-  //number of the letter that is assigned to the map
-  public int getLetterPart()
-  {
-    return letterPart;
   }
 }

@@ -1,5 +1,6 @@
 //current map of the game
 Map currmap;
+Map prevmap;
 
 //load letter
 Letter letter;
@@ -63,14 +64,35 @@ float gardenWoodTop = 160;
 float gardenWoodBot = 180;
 PImage gardenWoodImg;
 
+Interactable bambooTree;
+Interactable buglossTree;
+Interactable cactusTree;
+Interactable grapeTree;
+Interactable helleboreTree;
+Interactable hydrangeaTree;
+Interactable mandrakeTree;
+Interactable mapleTree;
+Interactable poinsettiaTree;
+
 void loadGarden()
 {
   gardenImg = loadImage("map/garden.png");
   momImg = loadImage("res/characters/mom/momdown2.png");
   dadImg = loadImage("res/characters/daddown.png");
-  gardenSeaImg = loadImage("map/object/boiler.png");
-  gardenWoodImg = loadImage("map/object/boiler.png");
-  gardenDesertImg = loadImage("map/object/boiler.png");
+  
+  gardenSeaImg = loadImage("map/portalgarden1.png");
+  gardenDesertImg = loadImage("map/portalgarden2.png");
+  gardenWoodImg = loadImage("map/portalgarden3.png");
+
+  bambooTree = new Interactable(-75, -50, -150, -110, loadImage("res/plants/bamboo.png"));
+  buglossTree = new Interactable(-40, -10, -200, -170, loadImage("res/plants/bugloss.png"));
+  cactusTree = new Interactable(-55, -35, -180, -140, loadImage("res/plants/cactus.png"));
+  grapeTree = new Interactable(0, 30, -205, -175, loadImage("res/plants/grape.png"));
+  helleboreTree = new Interactable(40, 70, -205, -175, loadImage("res/plants/hellebore.png"));
+  hydrangeaTree = new Interactable(80, 110, -205, -175, loadImage("res/plants/hydrangea.png"));
+  mandrakeTree = new Interactable(120, 150, -205, -175, loadImage("res/plants/mandrake.png"));
+  mapleTree = new Interactable(150, 180, -180, -140, loadImage("res/plants/maple.png"));
+  poinsettiaTree = new Interactable(150, 180, -130, -100, loadImage("res/plants/poinsettia.png"));
   
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
@@ -94,20 +116,20 @@ float desertStartY = 153;
 PImage desertImg;
 
 Seed mandrakes;
-float mandrakesX;
-float mandrakesY;
-float mandrakesHeight;
-float mandrakesWidth;
+float mandrakesX = -127;
+float mandrakesY = -30;
+float mandrakesHeight = 15;
+float mandrakesWidth = 15;
 PImage mandrakesImg;
 Seed grapes;
-float grapesX;
-float grapesY;
-float grapesHeight;
-float grapesWidth;
+float grapesX = 200;
+float grapesY = 90;
+float grapesHeight = 15;
+float grapesWidth = 15;
 PImage grapesImg;
 Seed cacti;
-float cactiX = -220;
-float cactiY = 150;
+float cactiX = 160;
+float cactiY = -120;
 float cactiHeight = 15;
 float cactiWidth = 15;
 PImage cactiImg;
@@ -136,19 +158,23 @@ void loadDesert()
   horseImg = loadImage("res/characters/horse-w114xh75.png");
   desertGardenImg = loadImage("map/object/boiler.png");
   cactiImg = loadImage("res/seeds/cactusSeed.png");
+  mandrakesImg = loadImage("res/seeds/mandrakeSeed.png");
+  grapesImg = loadImage("res/seeds/grapeSeed.png");
   
   desert = new Map(desertImg, desertX, desertY, desertStartX, desertStartY);
   
   cowboy = new NPC(cowboyX, cowboyX + npcWidth, cowboyY, cowboyY + npcHeight, cowboyImg, cowboyMeeting, cowboyGoodbye, cowboyGeneric );
   parseScript(cowboyHint, cowboy.hint);
   cowboy.initConvo();
-  
-  horse = new Interactable(horseX, horseX + 57, horseY, horseY + 35, horseImg);
-  
   cacti = new Seed(cactiX, cactiY, cactiWidth, cactiHeight, cactiImg, "Me", "Cacti Seed Found!!");
-  
+  mandrakes = new Seed(mandrakesX, mandrakesY, mandrakesWidth, mandrakesHeight, mandrakesImg, "Me", "Mandrakes Seed Found!!"); 
+  grapes =  new Seed(grapesX, grapesY, grapesWidth, grapesHeight, grapesImg, "Me", "Grapes Seed Found!!");
+  horse = new Interactable(horseX, horseX + 57, horseY, horseY + 35, horseImg);
+
   desert.add(cowboy);
   desert.add(horse);
+  desert.add(grapes);
+  desert.add(mandrakes);
   desert.add(cacti);
 }
 
@@ -162,7 +188,7 @@ PImage woodImg;
 
 Seed bugloss;
 float buglossX = -124;
-float buglossY = -210;
+float buglossY = -200;
 float buglossWidth = 75/4;
 float buglossHeight = 75/4;
 PImage buglossImg;
@@ -304,6 +330,7 @@ void loadAsset()
   homeScreen = new Menu();
   gameStart = false;
   currmap = garden;
+  prevmap = garden;
   player = new Player(currmap.startX, currmap.startY);
   letter = new Letter();
 }
