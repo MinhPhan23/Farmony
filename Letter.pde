@@ -1,4 +1,4 @@
-public class Letter { //<>// //<>// //<>//
+public class Letter { //<>//
 
   // Instance variables
   private String[] letters = new String[] {
@@ -31,7 +31,7 @@ public class Letter { //<>// //<>// //<>//
 
   // display the letter on the screen
   public void read(int letterNum) {
-    msgIterate(letterNum);
+    msgIterate(letterNum); //<>//
     pushMatrix();
     translate(player.getPlayerX()-195, player.getPlayerY()-100, 0.9);
     beginShape(QUADS);
@@ -59,9 +59,9 @@ public class Letter { //<>// //<>// //<>//
      }*/
     translate(-10, 15);
     text(currLetter, 0, 0);
-    //<>// //<>// //<>//
+    //<>//
     /*if (letterNum < letters.length - 1)
-     { //<>// //<>//
+     {
      translate(0, 15);
      textFont(name);
      text("Mother", 0, 0);

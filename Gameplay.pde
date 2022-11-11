@@ -21,7 +21,7 @@ void gameplay()
 
     if (currmap.firstVisit() && currmap.isComplete())
     {
-      letter.setReading();
+      //letter.setReading();
       currmap.readLetter(false);
     }
 

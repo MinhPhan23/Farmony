@@ -4,9 +4,9 @@ $
 3-How to go to the wood
 %
 1:
-D-[Direction]
+D-Follow the stream to the open sea
 2:
-D-[Direction]
+D-Follow the land that no plant cna grow
 3:
-D-[Direction]
+D-Follow the green field and open your eyes
 %%
