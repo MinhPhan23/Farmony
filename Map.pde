@@ -159,6 +159,9 @@ public class Map {
   {
     complete=true;
     letterPart = completeMap++;
+    for (NPC npc : npcList) { // Draw NPCs
+      npc.setHint();
+    }
   }
 
   //Getter and setter for letter appearance completeion

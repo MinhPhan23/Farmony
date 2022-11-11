@@ -32,11 +32,9 @@ void setup()
   currmap = map1;
 
   player = new Player(-50, -50);
-  npc = new NPC(0, 12, 0, 34, loadImage("map/object/mom.png"), "data/LumberMeeting.txt", "data/LumberGoodbye.txt", "data/LumberGeneric.txt");
   boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
   boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
   seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
-  map1.add(npc);
   map1.add(pirate);
   map1.add(lumber);
   map1.add(cowboy);

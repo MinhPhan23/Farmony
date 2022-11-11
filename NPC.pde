@@ -3,7 +3,7 @@ public class NPC extends Interactable //<>//
 
   private String name;
   private PFont fontName = createFont("Arial", 14);
-  private PFont fontDialog = createFont("Arial", 10);
+  private PFont fontDialog = createFont("Arial", 12);
   private PImage choicebox = loadImage("map/choicebox.png");
   private int time;
   private int choice = 0;
@@ -19,8 +19,8 @@ public class NPC extends Interactable //<>//
   private String dialog;
   private String[] words;
 
-  private int countCurrLetters = 0; //count the length of the curr read letter
-  private int maxLetters = 11; //max words in each line
+  private float dialWidth = 0;
+  private float maxWidth = 300;
 
   private String currDialog= "";
   private int dialogInd = 0;
@@ -66,9 +66,10 @@ public class NPC extends Interactable //<>//
     vertex(0, 130, 0, 1);
     endShape();
 
-    if (countCurrLetters > maxLetters) {
-      currDialog += "\n";
-      countCurrLetters = 0;
+    if (dialWidth > maxWidth)
+    {
+      dialWidth = 0;
+      currDialog+="\n";
     }
 
     textFont(fontName);
@@ -85,13 +86,13 @@ public class NPC extends Interactable //<>//
 
   private void msgIterate() {
     if (dialogInd < words.length) {
-      currDialog +=" "+words[dialogInd];
-      dialogInd++;
-      countCurrLetters++;
+      currDialog +=" "+words[dialogInd];      
+      dialWidth+=textWidth(words[dialogInd]);
       if (currDialog.charAt(currDialog.length()-1)=='\n')
       {
-        countCurrLetters = 0;
+        dialWidth = 0;
       }
+      dialogInd++;
     } else {
       time++;
       if (timeout()) {
@@ -101,7 +102,7 @@ public class NPC extends Interactable //<>//
           currDialog = "";
           dialogInd = 0;
         }
-        countCurrLetters = 0;
+        dialWidth = 0;
       }
     }
   }
@@ -157,6 +158,7 @@ public class NPC extends Interactable //<>//
       currDialog = "";
       dialogInd = 0;
       time = 0;
+      dialWidth = 0;
       waiting = false;
     }
 
@@ -230,7 +232,6 @@ public class NPC extends Interactable //<>//
       meetingState = false;
     } else if (hintState)
     {
-      hintState = false;
     } else if (goodbyeState)
     {
       goodbyeState = false;
@@ -243,5 +244,10 @@ public class NPC extends Interactable //<>//
     goodbye.setCurr();
     generic.setCurr();
     hint.setCurr();
+  }
+  
+  public void setHint()
+  {
+    hintState = false;
   }
 }

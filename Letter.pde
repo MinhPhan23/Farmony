@@ -12,9 +12,7 @@ public class Letter { //<>// //<>//
   private int letterInd;
 
   private int countNextLine = 0;//count the curr letter in the line
-  private int countCurrLetters = 0; //count the length of the curr read letter
   private int maxLetters = 62; //max letter in each line
-  private int boxFullCount = 0;//counter to detect if the text box is full
 
   private int time;
   private boolean reading;
@@ -63,7 +61,7 @@ public class Letter { //<>// //<>//
     text(currLetter, 0, 0);
     //<>// //<>//
     /*if (letterNum < letters.length - 1)
-     {
+     { //<>//
      translate(0, 15);
      textFont(name);
      text("Mother", 0, 0);
@@ -72,7 +70,6 @@ public class Letter { //<>// //<>//
     popMatrix();
 
     countNextLine++;
-    countCurrLetters++;
   }
 
   // Add animated text effect
@@ -102,7 +99,6 @@ public class Letter { //<>// //<>//
       time++;
       if (timeout()) {
         countNextLine = 0;
-        countCurrLetters = 0;
         reading = false;
         currLetter= "";
         letterInd = 0;
