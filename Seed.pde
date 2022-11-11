@@ -22,7 +22,7 @@ public class Seed extends Interactable
     super(x, x+seedWidth, y, y+seedHeight, img);
     this.name = name;
     dialog = script;
-    unlocked = false;
+    unlocked = true;
     picked = false;
     time = 0;
   }
