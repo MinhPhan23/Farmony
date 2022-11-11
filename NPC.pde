@@ -144,22 +144,28 @@ public class NPC extends Interactable
   public void talking()
   {
     Convo current = state();
+    //if the content is options, print out all of them with number
     if (current.isOption()) {
       String[] option = current.getOption();
       dialog = "1 "+option[0]+"\n"+ " 2 "+ option[1]+"\n";
       if (option[2].length() > 0)
         dialog+=" 3 "+option[2];
       waiting = true;
-    } else
+    } 
+    //take the content normally
+    else
     {
       dialog = current.getCurrDialog(0);
       name = current.getCurrName();
     }
 
+    //wait and keep printing the old content if the player has not chosen
     if (current.isOption() && choice == 0)
     {
       narrate = true;
-    } else if (current.isOption())
+    } 
+    //move to the chosen path
+    else if (current.isOption())
     {
       narrate = true;
       current.next(choice);
@@ -179,11 +185,14 @@ public class NPC extends Interactable
       spawnDialog();
     } else
     {
+      //move to next turn 
       if (current.hasNext())
       {
         setNarrate();
         current.next(0);
-      } else
+      } 
+      //end conversation
+      else
       {
         talking = false;
         current.setCurr();
@@ -193,6 +202,7 @@ public class NPC extends Interactable
     choice = 0;
   }
 
+  //control waiting for player choice
   public boolean isWaiting()
   {
     return waiting;
@@ -202,6 +212,7 @@ public class NPC extends Interactable
     waiting = !waiting;
   }
 
+  //control conversation
   public boolean isTalking()
   {
     return talking;
@@ -211,11 +222,13 @@ public class NPC extends Interactable
     talking = !talking;
   }
 
+  //set user input
   public void setInput(int n)
   {
     choice = n;
   }
 
+  //return the correct script in-order
   private Convo state()
   {
     Convo result;
@@ -233,6 +246,7 @@ public class NPC extends Interactable
     return result;
   }
 
+  //update the script at the end of conversation
   private void updateState()
   {
     if (meetingState)
@@ -246,6 +260,7 @@ public class NPC extends Interactable
     }
   }
 
+  //initialize conversation
   public void initConvo()
   {
     meeting.setCurr();
@@ -254,6 +269,7 @@ public class NPC extends Interactable
     hint.setCurr();
   }
   
+  //set hint control variable
   public void setHint()
   {
     hintState = false;

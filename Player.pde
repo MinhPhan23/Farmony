@@ -201,12 +201,12 @@ class Player {
   {
     return pHitbox;
   }
-  
+
+  //control the player stop moving
   public void setStop(boolean state)
   {
     stop = state;
   }
-  
   public boolean getStop()
   {
     return stop;
