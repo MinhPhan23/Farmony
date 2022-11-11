@@ -35,7 +35,7 @@ public class NPC extends Interactable
 
   NPC(float l, float r, float t, float b, PImage img, String pathMeeting, String pathGoodbye, String pathGeneric)
   {
-    super(l, r, t, b, img); //<>//
+    super(l, r, t, b, img);
 
     parseScript(pathMeeting, meeting);
     parseScript(pathGoodbye, goodbye);
@@ -105,7 +105,7 @@ public class NPC extends Interactable
 
   private void msgIterate() {
     //iterate through every word
-    if (dialogInd < words.length) {
+    if (dialogInd < words.length) { //<>//
       currDialog +=" "+words[dialogInd];      
       dialWidth+=textWidth(words[dialogInd]);
 
@@ -200,7 +200,7 @@ public class NPC extends Interactable
       waiting = false;
     }
 
-    words = split(dialog, " ");
+    words = split(trim(dialog), " ");
 
     if (narrate)
     {

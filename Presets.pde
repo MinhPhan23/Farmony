@@ -121,10 +121,10 @@ void loadDesert()
 
 //load Wood Assets
 Map wood;
-float woodX;
-float woodY;
-float woodStartX;
-float woodStartY;
+float woodX = 900/4;
+float woodY = 825/4;
+float woodStartX = -169;
+float woodStartY = -19;
 PImage woodImg;
 
 Seed bugloss;
@@ -132,8 +132,8 @@ Seed poinsettias;
 Seed maple;
 
 NPC lumber;
-float lumberX=-75;
-float lumberY=-75;
+float lumberX= 0;
+float lumberY=-100;
 PImage lumberImg;
 String lumberMeeting = "data/LumberMeeting.txt";
 String lumberGoodbye = "data/LumberGoodbye.txt";
@@ -143,7 +143,7 @@ String lumberHint = "LumberHint.txt";
 Portal woodGarden;
 void loadWood()
 {
-  woodImg = loadImage("");
+  woodImg = loadImage("map/forest.png");
   lumberImg = loadImage("res/characters/lumberjackdown.png");
   wood = new Map(woodImg, woodX, woodY, woodStartX, woodStartY);
   
