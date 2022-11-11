@@ -37,28 +37,34 @@ String dadGeneric = "data/DadGeneric.txt";
 PImage dadImg;
 
 Portal gardenSea;
-float gardenSeaLeft;
-float gardenSeaRight;
-float gardenSeaTop;
-float gardenSeaBot;
+float gardenSeaLeft = 140;
+float gardenSeaRight = 160;
+float gardenSeaTop = 180;
+float gardenSeaBot = 200;
+PImage gardenSeaImg;
 
 Portal gardenDesert;
-float gardenDesertLeft;
-float gardenDesertRight;
-float gardenDesertTop;
-float gardenDesertBot;
+float gardenDesertLeft = -180;
+float gardenDesertRight = -160;
+float gardenDesertTop = 40;
+float gardenDesertBot = 60;
+PImage gardenDesertImg;
 
 Portal gardenWood;
-float gardenWoodLeft;
-float gardenWoodRight;
-float gardenWoodTop;
-float gardenWoodBot;
+float gardenWoodLeft = -180;
+float gardenWoodRight = -160;
+float gardenWoodTop = 160;
+float gardenWoodBot = 180;
+PImage gardenWoodImg;
 
 void loadGarden()
 {
   gardenImg = loadImage("map/garden.png");
   momImg = loadImage("res/characters/mom/momdown2.png");
   dadImg = loadImage("res/characters/daddown.png");
+  gardenSeaImg = loadImage("map/object/boiler.png");
+  gardenWoodImg = loadImage("map/object/boiler.png");
+  gardenDesertImg = loadImage("map/object/boiler.png");
   
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
@@ -205,6 +211,7 @@ void loadAsset()
   loadDesert();
   loadSea();
   loadWood();
+  loadPortals();
   makeNPCList();
   homeScreen = new Menu();
   gameStart = false;
