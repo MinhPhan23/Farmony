@@ -17,9 +17,9 @@ public class Seed extends Interactable
   private int maxLetters = 62; //max letter in each line
   private int boxFullCount = 0;//counter to detect if the text box is full
   
-  Seed(float l, float r, float t, float b, PImage img, String name, String script)
+  Seed(float x, float y, float seedWidth, float seedHeight, PImage img, String name, String script)
   {
-    super(l, r, t, b, img);
+    super(x, x+seedWidth, y, y+seedHeight, img);
     this.name = name;
     dialog = script;
     unlocked = false;

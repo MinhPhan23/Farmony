@@ -74,7 +74,7 @@ void loadGarden()
   
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
-  mom = new NPC(momX, momX + npcWidth, momY, momY + npcHeight, momImg, momMeeting, momGoodbye, momGeneric, false, false, true, false);
+  mom = new NPC(momX, momX + npcWidth, momY, momY + npcHeight, momImg, momMeeting, momGoodbye, momGeneric, true, false, true, false);
   mom.initConvo();
   
   dad = new NPC(dadX, dadX + npcWidth, dadY, dadY + npcHeight, dadImg, dadMeeting, dadGoodbye, dadGeneric, true, false, true, false);
