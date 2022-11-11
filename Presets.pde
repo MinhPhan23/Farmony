@@ -68,9 +68,9 @@ void loadGarden()
   gardenImg = loadImage("map/garden.png");
   momImg = loadImage("res/characters/mom/momdown2.png");
   dadImg = loadImage("res/characters/daddown.png");
-  gardenSeaImg = loadImage("map/object/boiler.png");
-  gardenWoodImg = loadImage("map/object/boiler.png");
-  gardenDesertImg = loadImage("map/object/boiler.png");
+  gardenSeaImg = loadImage("map/portalgarden1.png");
+  gardenDesertImg = loadImage("map/portalgarden2.png");
+  gardenWoodImg = loadImage("map/portalgarden3.png");
   
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
