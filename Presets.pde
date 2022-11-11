@@ -76,19 +76,20 @@ void loadGarden()
 
 //load Desert Assets
 Map desert;
-float desertX;
-float desertY;
-float desertStartX;
-float desertStartY;
+float desertX = 900/4;
+float desertY = 825/4;
+float desertStartX = 200;
+float desertStartY = 200;
 PImage desertImg;
+
 
 Seed mandrakes;
 Seed grapes;
 Seed cacti;
 
 NPC cowboy;
-float cowboyX=50;
-float cowboyY=50;
+float cowboyX=-20;
+float cowboyY=-150;
 PImage cowboyImg;
 String cowboyMeeting = "data/CowboyMeeting.txt";
 String cowboyGoodbye = "data/CowboyGoodbye.txt";
@@ -97,14 +98,14 @@ String cowboyHint = "data/CowboyHint.txt";
 
 
 Interactable horse;
-float horseX;
-float horseY;
+float horseX = -125;
+float horseY = -50;
 PImage horseImg;
 
 Portal desertGarden;
 void loadDesert()
 {
-  desertImg = loadImage("");
+  desertImg = loadImage("map/desert.png");
   cowboyImg = loadImage("res/characters/cowboydown.png");
   horseImg = loadImage("res/characters/horse-w114xh75.png");
   
@@ -114,7 +115,7 @@ void loadDesert()
   parseScript(cowboyHint, cowboy.hint);
   cowboy.initConvo();
   
-  //horse = new Interactable();
+  horse = new Interactable(horseX, horseX + 57, horseY, horseY + 35, horseImg);
   desert.add(cowboy);
   desert.add(horse);
 }

@@ -17,13 +17,12 @@ void setup()
   textureWrap(CLAMP);
   noStroke();
   
-  //loadMap
-  loadAsset(); //<>//
-
+  loadAsset();
 
   currmap = sea;
 
   player = new Player(currmap.startX, currmap.startY);
+
   seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
   currmap.add(seed1);
 
