@@ -1,29 +1,31 @@
-public class NPC extends Interactable //<>//
+public class NPC extends Interactable
 {
-
-  private String name;
   private PFont fontName = createFont("Arial", 14);
   private PFont fontDialog = createFont("Arial", 12);
   private PImage choicebox = loadImage("map/choicebox.png");
-  private int time;
-  private int choice = 0;
 
-  boolean narrate;
-  boolean meetingState;
-  boolean goodbyeState;
-  boolean genericState;
-  boolean hintState;
-  boolean waiting;
-  boolean talking;
+  //track state of conversation
+  boolean narrate; //is printing the current sentence to canvas
+  boolean meetingState; //is using meeting script
+  boolean goodbyeState; //is using goodbye script
+  boolean genericState; //is using generic script
+  boolean hintState; //is using hint script
+  boolean waiting; //is waiting for player to choose an option
+  boolean talking; //the conversation is still going on
 
-  private String dialog;
-  private String[] words;
+  private String dialog; //the current sentence
+  private String name; //name of speaker
+  private String[] words; //parse sentence to array of words
 
-  private float dialWidth = 0;
+  private float dialWidth = 0; //length of current sentence on canvas
   private float maxWidth = 300;
 
+  //print the sentence word by word
   private String currDialog= "";
   private int dialogInd = 0;
+
+  private int time; //screen time of a sentence
+  private int choice = 0; //player choice
 
   //conversation script of NPC
   Convo meeting = new Convo();
@@ -34,6 +36,7 @@ public class NPC extends Interactable //<>//
   NPC(float l, float r, float t, float b, PImage img, String pathMeeting, String pathGoodbye, String pathGeneric)
   {
     super(l, r, t, b, img);
+
     parseScript(pathMeeting, meeting);
     parseScript(pathGoodbye, goodbye);
     parseScript(pathGeneric, generic);
@@ -66,12 +69,6 @@ public class NPC extends Interactable //<>//
     vertex(0, 130, 0, 1);
     endShape();
 
-    if (dialWidth > maxWidth)
-    {
-      dialWidth = 0;
-      currDialog+="\n";
-    }
-
     textFont(fontName);
     textAlign(LEFT, LEFT);
     fill(0.2, 0.2, 0.15);
@@ -85,17 +82,29 @@ public class NPC extends Interactable //<>//
   }
 
   private void msgIterate() {
+    //iterate through every word
     if (dialogInd < words.length) {
       currDialog +=" "+words[dialogInd];      
       dialWidth+=textWidth(words[dialogInd]);
+
+      //make a new line when exceed the width
+      if (dialWidth > maxWidth)
+      {
+        dialWidth = 0;
+        currDialog+="\n";
+      }
+      //count as new line when there is a linebreak in the string
       if (currDialog.charAt(currDialog.length()-1)=='\n')
       {
         dialWidth = 0;
       }
       dialogInd++;
+
     } else {
+
       time++;
       if (timeout()) {
+        //keep draw sentence to canvas if player have not choosen an option
         if (!waiting)
         {
           narrate = false;
@@ -104,6 +113,7 @@ public class NPC extends Interactable //<>//
         }
         dialWidth = 0;
       }
+
     }
   }
 
@@ -111,7 +121,6 @@ public class NPC extends Interactable //<>//
     Timer for the printed textbox
    Return true if the text is printed in 180 frames, false otherwise
    */
-
   public boolean timeout()
   {
     boolean result = false;
@@ -123,14 +132,15 @@ public class NPC extends Interactable //<>//
     return result;
   }
 
+  //decide if the sentence will be printed
   public boolean getNarrate() {
     return narrate;
   }
-
   public void setNarrate() {
     narrate = !narrate;
   }
 
+  //process and print current sentence to canvas and continue the conversation flow
   public void talking()
   {
     Convo current = state();
@@ -187,7 +197,6 @@ public class NPC extends Interactable //<>//
   {
     return waiting;
   }
-
   public void setWaiting()
   {
     waiting = !waiting;
@@ -197,7 +206,6 @@ public class NPC extends Interactable //<>//
   {
     return talking;
   }
-
   public void setTalking()
   {
     talking = !talking;

@@ -39,6 +39,7 @@ public class Interactable
     popMatrix();
   }
 
+  //get object hitbox
   public Hitbox getHitbox()
   {
     return hitbox;

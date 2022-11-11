@@ -17,6 +17,7 @@ public class Hitbox
     bottom = b;
   }
 
+  //return true if collide with player, does not allow player to run over
   public boolean collide(Player player)
   {
     Hitbox other = player.getHitbox();
