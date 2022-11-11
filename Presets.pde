@@ -83,8 +83,8 @@ void loadGarden()
 Map desert;
 float desertX = 900/4;
 float desertY = 825/4;
-float desertStartX = 200;
-float desertStartY = 200;
+float desertStartX = 177;
+float desertStartY = 153;
 PImage desertImg;
 
 
@@ -210,6 +210,11 @@ void loadAsset()
   loadWood();
   loadPortals();
   makeNPCList();
+  
+  woodGarden = new Portal(190, 220, 130, 160, loadImage("map/object/boiler.png"), garden);
+  desertGarden = new Portal(195, 215, -197, -177, loadImage("map/object/boiler.png"), garden);
+  wood.add(woodGarden);
+  desert.add(desertGarden);
   homeScreen = new Menu();
   gameStart = false;
 }
