@@ -156,7 +156,7 @@ void loadDesert()
   desertImg = loadImage("map/desert.png");
   cowboyImg = loadImage("res/characters/cowboydown.png");
   horseImg = loadImage("res/characters/horse-w114xh75.png");
-  desertGardenImg = loadImage("map/object/boiler.png");
+  desertGardenImg = loadImage("res/items/portal.png");
   cactiImg = loadImage("res/seeds/cactusSeed.png");
   mandrakesImg = loadImage("res/seeds/mandrakeSeed.png");
   grapesImg = loadImage("res/seeds/grapeSeed.png");
@@ -221,7 +221,7 @@ PImage woodGardenImg;
 void loadWood()
 {
   woodImg = loadImage("map/forest.png");
-  woodGardenImg = loadImage("map/object/boiler.png");
+  woodGardenImg = loadImage("res/items/portal.png");
   wood = new Map(woodImg, woodX, woodY, woodStartX, woodStartY);
   
   // Lumberjack NPC
@@ -287,7 +287,7 @@ PImage seaPortalImg;
 
 void loadSea()
 {
-  seaPortalImg = loadImage("map/object/boiler.png");
+  seaPortalImg = loadImage("res/items/portal.png");
   seaImg = loadImage("map/sea.png");
   pirateImg = loadImage("res/characters/piratedown.png");
   
