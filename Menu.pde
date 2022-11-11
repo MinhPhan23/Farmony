@@ -16,11 +16,11 @@ public class Menu {
   public void drawMenu() {
     pushMatrix();
     beginShape();
-    texture(loadImage("map/townfloor.jpg"));
-    vertex(-screenWidth, -screenHeight, 0, 0);
-    vertex(screenWidth, -screenHeight, 1, 0);
-    vertex(screenWidth, screenHeight, 1, 1);
-    vertex(-screenWidth, screenHeight, 0, 1);
+    texture(loadImage("map/FARMONY.jpg"));
+    vertex(0,0, 0, 0);
+    vertex(650,0, 1, 0);
+    vertex(650,450, 1, 1);
+    vertex(0,450, 0, 1);
     endShape();
 
     textFont(title);
