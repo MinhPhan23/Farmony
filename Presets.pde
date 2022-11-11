@@ -176,8 +176,11 @@ String pirateGeneric = "data/PirateGeneric.txt";
 String pirateHint = "data/PirateHint.txt";
 
 Portal seaGarden;
+PImage seaPortalImg;
+
 void loadSea()
 {
+  seaPortalImg = loadImage("map/object/boiler.png");
   seaImg = loadImage("map/sea.png");
   pirateImg = loadImage("res/characters/piratedown.png");
   sea = new Map(seaImg, seaWidth, seaHeight, seaStartX, seaStartY);
@@ -186,6 +189,8 @@ void loadSea()
   parseScript(pirateHint, pirate.hint);
   pirate.initConvo();
   
+  seaGarden = new Portal(300,320,-150,-130,seaPortalImg,garden);
+  sea.add(seaGarden);
   sea.add(pirate);
 }
 
