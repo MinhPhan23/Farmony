@@ -1,4 +1,4 @@
-public class Letter { //<>//
+public class Letter { //<>// //<>//
 
   // Instance variables
   private String[] letters = new String[] {
@@ -31,11 +31,12 @@ public class Letter { //<>//
 
   // display the letter on the screen
   public void read(int letterNum) {
+    setChoiceBox(); //<>//
     msgIterate(letterNum); //<>//
     pushMatrix();
     translate(player.getPlayerX()-195, player.getPlayerY()-100, 0.9);
     beginShape(QUADS);
-    texture(loadImage("map/choicebox.png"));
+    texture(choiceBoxImg);
     vertex(0, 0, 0, 0);
     vertex(390, 0, 1, 0);
     vertex(390, 300, 1, 1);
@@ -58,7 +59,7 @@ public class Letter { //<>//
      text("Dearest,", 0, 0);
      }*/
     translate(-10, 15);
-    text(currLetter, 0, 0);
+    text(currLetter, 0, 0); //<>//
     //<>//
     /*if (letterNum < letters.length - 1)
      {
