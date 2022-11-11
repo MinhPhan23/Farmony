@@ -94,20 +94,20 @@ float desertStartY = 153;
 PImage desertImg;
 
 Seed mandrakes;
-float mandrakesX = 220;
-float mandrakesY = 150;
+float mandrakesX = -127;
+float mandrakesY = -30;
 float mandrakesHeight = 15;
 float mandrakesWidth = 15;
 PImage mandrakesImg;
 Seed grapes;
-float grapesX = 220;
-float grapesY = 150;
+float grapesX = 200;
+float grapesY = 90;
 float grapesHeight = 15;
 float grapesWidth = 15;
 PImage grapesImg;
 Seed cacti;
-float cactiX = -220;
-float cactiY = 150;
+float cactiX = 160;
+float cactiY = -120;
 float cactiHeight = 15;
 float cactiWidth = 15;
 PImage cactiImg;
@@ -166,7 +166,7 @@ PImage woodImg;
 
 Seed bugloss;
 float buglossX = -124;
-float buglossY = -210;
+float buglossY = -200;
 float buglossWidth = 75/4;
 float buglossHeight = 75/4;
 PImage buglossImg;
@@ -307,7 +307,7 @@ void loadAsset()
   
   homeScreen = new Menu();
   gameStart = false;
-  currmap = desert;
+  currmap = garden;
   player = new Player(currmap.startX, currmap.startY);
   letter = new Letter();
 }
