@@ -205,26 +205,26 @@ Map sea;
 float seaWidth = 337.5;
 float seaHeight = 206.25;
 float seaStartX = 205;
-float seaStartY = -100;
+float seaStartY = -80;
 PImage seaImg;
 
 Seed hydrangeas;
-float hydrangeasX;
-float hydrangeasY;
-float hydrangeasHeight;
-float hydrangeasWidth;
+float hydrangeasX = 265;
+float hydrangeasY = -150;
+float hydrangeasHeight = 17.5;
+float hydrangeasWidth = 17.5;
 PImage hydrangeasImg;
 Seed bamboo;
-float bambooX;
-float bambooY;
-float bambooHeight;
-float bambooWidth;
+float bambooX = 310;
+float bambooY = 130;
+float bambooHeight = 17.5;
+float bambooWidth = 17.5;
 PImage bambooImg;
 Seed hellebore;
-float helleboreX;
-float helleboreY;
-float helleboreHeight;
-float helleboreWidth;
+float helleboreX = 197;
+float helleboreY = 35;
+float helleboreHeight = 17.5;
+float helleboreWidth = 17.5;
 PImage helleboreImg;
 
 NPC pirate;
@@ -244,6 +244,15 @@ void loadSea()
   seaPortalImg = loadImage("map/object/boiler.png");
   seaImg = loadImage("map/sea.png");
   pirateImg = loadImage("res/characters/piratedown.png");
+  
+  hydrangeasImg = loadImage("res/seeds/hydrangeaSeed.png");
+  bambooImg = loadImage("res/seeds/bambooSeed.png");
+  helleboreImg = loadImage("res/seeds/helleboreSeed.png");
+  
+  hydrangeas = new Seed(hydrangeasX, hydrangeasY, hydrangeasWidth, hydrangeasHeight, hydrangeasImg, "Hydrangeas", "Oh Hydrangeas seed");
+  bamboo = new Seed(bambooX, bambooY, bambooWidth, bambooHeight, bambooImg, "bamboo", "Oh bamboo seed");
+  hellebore = new Seed(helleboreX, helleboreY, helleboreWidth, helleboreHeight, helleboreImg, "hellebore", "Oh hellebore seed");
+
   sea = new Map(seaImg, seaWidth, seaHeight, seaStartX, seaStartY);
   
   pirate = new NPC(pirateX, pirateX + npcWidth, pirateY, pirateY + npcHeight, pirateImg, pirateMeeting, pirateGoodbye, pirateGeneric);
@@ -251,6 +260,9 @@ void loadSea()
   pirate.initConvo();
   
   sea.add(pirate);
+  sea.add(hydrangeas);
+  sea.add(bamboo);
+  sea.add(hellebore);
 }
 
 //load menuscreen
@@ -271,7 +283,7 @@ void loadAsset()
   
   homeScreen = new Menu();
   gameStart = false;
-  currmap = garden;
+  currmap = sea;
   player = new Player(currmap.startX, currmap.startY);
   letter = new Letter();
 }
@@ -285,7 +297,7 @@ void loadPortals()
   garden.add(gardenWood);
   garden.add(gardenDesert);
   
-  seaGarden = new Portal(300, 320, -150, -130, seaPortalImg, garden);
+  seaGarden = new Portal(200, 210, -110, -100, seaPortalImg, garden);
   sea.add(seaGarden);
   
   woodGarden = new Portal(190, 220, 130, 160, woodGardenImg, garden);
