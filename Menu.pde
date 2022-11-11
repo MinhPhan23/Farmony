@@ -23,11 +23,9 @@ public class Menu {
     vertex(0,450, 0, 1);
     endShape();
 
-    textFont(title);
     textAlign(CENTER, CENTER);
     fill(255, 255, 255);
     translate((screenWidth/2), (screenHeight/2)-15);
-    text("Farmony", 0, 0);
 
     textFont(body);
     translate(0, 2*(textAscent() + textDescent()));
