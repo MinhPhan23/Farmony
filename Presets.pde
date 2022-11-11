@@ -14,10 +14,10 @@ float npcHeight=35;
 
 //load Garden assets
 Map garden;
-float gardenX;
-float gardenY;
-float gardenStartX;
-float gardenStartY;
+float gardenX = 750/4;
+float gardenY = 825/4;
+float gardenStartX = 50;
+float gardenStartY = 50;
 PImage gardenImg;
 
 NPC mom;
@@ -29,11 +29,11 @@ String momGeneric = "data/MomGeneric.txt";
 PImage momImg;
 
 NPC dad;
-float dadX;
-float dadY;
+float dadX = 15;
+float dadY = -175;
 String dadMeeting = "data/DadMeeting.txt";
 String dadGoodbye = "";
-String dadGeneric = "data/DadGenric.txt";
+String dadGeneric = "data/DadGeneric.txt";
 PImage dadImg;
 
 Portal gardenSea;
@@ -56,21 +56,20 @@ float gardenWoodBot;
 
 void loadGarden()
 {
-  gardenImg = loadImage("");
+  gardenImg = loadImage("map/garden.png");
   momImg = loadImage("res/characters/mom/momdown2.png");
   dadImg = loadImage("res/characters/daddown.png");
+  
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
-  mom = new NPC(momX, momX + npcWidth, momY, momY + npcHeight, momImg, momMeeting, momGoodbye, momGeneric);
-  mom.hintState = false;
-  mom.meetingState = false;
-  mom.goodbyeState = false;
+  mom = new NPC(momX, momX + npcWidth, momY, momY + npcHeight, momImg, momMeeting, momGoodbye, momGeneric, false, false, true, false);
+  mom.initConvo();
   
-  dad = new NPC(dadX, dadX + npcWidth, dadY, dadY + npcHeight, dadImg, dadMeeting, dadGoodbye, dadGeneric);
-  dad.hintState = false;
-  dad.goodbyeState = false;
+  dad = new NPC(dadX, dadX + npcWidth, dadY, dadY + npcHeight, dadImg, dadMeeting, dadGoodbye, dadGeneric, true, false, true, false);
+  dad.initConvo();
   
   garden.add(dad);
+  
   garden.completeMap();
 }
 
@@ -199,7 +198,7 @@ void loadMenu()
 
 void loadAsset()
 {
-  //loadGarden();
+  loadGarden();
   loadDesert();
   loadSea();
   loadWood();

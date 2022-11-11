@@ -14,13 +14,13 @@ void gameplay()
     loadMenu();
   } else
   {
-    player.movePlayer(currmap);
+    player.movePlayer(currmap); //<>//
 
     currmap.drawMap();
 
     if (currmap.firstVisit() && currmap.isComplete())
     {
-      letter.setReading();
+      //letter.setReading();
       currmap.readLetter(false);
     }
 

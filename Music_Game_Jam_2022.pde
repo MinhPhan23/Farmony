@@ -19,12 +19,12 @@ void setup()
   
   loadAsset();
 
-  currmap = sea;
+  currmap = garden;
 
   player = new Player(currmap.startX, currmap.startY);
 
-  seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
-  currmap.add(seed1);
+  //seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
+  //currmap.add(seed1);
 
   // Set the first letter
   letter = new Letter();

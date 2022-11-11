@@ -51,6 +51,28 @@ public class NPC extends Interactable
     genericState = true;
     hintState = true;
   }
+  
+  NPC(float l, float r, float t, float b, PImage img, String pathMeeting, String pathGoodbye, String pathGeneric, boolean haveMeet, boolean haveBye, boolean haveGeneric, boolean haveHint)
+  {
+    super(l, r, t, b, img); //<>//
+
+    time = 0;
+    narrate = false;
+    waiting = false;
+    talking = false;
+
+    meetingState = haveMeet;
+    goodbyeState = haveBye;
+    genericState = haveGeneric;
+    hintState = haveHint;
+    
+    if (haveMeet)
+      parseScript(pathMeeting, meeting);
+    if (haveBye)
+      parseScript(pathGoodbye, goodbye);
+    if (haveGeneric)
+      parseScript(pathGeneric, generic);
+  }
 
   /*
     Print out textbox when player interact with

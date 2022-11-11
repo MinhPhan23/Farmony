@@ -61,7 +61,7 @@ public class Map {
       }
     }
 
-    if (count == seedList.size()) {
+    if (count == seedList.size() && !complete) {
       completeMap();
     }
 
