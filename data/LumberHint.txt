@@ -4,9 +4,9 @@ $
 3-Where can I find a maple?
 %
 1:
-L-[add clue]
+L-Those guys sometimes grow a on the side of the road, may be you will be lucky there
 2:
-L-[add clue]
+L-High up on the trees in this wood
 3:
-L-[add clue]
+L-There are a maple tree mixed with others when you pass the stream
 %%

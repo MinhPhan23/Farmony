@@ -106,10 +106,10 @@ float grapesHeight;
 float grapesWidth;
 PImage grapesImg;
 Seed cacti;
-float cactiX;
-float cactiY;
-float cactiHeight;
-float cactiWidth;
+float cactiX = -220;
+float cactiY = 150;
+float cactiHeight = 15;
+float cactiWidth = 15;
 PImage cactiImg;
 
 NPC cowboy;
@@ -135,7 +135,7 @@ void loadDesert()
   cowboyImg = loadImage("res/characters/cowboydown.png");
   horseImg = loadImage("res/characters/horse-w114xh75.png");
   desertGardenImg = loadImage("map/object/boiler.png");
-
+  cactiImg = loadImage("res/seeds/cactusSeed.png");
   
   desert = new Map(desertImg, desertX, desertY, desertStartX, desertStartY);
   
@@ -144,8 +144,12 @@ void loadDesert()
   cowboy.initConvo();
   
   horse = new Interactable(horseX, horseX + 57, horseY, horseY + 35, horseImg);
+  
+  cacti = new Seed(cactiX, cactiY, cactiWidth, cactiHeight, cactiImg, "Me", "Cacti Seed Found!!");
+  
   desert.add(cowboy);
   desert.add(horse);
+  desert.add(cacti);
 }
 
 //load Wood Assets
@@ -157,14 +161,14 @@ float woodStartY = -19;
 PImage woodImg;
 
 Seed bugloss;
-float buglossX = -100;
-float buglossY = -175;
+float buglossX = -124;
+float buglossY = -210;
 float buglossWidth = 75/4;
 float buglossHeight = 75/4;
 PImage buglossImg;
 
 Seed poinsettias;
-float poinsettiasX = -208;
+float poinsettiasX = -206;
 float poinsettiasY = 160;
 float poinsettiasWidth = 75/4;
 float poinsettiasHeight = 75/4;
@@ -299,7 +303,7 @@ void loadAsset()
   
   homeScreen = new Menu();
   gameStart = false;
-  currmap = sea;
+  currmap = wood;
   player = new Player(currmap.startX, currmap.startY);
   letter = new Letter();
 }
