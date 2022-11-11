@@ -94,22 +94,23 @@ float desertStartY = 153;
 PImage desertImg;
 
 Seed mandrakes;
-float mandrakesX;
-float mandrakesY;
-float mandrakesHeight;
-float mandrakesWidth;
+float mandrakesX = 220;
+float mandrakesY = 150;
+float mandrakesHeight = 15;
+float mandrakesWidth = 15;
 PImage mandrakesImg;
 Seed grapes;
-float grapesX;
-float grapesY;
-float grapesHeight;
-float grapesWidth;
+float grapesX = 220;
+float grapesY = 150;
+float grapesHeight = 15;
+float grapesWidth = 15;
 PImage grapesImg;
 Seed cacti;
-float cactiX;
-float cactiY;
-float cactiHeight;
-float cactiWidth;
+float cactiX = -220;
+float cactiY = 150;
+float cactiHeight = 15;
+float cactiWidth = 15;
+
 PImage cactiImg;
 
 NPC cowboy;
@@ -135,15 +136,23 @@ void loadDesert()
   cowboyImg = loadImage("res/characters/cowboydown.png");
   horseImg = loadImage("res/characters/horse-w114xh75.png");
   desertGardenImg = loadImage("map/object/boiler.png");
-
+  cactiImg = loadImage("res/seeds/cactusSeed.png");
+  mandrakesImg = loadImage("res/seeds/mandrakeSeed.png");
+  grapesImg = loadImage("res/seeds/grapeSeed.png");
   
   desert = new Map(desertImg, desertX, desertY, desertStartX, desertStartY);
   
   cowboy = new NPC(cowboyX, cowboyX + npcWidth, cowboyY, cowboyY + npcHeight, cowboyImg, cowboyMeeting, cowboyGoodbye, cowboyGeneric );
   parseScript(cowboyHint, cowboy.hint);
   cowboy.initConvo();
-  
+  cacti = new Seed(cactiX, cactiY, cactiWidth, cactiHeight, cactiImg, "Me", "Cacti Seed Found!!");
+  mandrakes = new Seed(mandrakesX, mandrakesY, mandrakesWidth, mandrakesHeight, mandrakesImg, "Me", "Mandrakes Seed Found!!"); 
+  grapes =  new Seed(grapesX, grapesY, grapesWidth, grapesHeight, grapesImg, "Me", "Grapes Seed Found!!");
   horse = new Interactable(horseX, horseX + 57, horseY, horseY + 35, horseImg);
+
+  desert.add(grapes);
+  desert.add(mandrakes);
+  desert.add(cacti);
   desert.add(cowboy);
   desert.add(horse);
 }
@@ -299,7 +308,7 @@ void loadAsset()
   
   homeScreen = new Menu();
   gameStart = false;
-  currmap = sea;
+  currmap = desert;
   player = new Player(currmap.startX, currmap.startY);
   letter = new Letter();
 }
