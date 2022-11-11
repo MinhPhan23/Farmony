@@ -18,30 +18,14 @@ void setup()
   noStroke();
   
   //loadMap
-  loadWood();
-  loadSea();
-  loadDesert();
+  loadAsset(); //<>//
 
-  // Create menu screen
-  homeScreen = new Menu();
-  gameStart = false;
 
-  //create map
-  map1 = new Map(loadImage("map/homefloor.jpg"), 100, 250, 70, 70);
-  map2 = new Map(loadImage("map/townfloor.jpg"), 100, 250, 70, 70);
-  currmap = map1;
+  currmap = sea;
 
-  player = new Player(-50, -50);
-  boiler1 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map2);
-  boiler2 = new Portal(-50, -25, -50, -20, loadImage("map/object/boiler.png"), map1);
+  player = new Player(currmap.startX, currmap.startY);
   seed1 = new Seed(20, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed1", "Wow a seed");
-  map1.add(pirate);
-  map1.add(lumber);
-  map1.add(cowboy);
-  map1.add(boiler1);
-  map2.add(boiler2);
-  map2.add(new Seed(02, 50, 20, 50, loadImage("map/object/fragments1.png"), "seed2", "a seed in the forest, how fortuitous!"));
-  map1.add(seed1);
+  currmap.add(seed1);
 
   // Set the first letter
   letter = new Letter();
