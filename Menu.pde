@@ -3,13 +3,17 @@ public class Menu {
   // Variables
   private PFont title;
   private PFont body;
-
+  private float screenWidth;
+  private float screenHeight;
+  
   public Menu() {
     title = createFont("Arial", 28);
     body = createFont("Arial", 12);
+    screenWidth = width;
+    screenHeight = height;
   }
 
-  public void drawMenu(float screenWidth, float screenHeight) {
+  public void drawMenu() {
     pushMatrix();
     beginShape();
     texture(loadImage("map/townfloor.jpg"));

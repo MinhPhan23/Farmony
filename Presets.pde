@@ -191,7 +191,7 @@ void loadSea()
 Menu homeScreen;
 void loadMenu()
 {
-  homeScreen.drawMenu(width, height);
+  homeScreen.drawMenu();
 }
 
 void loadAsset()
