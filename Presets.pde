@@ -94,8 +94,23 @@ float desertStartY = 153;
 PImage desertImg;
 
 Seed mandrakes;
+float mandrakesX;
+float mandrakesY;
+float mandrakesHeight;
+float mandrakesWidth;
+PImage mandrakesImg;
 Seed grapes;
+float grapesX;
+float grapesY;
+float grapesHeight;
+float grapesWidth;
+PImage grapesImg;
 Seed cacti;
+float cactiX;
+float cactiY;
+float cactiHeight;
+float cactiWidth;
+PImage cactiImg;
 
 NPC cowboy;
 float cowboyX=-20;
@@ -120,6 +135,7 @@ void loadDesert()
   cowboyImg = loadImage("res/characters/cowboydown.png");
   horseImg = loadImage("res/characters/horse-w114xh75.png");
   desertGardenImg = loadImage("map/object/boiler.png");
+
   
   desert = new Map(desertImg, desertX, desertY, desertStartX, desertStartY);
   
@@ -141,8 +157,23 @@ float woodStartY = -19;
 PImage woodImg;
 
 Seed bugloss;
+float buglossX;
+float buglossY;
+float buglossHeight;
+float buglossWidth;
+PImage bugloss;
 Seed poinsettias;
+float poinsettiasX;
+float poinsettiasY;
+float poinsettiasHeight;
+float poinsettiasWidth;
+PImage poinsettiasImg;
 Seed maple;
+float mapleX;
+float mapleY;
+float mapleHeight;
+float mapleWidth;
+PImage mapleImg;
 
 NPC lumber;
 float lumberX= 0;
@@ -178,8 +209,23 @@ float seaStartY = -100;
 PImage seaImg;
 
 Seed hydrangeas;
+float hydrangeasX;
+float hydrangeasY;
+float hydrangeasHeight;
+float hydrangeasWidth;
+PImage hydrangeasImg;
 Seed bamboo;
+float bambooX;
+float bambooY;
+float bambooHeight;
+float bambooWidth;
+PImage bambooImg;
 Seed hellebore;
+float helleboreX;
+float helleboreY;
+float helleboreHeight;
+float helleboreWidth;
+PImage helleboreImg;
 
 NPC pirate;
 float pirateX=-250;
