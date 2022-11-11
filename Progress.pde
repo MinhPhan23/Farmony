@@ -1,4 +1,4 @@
-int completeMap = 0;
+int completeMap = -1;
 boolean seedMessage = false;
 boolean finished = false;
 

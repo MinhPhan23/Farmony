@@ -1,5 +1,6 @@
 //current map of the game
 Map currmap;
+Map prevmap;
 
 //load letter
 Letter letter;
@@ -308,6 +309,7 @@ void loadAsset()
   homeScreen = new Menu();
   gameStart = false;
   currmap = garden;
+  prevmap = garden;
   player = new Player(currmap.startX, currmap.startY);
   letter = new Letter();
 }
