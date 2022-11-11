@@ -3,7 +3,6 @@ ArrayList<Interactable> objectList;
 ArrayList<Seed> seedList;
 ArrayList<NPC> npcList;
 
-Menu homeScreen;
 boolean gameStart;
 
 Player player;
@@ -12,7 +11,7 @@ void gameplay()
 {
   if (!gameStart)
   {
-    homeScreen.drawMenu(width, height);
+    loadMenu();
   } else
   {
     player.movePlayer(currmap);
@@ -103,4 +102,21 @@ boolean checkNarration(ArrayList<Seed> seedList, ArrayList<NPC> npcList)
   }
   if (letter.isReading()) return true;
   return false;
+}
+
+void keyPressed()
+{
+  if (!gameStart)
+  {
+    gameStart = true;
+  } else
+  {
+    if (!player.getStop())
+      player.detectMovement();
+  }
+}
+
+void keyReleased()
+{
+  player.movementReleased();
 }

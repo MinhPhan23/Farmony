@@ -54,20 +54,3 @@ void draw()
   camera(player.getPlayerX(), player.getPlayerY(), 2, player.getPlayerX(), player.getPlayerY(), 0, 0, 1, 0);
   gameplay();
 }
-
-void keyPressed()
-{
-  if (!gameStart)
-  {
-    gameStart = true;
-  } else
-  {
-    if (!player.getStop())
-      player.detectMovement();
-  }
-}
-
-void keyReleased()
-{
-  player.movementReleased();
-}
