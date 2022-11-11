@@ -1,2 +1,6 @@
-M-Welcome back from your journey
+M-I always knew you could do it.
+%%
+M-Did you have fun?
+%%
+M-I hope you'll head out again someday.
 %%

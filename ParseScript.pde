@@ -56,7 +56,7 @@ private String[] parseLine(int line, String curPath, String[] script)
     else if (script[line].charAt(0) == 'D')
       toReturn[2] = "Dad";
     else if (script[line].charAt(0) == 'M')
-      toReturn[2] = "Mary";
+      toReturn[2] = "Mom";
     toReturn[3] = script[line].substring(2);
   }
   return toReturn;
