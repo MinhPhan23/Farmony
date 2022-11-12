@@ -2,8 +2,7 @@ public class NPC extends Interactable
 {
   private PFont fontName = createFont("Arial", 14);
   private PFont fontDialog = createFont("Arial", 12);
-  private PImage choicebox = loadImage("map/choicebox.png");
-
+  
   //track state of conversation
   boolean narrate; //is printing the current sentence to canvas
   boolean meetingState; //is using meeting script

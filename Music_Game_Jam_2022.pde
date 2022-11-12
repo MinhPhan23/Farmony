@@ -1,7 +1,7 @@
-/*import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.GLProfile;
 {
   GLProfile.initSingleton();
-}*/
+}
 
 void setup()
 {

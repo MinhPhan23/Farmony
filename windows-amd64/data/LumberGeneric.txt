@@ -1,7 +1,0 @@
-L-There you are again! How’s it going, kid? Still searching?
-%%
-L-Glad you’re not sneaking up on me anymore. How’s the forage?
-%%
-L-Back for more, eh? 
-L-Aw, I can’t blame you, I love this place too.
-%%
