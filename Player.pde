@@ -49,9 +49,9 @@ class Player {
   //load player images from the side,up and down looks
   private void loadPlayer() {
     for (int i = 0; i < 7; i++) {
-      playerSide[i] = loadImage("res/characters/player/playerside" + (i+1) + ".png");
-      playerUp[i] = loadImage("res/characters/player/playerup" + (i+1) + ".png");
-      playerDown[i] = loadImage("res/characters/player/playerdown" + (i+1) + ".png");
+      playerSide[i] = loadImage("data/res/characters/player/playerside" + (i+1) + ".png");
+      playerUp[i] = loadImage("data/res/characters/player/playerup" + (i+1) + ".png");
+      playerDown[i] = loadImage("data/res/characters/player/playerdown" + (i+1) + ".png");
     }
     currImage = playerDown[0];
   }

@@ -1,0 +1,30 @@
+L-Hey kid! Been here a while, eh? Starting to get the lay of the land?
+$
+1-I think so. I finally found everything mom wanted me too.
+2-I’m not sure. But I think I’ve got everything on the list.
+3-Yep! But I’ve found everything I need here, so I’ve got to go.
+%
+1:
+L-Well then you must be starting to get around like a local.
+2:
+L-Let me see…
+L-Well, it looks like you’ve covered it all. Mary would be very proud of you.
+3:
+L-Aw, that’s a shame.
+L-No, wait, not you completing it…
+L-I mean you leaving, I was enjoying having you around.
+L-But you need to go. Not in a bad way…
+L-Let me restart, eh?
+%
+L-Congratulations. Where are you off to now?
+$
+1-Home.
+2-I’m not quite sure yet. But I’ll figure it out.
+%
+1:
+L-Maybe I’ll come by and see you sometime, eh, kid?
+L-See you around.
+2:
+L-You’re a lot like your mother, you know that?
+L-You’ve got this.
+%%

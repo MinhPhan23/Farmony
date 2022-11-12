@@ -30,17 +30,17 @@ PImage gardenImg;
 NPC mom;
 float momX = 95;
 float momY = -175;
-String momMeeting = "data/MomMeeting.txt";
+String momMeeting = "data/scripts/MomMeeting.txt";
 String momGoodbye = "";
-String momGeneric = "data/MomGeneric.txt";
+String momGeneric = "data/scripts/MomGeneric.txt";
 PImage momImg;
 
 NPC dad;
 float dadX = 15;
 float dadY = -175;
-String dadMeeting = "data/DadMeeting.txt";
+String dadMeeting = "data/scripts/DadMeeting.txt";
 String dadGoodbye = "";
-String dadGeneric = "data/DadGeneric.txt";
+String dadGeneric = "data/scripts/DadGeneric.txt";
 PImage dadImg;
 
 Portal gardenSea;
@@ -76,23 +76,23 @@ Interactable poinsettiaTree;
 
 void loadGarden()
 {
-  gardenImg = loadImage("map/garden.png");
-  momImg = loadImage("res/characters/mom/momdown2.png");
-  dadImg = loadImage("res/characters/daddown.png");
+  gardenImg = loadImage("data/map/garden.png");
+  momImg = loadImage("data/res/characters/mom/momdown2.png");
+  dadImg = loadImage("data/res/characters/daddown.png");
   
-  gardenSeaImg = loadImage("map/portalgarden1.png");
-  gardenDesertImg = loadImage("map/portalgarden2.png");
-  gardenWoodImg = loadImage("map/portalgarden3.png");
+  gardenSeaImg = loadImage("data/map/portalgarden1.png");
+  gardenDesertImg = loadImage("data/map/portalgarden2.png");
+  gardenWoodImg = loadImage("data/map/portalgarden3.png");
 
-  bambooTree = new Interactable(-75, -50, -150, -110, loadImage("res/plants/bamboo.png"));
-  buglossTree = new Interactable(-40, -10, -200, -170, loadImage("res/plants/bugloss.png"));
-  cactusTree = new Interactable(-55, -35, -180, -140, loadImage("res/plants/cactus.png"));
-  grapeTree = new Interactable(0, 30, -205, -175, loadImage("res/plants/grape.png"));
-  helleboreTree = new Interactable(40, 70, -205, -175, loadImage("res/plants/hellebore.png"));
-  hydrangeaTree = new Interactable(80, 110, -205, -175, loadImage("res/plants/hydrangea.png"));
-  mandrakeTree = new Interactable(120, 150, -205, -175, loadImage("res/plants/mandrake.png"));
-  mapleTree = new Interactable(150, 180, -180, -140, loadImage("res/plants/maple.png"));
-  poinsettiaTree = new Interactable(150, 180, -130, -100, loadImage("res/plants/poinsettia.png"));
+  bambooTree = new Interactable(-75, -50, -150, -110, loadImage("data/res/plants/bamboo.png"));
+  buglossTree = new Interactable(-40, -10, -200, -170, loadImage("data/res/plants/bugloss.png"));
+  cactusTree = new Interactable(-55, -35, -180, -140, loadImage("data/res/plants/cactus.png"));
+  grapeTree = new Interactable(0, 30, -205, -175, loadImage("data/res/plants/grape.png"));
+  helleboreTree = new Interactable(40, 70, -205, -175, loadImage("data/res/plants/hellebore.png"));
+  hydrangeaTree = new Interactable(80, 110, -205, -175, loadImage("data/res/plants/hydrangea.png"));
+  mandrakeTree = new Interactable(120, 150, -205, -175, loadImage("data/res/plants/mandrake.png"));
+  mapleTree = new Interactable(150, 180, -180, -140, loadImage("data/res/plants/maple.png"));
+  poinsettiaTree = new Interactable(150, 180, -130, -100, loadImage("data/res/plants/poinsettia.png"));
   
   garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
   
@@ -138,10 +138,10 @@ NPC cowboy;
 float cowboyX=-20;
 float cowboyY=-150;
 PImage cowboyImg;
-String cowboyMeeting = "data/CowboyMeeting.txt";
-String cowboyGoodbye = "data/CowboyGoodbye.txt";
-String cowboyGeneric = "data/CowboyGeneric.txt";
-String cowboyHint = "data/CowboyHint.txt";
+String cowboyMeeting = "data/scripts/CowboyMeeting.txt";
+String cowboyGoodbye = "data/scripts/CowboyGoodbye.txt";
+String cowboyGeneric = "data/scripts/CowboyGeneric.txt";
+String cowboyHint = "data/scripts/CowboyHint.txt";
 
 
 Interactable horse;
@@ -153,13 +153,13 @@ Portal desertGarden;
 PImage desertGardenImg;
 void loadDesert()
 {
-  desertImg = loadImage("map/desert.png");
-  cowboyImg = loadImage("res/characters/cowboydown.png");
-  horseImg = loadImage("res/characters/horse-w114xh75.png");
-  desertGardenImg = loadImage("res/items/portal.png");
-  cactiImg = loadImage("res/seeds/cactusSeed.png");
-  mandrakesImg = loadImage("res/seeds/mandrakeSeed.png");
-  grapesImg = loadImage("res/seeds/grapeSeed.png");
+  desertImg = loadImage("data/map/desert.png");
+  cowboyImg = loadImage("data/res/characters/cowboydown.png");
+  horseImg = loadImage("data/res/characters/horse-w114xh75.png");
+  desertGardenImg = loadImage("data/res/items/portal.png");
+  cactiImg = loadImage("data/res/seeds/cactusSeed.png");
+  mandrakesImg = loadImage("data/res/seeds/mandrakeSeed.png");
+  grapesImg = loadImage("data/res/seeds/grapeSeed.png");
   
   desert = new Map(desertImg, desertX, desertY, desertStartX, desertStartY);
   
@@ -211,33 +211,33 @@ NPC lumber;
 float lumberX= 0;
 float lumberY=-100;
 PImage lumberImg;
-String lumberMeeting = "data/LumberMeeting.txt";
-String lumberGoodbye = "data/LumberGoodbye.txt";
-String lumberGeneric = "data/LumberGeneric.txt";
-String lumberHint = "LumberHint.txt";
+String lumberMeeting = "data/scripts/LumberMeeting.txt";
+String lumberGoodbye = "data/scripts/LumberGoodbye.txt";
+String lumberGeneric = "data/scripts/LumberGeneric.txt";
+String lumberHint = "data/scripts/LumberHint.txt";
 
 Portal woodGarden;
 PImage woodGardenImg;
 void loadWood()
 {
-  woodImg = loadImage("map/forest.png");
-  woodGardenImg = loadImage("res/items/portal.png");
+  woodImg = loadImage("data/map/forest.png");
+  woodGardenImg = loadImage("data/res/items/portal.png");
   wood = new Map(woodImg, woodX, woodY, woodStartX, woodStartY);
   
   // Lumberjack NPC
-  lumberImg = loadImage("res/characters/lumberjackdown.png");
+  lumberImg = loadImage("data/res/characters/lumberjackdown.png");
   lumber = new NPC(lumberX, lumberX + npcWidth, lumberY, lumberY + npcHeight, lumberImg, lumberMeeting, lumberGoodbye, lumberGeneric);
   parseScript(lumberHint, lumber.hint);
   lumber.initConvo();
 
   // Seeds
-  mapleImg = loadImage("res/seeds/mapleSeed.png");
+  mapleImg = loadImage("data/res/seeds/mapleSeed.png");
   maple = new Seed(mapleX, mapleY, mapleWidth, mapleHeight, mapleImg, "Maple", "This will grow into a tall and strong tree.");
   
-  poinsettiasImg = loadImage("res/seeds/poinsettiaSeed.png");
+  poinsettiasImg = loadImage("data/res/seeds/poinsettiaSeed.png");
   poinsettias = new Seed(poinsettiasX, poinsettiasY, poinsettiasWidth, poinsettiasHeight, poinsettiasImg, "Pointsettia", "A vibrant shade of crimson in a forest of green.");
 
-  buglossImg = loadImage("res/seeds/buglossSeed.png");
+  buglossImg = loadImage("data/res/seeds/buglossSeed.png");
   bugloss = new Seed(buglossX, buglossY, buglossWidth, buglossHeight, buglossImg, "Bugloss", "What a lovely flower.");
 
   wood.add(lumber);
@@ -277,23 +277,23 @@ NPC pirate;
 float pirateX=-250;
 float pirateY=20;
 PImage pirateImg;
-String pirateMeeting = "data/PirateMeeting.txt";
-String pirateGoodbye = "data/PirateGoodbye.txt";
-String pirateGeneric = "data/PirateGeneric.txt";
-String pirateHint = "data/PirateHint.txt";
+String pirateMeeting = "data/scripts/PirateMeeting.txt";
+String pirateGoodbye = "data/scripts/PirateGoodbye.txt";
+String pirateGeneric = "data/scripts/PirateGeneric.txt";
+String pirateHint = "data/scripts/PirateHint.txt";
 
 Portal seaGarden;
 PImage seaPortalImg;
 
 void loadSea()
 {
-  seaPortalImg = loadImage("res/items/portal.png");
-  seaImg = loadImage("map/sea.png");
-  pirateImg = loadImage("res/characters/piratedown.png");
+  seaPortalImg = loadImage("data/res/items/portal.png");
+  seaImg = loadImage("data/map/sea.png");
+  pirateImg = loadImage("data/res/characters/piratedown.png");
   
-  hydrangeasImg = loadImage("res/seeds/hydrangeaSeed.png");
-  bambooImg = loadImage("res/seeds/bambooSeed.png");
-  helleboreImg = loadImage("res/seeds/helleboreSeed.png");
+  hydrangeasImg = loadImage("data/res/seeds/hydrangeaSeed.png");
+  bambooImg = loadImage("data/res/seeds/bambooSeed.png");
+  helleboreImg = loadImage("data/res/seeds/helleboreSeed.png");
   
   hydrangeas = new Seed(hydrangeasX, hydrangeasY, hydrangeasWidth, hydrangeasHeight, hydrangeasImg, "Hydrangeas", "Oh Hydrangeas seed");
   bamboo = new Seed(bambooX, bambooY, bambooWidth, bambooHeight, bambooImg, "bamboo", "Oh bamboo seed");
@@ -357,16 +357,16 @@ void loadPortals()
 PImage choiceBoxImg;
 void setChoiceBox(){
   if(currmap == garden){
-    choiceBoxImg = loadImage("map/choiceboxpaper.png");
+    choiceBoxImg = loadImage("data/map/choiceboxpaper.png");
   }
   else if (currmap == sea){
-    choiceBoxImg = loadImage("map/choiceboxorange.png");  
+    choiceBoxImg = loadImage("data/map/choiceboxorange.png");  
   }
   else if (currmap == desert){
-    choiceBoxImg = loadImage("map/choiceboxyellow.png");  
+    choiceBoxImg = loadImage("data/map/choiceboxyellow.png");  
   }
   else if (currmap == wood){
-    choiceBoxImg = loadImage("map/choiceboxgreen.png");    
+    choiceBoxImg = loadImage("data/map/choiceboxgreen.png");    
   }
   
 }

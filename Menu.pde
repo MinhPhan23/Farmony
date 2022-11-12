@@ -16,7 +16,7 @@ public class Menu {
   public void drawMenu() {
     pushMatrix();
     beginShape();
-    texture(loadImage("map/FARMONY.jpg"));
+    texture(loadImage("data/map/FARMONY.jpg"));
     vertex(0,0, 0, 0);
     vertex(650,0, 1, 0);
     vertex(650,450, 1, 1);
