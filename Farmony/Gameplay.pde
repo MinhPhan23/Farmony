@@ -4,6 +4,8 @@ ArrayList<Seed> seedList;
 ArrayList<NPC> npcList;
 
 boolean gameStart;
+boolean firstCue = true;
+boolean gamePaused = false;
 
 Player player;
 
@@ -12,6 +14,9 @@ void gameplay()
   if (!gameStart)
   {
     loadMenu();
+    if(!menuTheme.isPlaying()){
+      menuTheme.play();
+    }
   } else
   {
     if (!finished)
@@ -46,8 +51,11 @@ void gameplay()
       if (portal.getHitbox().collide(player))
       {
         prevmap = currmap;
+        currmap.getMusic().stop();
+        portalSFX.play();
         currmap = portal.transition();
         player.setStart(currmap);
+        firstCue = true;
 
         if (currmap.firstVisit()) {
           currmap.setfirstVisit(true);
@@ -59,6 +67,7 @@ void gameplay()
     for (Seed seed : seedList) {
       if (!seed.isPicked() && seed.isUnlocked() && seed.getHitbox().collide(player)) { 
         seed.pick();
+        pickupSFX.play();
         seed.setNarrate();
         seedMessage = true;
       }
@@ -106,6 +115,19 @@ void gameplay()
       player.setStop(true);
     } else
       player.setStop(false);
+
+
+    // Play map theme
+    if(!currmap.getMusic().isPlaying() && firstCue){
+      currmap.getMusic().play();
+      currmap.getMusic().jump(0);
+      firstCue = false;
+    }
+    else if(!currmap.getMusic().isPlaying() && !gamePaused){
+      // Loops the theme
+      currmap.getMusic().play();
+      currmap.getMusic().jump(currmap.getLoopEntry());
+    }
   }
 }
 
@@ -126,10 +148,25 @@ void keyPressed()
   if (!gameStart)
   {
     gameStart = true;
+    menuTheme.stop();
   } else
   {
-    if (!player.getStop())
+    if (!player.getStop()){
       player.detectMovement();
+    }
+  }
+
+  // Pause
+  if(key == BACKSPACE){
+    gamePaused = !gamePaused;
+    if(gamePaused){
+      currmap.getMusic().pause();
+      pauseTheme.play();
+    }
+    else{
+      pauseTheme.stop();
+      currmap.getMusic().play();
+    }
   }
 }
 

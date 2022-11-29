@@ -8,6 +8,8 @@ public class Map {
 
   // Variables
   private PImage background;
+  private SoundFile music;
+  private float loopEntry;
   private float mapWidth, mapHeight; // dimensions of map
   private float startX, startY; // player starting position
 
@@ -23,8 +25,10 @@ public class Map {
   private boolean firstVisit;
 
   // Constructor
-  public Map (PImage background, float mapWidth, float mapHeight, float startX, float startY) {
+  public Map (PImage background, SoundFile music, float loopEntry, float mapWidth, float mapHeight, float startX, float startY) {
     this.background = background;
+    this.music = music;
+    this.loopEntry = loopEntry;
     this.mapWidth = mapWidth;
     this.mapHeight = mapHeight;
     this.startX = startX;
@@ -115,6 +119,27 @@ public class Map {
     if (portalList.indexOf(portal) < 0) { // portal is not already in map
       portalList.add(portal);
     }
+  }
+
+  /**
+   * Set a new music file for the map
+   * @param  SoundFile of the new music to load, float of the looping point
+   **/
+  public void setMusic(SoundFile music, float loopEntry) {
+    this.music = music;
+    this.loopEntry = loopEntry;
+  }
+
+  // Getter for the music of the map
+  public SoundFile getMusic()
+  {
+    return music;
+  }
+
+  // Getter for the looping point of the map music
+  public float getLoopEntry()
+  {
+    return loopEntry;
   }
 
   // Getter for the width of the map

@@ -74,6 +74,34 @@ Interactable mandrakeTree;
 Interactable mapleTree;
 Interactable poinsettiaTree;
 
+// Load music
+SoundFile gardenThemeIncomplete;
+SoundFile gardenThemeComplete;
+SoundFile desertTheme;
+SoundFile seaTheme;
+SoundFile woodTheme;
+SoundFile menuTheme;
+SoundFile pauseTheme;
+
+// Load SFX
+SoundFile stepSFX;
+SoundFile pickupSFX;
+SoundFile portalSFX;
+
+void loadAudio(){
+  gardenThemeIncomplete = new SoundFile(this, "data/audio/Garden_Incomplete.mp3");
+  gardenThemeComplete = new SoundFile(this, "data/audio/Garden_Complete.mp3");
+  desertTheme = new SoundFile(this, "data/audio/Desert_Region.mp3");
+  seaTheme = new SoundFile(this, "data/audio/Sea_Region.mp3");
+  woodTheme = new SoundFile(this, "data/audio/Forest_Region.wav");
+  menuTheme = new SoundFile(this, "data/audio/Menu.mp3");
+  pauseTheme = new SoundFile(this, "data/audio/Pause.mp3");
+
+  stepSFX = new SoundFile(this, "data/audio/Desert_Footstep_sfx_2.mp3");
+  pickupSFX = new SoundFile(this, "data/audio/Pickup_SFX.mp3");
+  portalSFX = new SoundFile(this, "data/audio/Portal_SFX.mp3");
+}
+
 void loadGarden()
 {
   gardenImg = loadImage("data/map/garden.png");
@@ -94,7 +122,7 @@ void loadGarden()
   mapleTree = new Interactable(150, 180, -180, -140, loadImage("data/res/plants/maple.png"));
   poinsettiaTree = new Interactable(150, 180, -130, -100, loadImage("data/res/plants/poinsettia.png"));
   
-  garden = new Map(gardenImg, gardenX, gardenY, gardenStartX, gardenStartY);
+  garden = new Map(gardenImg, gardenThemeIncomplete, 17.65, gardenX, gardenY, gardenStartX, gardenStartY);
   
   mom = new NPC(momX, momX + npcWidth, momY, momY + npcHeight, momImg, momMeeting, momGoodbye, momGeneric, true, false, true, false);
   mom.initConvo();
@@ -161,7 +189,7 @@ void loadDesert()
   mandrakesImg = loadImage("data/res/seeds/mandrakeSeed.png");
   grapesImg = loadImage("data/res/seeds/grapeSeed.png");
   
-  desert = new Map(desertImg, desertX, desertY, desertStartX, desertStartY);
+  desert = new Map(desertImg, desertTheme, 0, desertX, desertY, desertStartX, desertStartY);
   
   cowboy = new NPC(cowboyX, cowboyX + npcWidth, cowboyY, cowboyY + npcHeight, cowboyImg, cowboyMeeting, cowboyGoodbye, cowboyGeneric );
   parseScript(cowboyHint, cowboy.hint);
@@ -222,7 +250,7 @@ void loadWood()
 {
   woodImg = loadImage("data/map/forest.png");
   woodGardenImg = loadImage("data/res/items/portal.png");
-  wood = new Map(woodImg, woodX, woodY, woodStartX, woodStartY);
+  wood = new Map(woodImg, woodTheme, 18.97, woodX, woodY, woodStartX, woodStartY);
   
   // Lumberjack NPC
   lumberImg = loadImage("data/res/characters/lumberjackdown.png");
@@ -299,7 +327,7 @@ void loadSea()
   bamboo = new Seed(bambooX, bambooY, bambooWidth, bambooHeight, bambooImg, "bamboo", "Oh bamboo seed");
   hellebore = new Seed(helleboreX, helleboreY, helleboreWidth, helleboreHeight, helleboreImg, "hellebore", "Oh hellebore seed");
 
-  sea = new Map(seaImg, seaWidth, seaHeight, seaStartX, seaStartY);
+  sea = new Map(seaImg, seaTheme, 15.2, seaWidth, seaHeight, seaStartX, seaStartY);
   
   pirate = new NPC(pirateX, pirateX + npcWidth, pirateY, pirateY + npcHeight, pirateImg, pirateMeeting, pirateGoodbye, pirateGeneric);
   parseScript(pirateHint, pirate.hint);
@@ -320,6 +348,7 @@ void loadMenu()
 
 void loadAsset()
 {
+  loadAudio();
   loadGarden();
   loadDesert();
   loadSea();

@@ -28,6 +28,7 @@ void ending()
 {
   if (checkFinish())
   {
+    garden.setMusic(gardenThemeComplete, 17.65);
     garden.add(mom);
     garden.add(bambooTree);
     garden.add(buglossTree);
