@@ -5,6 +5,7 @@ ArrayList<NPC> npcList;
 
 boolean gameStart;
 boolean firstCue = true;
+boolean gamePaused = false;
 
 Player player;
 
@@ -51,6 +52,7 @@ void gameplay()
       {
         prevmap = currmap;
         currmap.getMusic().stop();
+        portalSFX.play();
         currmap = portal.transition();
         player.setStart(currmap);
         firstCue = true;
@@ -65,6 +67,7 @@ void gameplay()
     for (Seed seed : seedList) {
       if (!seed.isPicked() && seed.isUnlocked() && seed.getHitbox().collide(player)) { 
         seed.pick();
+        pickupSFX.play();
         seed.setNarrate();
         seedMessage = true;
       }
@@ -120,7 +123,7 @@ void gameplay()
       currmap.getMusic().jump(0);
       firstCue = false;
     }
-    else if(!currmap.getMusic().isPlaying()){
+    else if(!currmap.getMusic().isPlaying() && !gamePaused){
       // Loops the theme
       currmap.getMusic().play();
       currmap.getMusic().jump(currmap.getLoopEntry());
@@ -153,11 +156,16 @@ void keyPressed()
     }
   }
 
-  // Skip to ending cheat
-  if (key == CODED){
-    if (key == '|'){
-      finished = true;
-      ending();
+  // Pause
+  if(key == BACKSPACE){
+    gamePaused = !gamePaused;
+    if(gamePaused){
+      currmap.getMusic().pause();
+      pauseTheme.play();
+    }
+    else{
+      pauseTheme.stop();
+      currmap.getMusic().play();
     }
   }
 }
