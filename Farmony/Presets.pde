@@ -74,6 +74,34 @@ Interactable mandrakeTree;
 Interactable mapleTree;
 Interactable poinsettiaTree;
 
+// Load music
+SoundFile gardenTheme;
+SoundFile gardenThemeComplete;
+SoundFile desertTheme;
+SoundFile seaTheme;
+SoundFile forestTheme;
+SoundFile menuTheme;
+SoundFile pauseTheme;
+
+// Load SFX
+SoundFile stepSFX;
+SoundFile pickupSFX;
+SoundFile portalSFX;
+
+void loadAudio(){
+  gardenTheme = new SoundFile(this, "data/audio/Garden_Incomplete.mp3");
+  gardenThemeComplete = new SoundFile(this, "data/audio/Garden_Complete.mp3");
+  desertTheme = new SoundFile(this, "data/audio/Desert_Region.mp3");
+  seaTheme = new SoundFile(this, "data/audio/Sea_Region.mp3");
+  forestTheme = new SoundFile(this, "data/audio/Forest_Region.wav");
+  menuTheme = new SoundFile(this, "data/audio/Menu.mp3");
+  pauseTheme = new SoundFile(this, "data/audio/Pause.mp3");
+
+  stepSFX = new SoundFile(this, "data/audio/Desert_Footstep_sfx_2.mp3");
+  pickupSFX = new SoundFile(this, "data/audio/Pickup_SFX.mp3");
+  portalSFX = new SoundFile(this, "data/audio/Portal_SFX.mp3");
+}
+
 void loadGarden()
 {
   gardenImg = loadImage("data/map/garden.png");

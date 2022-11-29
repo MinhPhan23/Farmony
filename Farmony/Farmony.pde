@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 import com.jogamp.opengl.GLProfile;
 {
   GLProfile.initSingleton();
