@@ -4,6 +4,7 @@ ArrayList<Seed> seedList;
 ArrayList<NPC> npcList;
 
 boolean gameStart;
+boolean firstCue = true;
 
 Player player;
 
@@ -12,6 +13,9 @@ void gameplay()
   if (!gameStart)
   {
     loadMenu();
+    if(!menuTheme.isPlaying()){
+      menuTheme.play();
+    }
   } else
   {
     if (!finished)
@@ -46,8 +50,10 @@ void gameplay()
       if (portal.getHitbox().collide(player))
       {
         prevmap = currmap;
+        currmap.getMusic().stop();
         currmap = portal.transition();
         player.setStart(currmap);
+        firstCue = true;
 
         if (currmap.firstVisit()) {
           currmap.setfirstVisit(true);
@@ -106,6 +112,19 @@ void gameplay()
       player.setStop(true);
     } else
       player.setStop(false);
+
+
+    // Play map theme
+    if(!currmap.getMusic().isPlaying() && firstCue){
+      currmap.getMusic().play();
+      currmap.getMusic().jump(0);
+      firstCue = false;
+    }
+    else if(!currmap.getMusic().isPlaying()){
+      // Loops the theme
+      currmap.getMusic().play();
+      currmap.getMusic().jump(currmap.getLoopEntry());
+    }
   }
 }
 
@@ -126,10 +145,20 @@ void keyPressed()
   if (!gameStart)
   {
     gameStart = true;
+    menuTheme.stop();
   } else
   {
-    if (!player.getStop())
+    if (!player.getStop()){
       player.detectMovement();
+    }
+  }
+
+  // Skip to ending cheat
+  if (key == CODED){
+    if (key == '|'){
+      finished = true;
+      ending();
+    }
   }
 }
 
