@@ -11,6 +11,7 @@ void setup()
   colorMode(RGB, 1.0f);
   textureMode(NORMAL);
   textureWrap(CLAMP);
+  genericFont = createFont("Arial", 15);
   noStroke();
   loadAsset();
 }

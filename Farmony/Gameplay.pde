@@ -6,6 +6,7 @@ ArrayList<NPC> npcList;
 boolean gameStart;
 boolean firstCue = true;
 boolean gamePaused = false;
+PFont genericFont;
 
 Player player;
 
@@ -128,6 +129,18 @@ void gameplay()
       currmap.getMusic().play();
       currmap.getMusic().jump(currmap.getLoopEntry());
     }
+
+    // Check if paused to add overlay
+    if(gamePaused){
+      if(!pauseTheme.isPlaying()){
+        pauseTheme.play();
+      }
+      tint(0.65);
+      textAlign(CENTER, CENTER);
+      textFont(genericFont);
+      fill(255, 255, 255);
+      text("GAME PAUSED", player.getPlayerX(), player.getPlayerY()-60, 1);
+    }
   }
 }
 
@@ -154,18 +167,19 @@ void keyPressed()
     if (!player.getStop()){
       player.detectMovement();
     }
-  }
 
-  // Pause
-  if(key == BACKSPACE){
-    gamePaused = !gamePaused;
-    if(gamePaused){
-      currmap.getMusic().pause();
-      pauseTheme.play();
-    }
-    else{
-      pauseTheme.stop();
-      currmap.getMusic().play();
+    // Pause
+    if(key == BACKSPACE){
+      gamePaused = !gamePaused;
+      if(gamePaused){
+        currmap.getMusic().pause();
+        pauseTheme.play();
+      }
+      else{
+        pauseTheme.stop();
+        currmap.getMusic().play();
+        noTint();
+      }
     }
   }
 }

@@ -122,7 +122,7 @@ class Player {
 
   //detect the up,down,left,right
   public void detectMovement() {
-    if (key == CODED) {
+    if (key == CODED && !gamePaused) {
       if (keyCode == UP) {
         keyUp = true;
       } else if (keyCode == DOWN) {
