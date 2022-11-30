@@ -166,6 +166,12 @@ void keyPressed()
   {
     if (!player.getStop()){
       player.detectMovement();
+      if(currmap == desert){
+        if(!stepSFX.isPlaying()){
+          stepSFX.play();
+          stepSFX.amp(-3.5);
+        }
+      }
     }
 
     // Pause
@@ -187,4 +193,5 @@ void keyPressed()
 void keyReleased()
 {
   player.movementReleased();
+  stepSFX.stop();
 }
